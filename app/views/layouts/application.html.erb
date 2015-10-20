@@ -15,10 +15,8 @@
     <div id="overall">
       <%= render 'illustrations/popover' %>
       <div id="header">
-        <%= link_to image_tag("logo.png", id: "logo", alt: "The Will of the " +
-          "Ancients: A Panzer Dragoon and Crimson Dragon Fan Site"), root_url %>
+        <%= link_to "Home", root_url %>
       </div>
-      <div id="banner"></div>
       <div id="navigation">
         <%= form_tag searches_path, method: :post, id: "search" do %>
           <%= text_field_tag :query, nil, placeholder: "Search..." %>
