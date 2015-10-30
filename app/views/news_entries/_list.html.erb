@@ -1,9 +1,11 @@
 <% if @news_entries %>
-  <div id="resources">
+  <div class="ui relaxed list">
     <% @news_entries.each do |news_entry| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= link_to news_entry.name, news_entry %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= link_to news_entry.name, news_entry %></h2>
+          </div>
           <% unless news_entry.publish %>
             <p class="unpublished">Unpublished</p>
           <% end %>

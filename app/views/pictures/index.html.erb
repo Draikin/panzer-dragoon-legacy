@@ -14,10 +14,11 @@
 
 <% unless params[:contributor_profile_id] or params[:filter] %>
   <% if @category_groups.present? %>
-    <h2>Picture Categories</h2>
-    <%= render partial: 'site_map/category_groups', locals: {
-      category_groups: @category_groups } %>
-    </ul>
+    <div class="ui segment">
+      <h2>Picture Categories</h2>
+      <%= render partial: 'site_map/category_groups', locals: {
+        category_groups: @category_groups } %>
+    </div>
   <% end %>
   <% if @pictures.present? %>
     <h2>All Pictures</h2>

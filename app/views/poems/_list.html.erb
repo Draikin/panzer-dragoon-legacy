@@ -1,13 +1,17 @@
 <% if @poems %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @poems.each do |poem| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= link_to poem.name, poem %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= link_to poem.name, poem %></h2>
+          </div>
           <% unless poem.publish %>
             <p class="unpublished">Unpublished</p>
           <% end %>
-          <p><%= poem.description %></p>
+          <div class="description">
+            <p><%= poem.description %></p>
+          </div>
         </div>
       </div>
     <% end %>

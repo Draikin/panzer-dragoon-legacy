@@ -14,17 +14,23 @@
 
 <% unless params[:contributor_profile_id] or params[:filter] %>
   <% if @categories.present? %>
-    <h2>Download Categories</h2>
-    <ul class="categories">
-      <% @categories.each do |category| %>
-        <li>
-          <%= link_to category.name, category %>
-          <% unless category.publish %>
-             - <span class="unpublished">Unpublished</span>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <div class="ui segment">
+      <h2>Download Categories</h2>
+      <div class="ui relaxed list">
+        <% @categories.each do |category| %>
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                <%= link_to category.name, category %>
+              </div>
+              <% unless category.publish %>
+                <span class="unpublished">Unpublished</span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% end %>
   <% if @downloads.present? %>
     <h2>All Downloads</h2>

@@ -14,9 +14,11 @@
 
 <% unless params[:contributor_profile_id] or params[:filter] %>
   <% if @category_groups.present? %>
-    <h2>Music Categories</h2>
-    <%= render partial: 'site_map/category_groups', locals: {
-      category_groups: @category_groups } %>
+    <div class="ui segment">
+      <h2>Music Categories</h2>
+      <%= render partial: 'site_map/category_groups', locals: {
+        category_groups: @category_groups } %>
+    </div>
   <% end %>
   <% if @music_tracks.present? %>
     <h2>All Music Tracks</h2>
@@ -24,15 +26,19 @@
 <% end %>
 
 <% if @music_tracks %>
-  <div id="resources">
+  <div class="ui relaxed list">
     <% @music_tracks.each do |music_track| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= link_to music_track.name, music_track %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= link_to music_track.name, music_track %></h2>
+          </div>
           <% unless music_track.publish %>
             <p class="unpublished">Unpublished</p>
           <% end %>
-          <p><%= music_track.description %></p>
+          <div class="description">
+            <p><%= music_track.description %></p>
+          </div>
         </div>
       </div>
     <% end %>

@@ -1,8 +1,8 @@
 <% if category_groups.present? %>
-  <ul>
+  <div class="ui segments">
     <% category_groups.each do |category_group| %>
       <% if policy(category_group).show? %>
-        <li>
+        <div class="ui segment">
           <h3><%= category_group.name %></h3>
           <% if policy(category_group).edit? or policy(category_group).destroy? %>
             <ul class="administration">
@@ -25,8 +25,8 @@
           <% end %>
           <%= render partial: 'site_map/categories', locals: {
             categories: category_group.categories.order(:name) } %>
-        </li>
+        </div>
       <% end %>
     <% end %>
-  </ul>
+  </div>
 <% end %>

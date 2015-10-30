@@ -1,23 +1,29 @@
 <% if @encyclopaedia_entries %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @encyclopaedia_entries.each do |encyclopaedia_entry| %>
-      <div class="resource">
-        <div class="thumbnail">
+      <div class="item">
+        <div class="content">
           <% if encyclopaedia_entry.encyclopaedia_entry_picture_file_name.
             blank? %>
-            <%= image_tag("default-encyclopaedia-entry-picture-thumbnail.jpg",
-              alt: "Sorry No Image", width: "150", height: "150") %>
+            <%= image_tag "default-encyclopaedia-entry-picture-thumbnail.jpg",
+              alt: "Sorry No Image", width: "150", height: "150",
+              class: "ui medium rounded image" %>
           <% else %>
             <%= link_to encyclopaedia_entry_picture_tag(encyclopaedia_entry,
-              :thumbnail), encyclopaedia_entry %>
+              :thumbnail), encyclopaedia_entry, 
+              class: "ui medium rounded image" %>
           <% end %>
-        </div>
-        <div class="details">
-          <h2><%= link_to encyclopaedia_entry.name, encyclopaedia_entry %></h2>
+          <div class="header">
+            <h2>
+              <%= link_to encyclopaedia_entry.name, encyclopaedia_entry %>
+            </h2>
+          </div>
           <% unless encyclopaedia_entry.publish %>
             <p class="unpublished">Unpublished</p>
           <% end %>
-          <p><%= truncated_text encyclopaedia_entry.content %></p>
+          <div class="description">
+            <p><%= truncated_text encyclopaedia_entry.content %></p>
+          </div>
         </div>
       </div>
     <% end %>

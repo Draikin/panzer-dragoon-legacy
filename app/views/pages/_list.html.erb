@@ -1,13 +1,17 @@
 <% if @pages %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @pages.each do |page| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= link_to page.name, page %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= link_to page.name, page %></h2>
+          </div>
           <% unless page.publish %>
             <p class="unpublished">Unpublished</p>
           <% end %>
-          <p><%= truncated_text page.content %></p>
+          <div class="description">
+            <p><%= truncated_text page.content %></p>
+          </div>
         </div>
       </div>
     <% end %>

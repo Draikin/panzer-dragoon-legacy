@@ -1,9 +1,11 @@
 <% if @links %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @links.each do |link| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= link_to link.name, link.url %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= link_to link.name, link.url %></h2>
+          </div>
           <% if policy(link).edit? && policy(link).destroy? %>
             <ul class="administration">
               <li><%= link_to 'Edit Link', edit_link_path(link) %></li>
@@ -24,7 +26,9 @@
               <% end %>
             </ul>
           <% end %>
-          <p><%= link.description %></p>
+          <div class="description">
+            <p><%= link.description %></p>
+          </div>
         </div>
       </div>
     <% end %>

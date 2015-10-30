@@ -9,17 +9,15 @@
 <% end %>
 
 <% if @contributor_profiles %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @contributor_profiles.each do |contributor_profile| %>
-      <div class="resource">
-        <div class="comment_thumbnail">
+      <div class="item">
+        <div class="content">
           <% if contributor_profile.avatar_file_name.blank? %>
             <%= image_tag("default-avatar.jpg") %>
           <% else %>
-            <%= image_tag contributor_profile.avatar.url(:thumbnail) %><br />
+            <%= image_tag contributor_profile.avatar.url(:thumbnail) %>
           <% end %>
-        </div>
-        <div class="comment_details">
           <h2><%= link_to contributor_profile.name, contributor_profile %></h2>
           <p>
             <%= pluralize(website_contributions_count(contributor_profile),

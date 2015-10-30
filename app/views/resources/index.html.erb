@@ -14,9 +14,11 @@
 
 <% unless params[:contributor_profile_id] or params[:filter] %>
   <% if @category_groups.present? %>
-    <h2>Resource Categories</h2>
-    <%= render partial: 'site_map/category_groups', locals: {
-      category_groups: @category_groups } %>
+    <div class="ui segment">
+      <h2>Resource Categories</h2>
+      <%= render partial: 'site_map/category_groups', locals: {
+        category_groups: @category_groups } %>
+    </div>
   <% end %>
   <% if @resources.present? %>
     <h2>All Resources</h2>

@@ -1,13 +1,17 @@
 <% if @stories %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @stories.each do |story| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= link_to story.name, story %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= link_to story.name, story %></h2>
+          </div>
           <% unless story.publish %>
             <p class="unpublished">Unpublished</p>
           <% end %>
-          <p><%= story.description %></p>
+          <div class="description">
+            <p><%= story.description %></p>
+          </div>
         </div>
       </div>
     <% end %>

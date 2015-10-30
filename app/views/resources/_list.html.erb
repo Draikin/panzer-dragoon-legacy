@@ -1,13 +1,17 @@
 <% if @resources %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @resources.each do |resource| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= link_to resource.name, resource %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= link_to resource.name, resource %></h2>
+          </div>
           <% unless resource.publish %>
             <p class="unpublished">Unpublished</p>
           <% end %>
-          <p><%= truncated_text resource.content %></p>
+          <div class="description">
+            <p><%= truncated_text resource.content %></p>
+          </div>
         </div>
       </div>
     <% end %>

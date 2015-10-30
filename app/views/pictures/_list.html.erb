@@ -1,16 +1,19 @@
 <% if @pictures %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @pictures.each do |picture| %>
-      <div class="resource">
-        <div class="thumbnail">
-          <%= link_to picture_tag(picture, :thumbnail), picture %>
-        </div>
-        <div class="details">
-          <h2><%= link_to picture.name, picture %></h2>
+      <div class="item">
+        <%= link_to picture_tag(picture, :thumbnail), picture,
+          class: "ui medium rounded image" %>
+        <div class="content">
+          <div class="header">
+            <h2><%= link_to picture.name, picture %></h2>
+          </div>
           <% unless picture.publish %>
             <p class="unpublished">Unpublished</p>
           <% end %>
-          <p><%= picture.description %></p>
+          <div class="description">
+            <p><%= picture.description %></p>
+          </div>
         </div>
       </div>
     <% end %>

@@ -7,11 +7,13 @@
 <% end %>
 
 <% if @sagas %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @sagas.each do |saga| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= saga.sequence_number %>. <%= saga.name %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= saga.sequence_number %>. <%= saga.name %></h2>
+          </div>
           <% if policy(saga).edit? and policy(saga).destroy? %>
             <ul class="administration">
               <li><%= link_to 'Edit Saga', edit_saga_path(saga) %></li>

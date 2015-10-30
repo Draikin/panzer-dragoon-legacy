@@ -1,14 +1,16 @@
 <% if categories.present? %>
-  <ul>
+  <div class="ui relaxed list">
     <% categories.each do |category| %>
       <% if policy(category).show? %>
-        <li>
-          <%= link_to category.name, category %>
-          <% unless category.publish %>
-             - <span class="unpublished">Unpublished</span>
-          <% end %>
-        </li>
+        <div class="item">
+          <div class="content">
+            <%= link_to category.name, category %>
+            <% unless category.publish %>
+              <span class="unpublished">Unpublished</span>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     <% end %>
-  </ul>
+  </div>
 <% end %>

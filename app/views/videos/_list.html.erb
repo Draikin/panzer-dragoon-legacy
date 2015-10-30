@@ -1,13 +1,17 @@
 <% if @videos %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @videos.each do |video| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= link_to video.name, video %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= link_to video.name, video %></h2>
+          </div>
           <% unless video.publish %>
             <p class="unpublished">Unpublished</p>
           <% end %>
-          <p><%= video.description %></p>
+          <div class="description">
+            <p><%= video.description %></p>
+          </div>
         </div>
       </div>
     <% end %>

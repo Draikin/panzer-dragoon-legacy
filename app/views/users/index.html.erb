@@ -7,11 +7,13 @@
 <% end %>
 
 <% if @users %>
-  <div id="resources">
+  <div class="ui very relaxed list">
     <% @users.each do |user| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= user.email %></h2>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <h2><%= user.email %></h2>
+          </div>
           <dl>
             <% if user.contributor_profile %>
               <dt>Contributor Profile</dt>
