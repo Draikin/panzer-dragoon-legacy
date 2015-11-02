@@ -10,37 +10,36 @@
       "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
+
   </head>
   <body>
+
     <div class="ui container">
       <%= render 'illustrations/popover' %>
 
-      <div class="ui segments">
-
-        <div class="ui segment">
-          <ul>
-            <li><%= link_to "Home", root_url %></li>          
-            <li><%= link_to "Latest News", root_url %></li>
-            <li><%= link_to "Site Map", site_map_path %></li>
-            <li><%= link_to "Encyclopaedia", encyclopaedia_entries_path %></li>
-            <li>
-              <%= link_to "Forums",
-                "http://forums.thewilloftheancients.com" %>
-            </li>
-            <li><%= link_to "Contributors", contributor_profiles_path %></li>
-            <li><%= link_to "How to Contribute", "/how-to-contribute" %></li>
-            <li><%= link_to "Atom Web Feed", news_entries_url(:atom) %></li>
-            <li>
-              <a href="https://www.facebook.com/thewilloftheancients">
-                Facebook
-              </a>
-            </li>
-            <li><a href="https://www.twitter.com/willancients">Twitter</a></li>
-          </ul>
-          <%= form_tag searches_path, method: :post, id: "search" do %>
-            <%= text_field_tag :query, nil, placeholder: "Search..." %>
-          <% end %>
+      <div class="ui stackable menu">
+        <div class="item header">
+          <img src="logo.png">
+        </div>  
+        <%= link_to "Home", root_url, class: "item" %>
+        <%= link_to "Explore", site_map_path, class: "item" %>
+        <%= link_to "Learn", encyclopaedia_entries_path, class: "item" %>
+        <%= link_to "Discuss", "http://forums.thewilloftheancients.com", 
+          class: "item" %>
+        <%= link_to "Contribute", "/how-to-contribute", class: "item" %>
+        <div class="right menu">
+          <div class="item">
+            <%= form_tag searches_path, method: :post, id: "search" do %>
+              <div class="ui icon input">            
+                <%= text_field_tag :query, nil, placeholder: "Search..." %>
+                <i class="search icon"></i>
+              </div>
+            <% end %>
+          </div>
         </div>
+      </div>
+
+      <div class="ui segments">
 
         <div class="ui segment">
           <% if @sagas.present? %>
@@ -128,14 +127,36 @@
           <%= yield %>
         </div>
 
-        <div class="ui segment">
-          <ul>
-            <li><%= link_to "About the Site", "/about-the-site" %></li>
-            <li><%= link_to "How to Contribute", "/how-to-contribute" %></li>
-            <li>
-              <%= link_to "Copyright Information", "/copyright-information" %>
-            </li>
-          </ul>
+        <div class="ui vertical footer segment">
+          <div class="ui center aligned container">
+            <ul>
+              <li><%= link_to "About the Site", "/about-the-site" %></li>
+              <li>
+                <%= link_to "Copyright Information", "/copyright-information" %>
+              </li>
+              <li><%= link_to "Contributors", contributor_profiles_path %></li>
+              <li>
+                <a href="<%= news_entries_url(:atom) %>">
+                  <i class="feed icon"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/thewilloftheancients">
+                  <i class="facebook icon"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.twitter.com/willancients">
+                  <i class="twitter icon"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/user/willancients">
+                  <i class="youtube icon"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
       </div>
