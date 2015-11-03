@@ -1,28 +1,31 @@
-<%= form_for @category do |f| %>
-  <%= render "shared/error_messages", target: @category %>
-  <div>
-    <%= f.label :category_type, "Category Type" %><br />
+<%= form_for @category, html: { class: 'ui form' } do |f| %>
+  <%= render 'shared/error_messages', target: @category %>
+  <div class="field">
+    <%= f.label :category_type, 'Category Type' %>
     <%= f.collection_select :category_type, Category::CATEGORY_TYPES,
-      :to_s, :titleize %>
+      :to_s, :titleize, {}, { class: 'ui search selection dropdown' } %>
   </div>
-  <div>
-    <%= f.label :category_group_id, "Category Group" %><br />
+  <div class="field">
+    <%= f.label :category_group_id, 'Category Group' %>
     <%= f.collection_select :category_group_id, @category_groups, :id, :name,
-      include_blank: true %>
+      { include_blank: true }, { class: 'ui search selection dropdown' } %>
   </div>
-  <div>
-    <%= f.label :name, "Name" %><br />
+  <div class="field">
+    <%= f.label :name, 'Name' %>
     <%= f.text_field :name %>
   </div>
-  <div>
-    <%= f.label :description, "Description" %><br />
+  <div class="field">
+    <%= f.label :description, 'Description' %>
     <%= f.text_area :description, rows: 3 %>
   </div>
-  <div>
-    <%= f.check_box :publish %> <%= f.label :publish, "Publish?" %>
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
+    </div>
   </div>
-  <div>
-    <%= f.submit "Save and View" %>
-    <%= f.submit "Save and Continue Editing", name: :continue_editing %>
+  <div class="inline fields">
+    <%= f.submit 'Save and View', class: 'ui primary button' %>
+    <%= f.submit 'Save and Continue Editing', name: :continue_editing,
+      class: 'ui button' %>
   </div>
 <% end %>

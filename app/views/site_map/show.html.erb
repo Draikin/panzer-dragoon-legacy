@@ -4,12 +4,12 @@
   <div class="ui two item stackable menu">
     <% if policy(CategoryGroup).new? %>
       <%= link_to new_category_group_path, class: 'item' do %>
-        <i class="tag icon"></i> New Category
+        <i class="tag icon"></i> New Category Group
       <% end %>
     <% end %>
     <% if policy(Category).new? %>
       <%= link_to new_category_path, class: 'item' do %>
-        <i class="tag icon"></i> New Category Group
+        <i class="tag icon"></i> New Category
       <% end %>
     <% end %>
   </div>
