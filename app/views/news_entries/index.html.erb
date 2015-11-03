@@ -12,9 +12,11 @@
 </p>
 
 <% if policy(NewsEntry).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New News Entry', new_news_entry_path %></li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_news_entry_path, class: 'item' do %>
+      <i class="write icon"></i> New News Entry
+    <% end %>
+  </div>
 <% end %>
 
 <% if @news_entries %>

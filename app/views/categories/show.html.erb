@@ -5,24 +5,27 @@
   <p class="unpublished">Unpublished</p>
 <% end %>
 
-<% if policy(Category).new? or policy(@category).edit? or
+<% if policy(Category).new? or policy(@category).edit? or 
   policy(@category).destroy? %>
-  <ul class="administration">
+  <div class="ui two item stackable menu">
     <% if policy(Category).new? %>
-      <li><%= link_to 'New Category', new_category_path %></li>
+      <%= link_to new_category_path, class: 'item' do %>
+        <i class="tag icon"></i> New Category
+      <% end %>
     <% end %>
     <% if policy(@category).edit? %>
-      <li><%= link_to 'Edit Category', edit_category_path(@category) %></li>
+      <%= link_to edit_category_path(@category), class: 'item' do %>
+        <i class="configure icon"></i> Edit Category
+      <% end %>
     <% end %>
     <% if policy(@category).destroy? %>
-      <li>
-        <%= link_to 'Delete Category', @category,
-          data: { confirm: 'Are you sure you want to delete this category?' },
-          method: :delete
-        %>
-      </li>
+      <%= link_to @category,
+        data: { confirm: 'Are you sure you want to delete this category?' },
+        method: :delete, class: 'item' do %>
+        <i class="trash icon"></i> Delete Category
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <%= @category.description %>
@@ -30,12 +33,11 @@
 <% if @articles %>
   <h2>Articles in this Category</h2>
   <% if policy(Article).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Article',
-          new_article_path(category: @category) %>
-      </li>
-    </ul>
+    <div class="ui one item stackable menu">
+      <%= link_to new_article_path(category: @category), class: 'item' do %>
+        <i class="write icon"></i> New Article
+      <% end %>
+    </div>
   <% end %>
   <%= render 'articles/list' %>
   <p><%= link_to 'Site Map', site_map_path %> |
@@ -45,12 +47,11 @@
 <% if @downloads %>
   <h2>Downloads in this Category</h2>
   <% if policy(Download).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Download',
-          new_download_path(category: @category) %>
-      </li>
-    </ul>
+    <div class="ui one item stackable menu">
+      <%= link_to new_download_path(category: @category), class: 'item' do %>
+        <i class="write icon"></i> New Download
+      <% end %>
+    </div>
   <% end %>
   <%= render 'downloads/list' %>
   <p><%= link_to 'Site Map', site_map_path %> |
@@ -60,12 +61,12 @@
 <% if @encyclopaedia_entries %>
   <h2>Encyclopaedia Entries in this Category</h2>
   <% if policy(EncyclopaediaEntry).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Encyclopaedia Entry',
-          new_encyclopaedia_entry_path(category: @category) %>
-      </li>
-    </ul>
+    <div class="ui one item stackable menu">
+      <%= link_to new_encyclopaedia_entry_path(category: @category), 
+        class: 'item' do %>
+        <i class="write icon"></i> New Encyclopaedia Entry
+      <% end %>
+    </div>
   <% end %>
   <%= render 'encyclopaedia_entries/list' %>
   <p><%= link_to 'Site Map', site_map_path %> |
@@ -75,12 +76,11 @@
 <% if @links %>
   <h2>Links in this Category</h2>
   <% if policy(Link).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Link',
-          new_link_path(category: @category) %>
-      </li>
-    </ul>
+    <div class="ui one item stackable menu">
+      <%= link_to new_link_path(category: @category), class: 'item' do %>
+        <i class="write icon"></i> New Link
+      <% end %>
+    </div>
   <% end %>
   <%= render 'links/list' %>
   <p><%= link_to 'Site Map', site_map_path %> |
@@ -90,12 +90,11 @@
 <% if @music_tracks %>
   <h2>Music Tracks in this Category</h2>
   <% if policy(MusicTrack).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Music Track',
-          new_music_track_path(category: @category) %>
-      </li>
-    </ul>
+    <div class="ui one item stackable menu">
+      <%= link_to new_music_track_path(category: @category), class: 'item' do %>
+        <i class="write icon"></i> New Music Track
+      <% end %>
+    </div>
   <% end %>
   <%= render 'music_tracks/list' %>
   <p><%= link_to 'Site Map', site_map_path %> |
@@ -105,12 +104,11 @@
 <% if @pictures %>
   <h2>Pictures in this Category</h2>
   <% if policy(Picture).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Picture',
-          new_picture_path(category: @category) %>
-      </li>
-    </ul>
+    <div class="ui one item stackable menu">
+      <%= link_to new_picture_path(category: @category), class: 'item' do %>
+        <i class="write icon"></i> New Picture
+      <% end %>
+    </div>
   <% end %>
   <%= render 'pictures/list' %>
   <p><%= link_to 'Site Map', site_map_path %> |
@@ -120,12 +118,11 @@
 <% if @resources %>
   <h2>Resources in this Category</h2>
   <% if policy(Resource).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Resource',
-          new_resource_path(category: @category) %>
-      </li>
-    </ul>
+    <div class="ui one item stackable menu">
+      <%= link_to new_resource_path(category: @category), class: 'item' do %>
+        <i class="write icon"></i> New Resource
+      <% end %>
+    </div>
   <% end %>
   <%= render 'resources/list' %>
   <p><%= link_to 'Site Map', site_map_path %> |
@@ -135,12 +132,11 @@
 <% if @stories %>
   <h2>Stories in this Category</h2>
   <% if policy(Story).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Story',
-          new_story_path(category: @category) %>
-      </li>
-    </ul>
+    <div class="ui one item stackable menu">
+      <%= link_to new_story_path(category: @category), class: 'item' do %>
+        <i class="write icon"></i> New Story
+      <% end %>
+    </div>
   <% end %>
   <%= render 'stories/list' %>
   <p><%= link_to 'Site Map', site_map_path %> |
@@ -150,12 +146,11 @@
 <% if @videos %>
   <h2>Videos in this Category</h2>
   <% if policy(Video).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Video',
-          new_video_path(category: @category) %>
-      </li>
-    </ul>
+    <div class="ui one item stackable menu">
+      <%= link_to new_video_path(category: @category), class: 'item' do %>
+        <i class="write icon"></i> New Video
+      <% end %>
+    </div>
   <% end %>
   <%= render 'videos/list' %>
   <p><%= link_to 'Site Map', site_map_path %> |

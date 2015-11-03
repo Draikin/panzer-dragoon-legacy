@@ -1,12 +1,12 @@
 <% title @contributor_profile.name %>
 
 <% if policy(@contributor_profile).edit? %>
-  <ul id="administration">
-    <li>
-      <%= link_to 'Edit Contributor Profile', 
-        edit_contributor_profile_path(@contributor_profile) %>
-    </li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to edit_contributor_profile_path(@contributor_profile), 
+      class: 'item' do %>
+      <i class="configure icon"></i> Edit Contributor Profile
+    <% end %>
+  </div>
 <% end %>
 
 <% if @contributor_profile.discourse_username.present? %>

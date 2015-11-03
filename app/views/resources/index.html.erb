@@ -7,9 +7,11 @@
 <% end %>
 
 <% if policy(Resource).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New Resource', new_resource_path %></li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_resource_path, class: 'item' do %>
+      <i class="write icon"></i> New Resource
+    <% end %>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] or params[:filter] %>

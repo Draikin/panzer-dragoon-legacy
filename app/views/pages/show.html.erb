@@ -5,16 +5,27 @@
   <p class="unpublished">Unpublished</p>
 <% end %>
 
-<% if policy(@page).edit? && policy(@page).destroy? %>
-  <ul class="administration">
-    <li><%= link_to 'New Page', new_page_path %></li>
-    <li><%= link_to 'Edit Page', edit_page_path(@page) %></li>
-    <li>
-      <%= link_to 'Delete Page', @page, data: {
+<% if policy(@page).new? or policy(@page).edit? or
+  policy(@page).destroy? %>
+  <div class="ui three item stackable menu">
+    <% if policy(@page).new? %>
+      <%= link_to new_page_path, class: 'item' do %>
+        <i class="write icon"></i> New Page
+      <% end %>
+    <% end %>
+    <% if policy(@page).edit? %>
+      <%= link_to edit_page_path(@page), class: 'item' do %>
+        <i class="edit icon"></i> Edit Page
+      <% end %>
+    <% end %>
+    <% if policy(@page).destroy? %>
+      <%= link_to @page, data: {
         confirm: 'Are you sure you want to delete this page?' },
-        method: :delete %>
-    </li>
-  </ul>
+        method: :delete, class: 'item' do %>
+        <i class="trash icon"></i> Delete page
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
 
 <%= raw illustrated_markdown_to_html @page.id, "Page", @page.content %>

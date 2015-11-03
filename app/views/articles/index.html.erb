@@ -7,9 +7,11 @@
 <% end %>
 
 <% if policy(Article).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New Article', new_article_path %></li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_article_path, class: 'item' do %>
+      <i class="write icon"></i> New Article
+    <% end %>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] or params[:filter] %>

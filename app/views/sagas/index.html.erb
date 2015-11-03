@@ -1,9 +1,11 @@
 <% title "Sagas" %>
 
 <% if policy(Saga).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New Saga', new_saga_path %></li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_saga_path, class: 'item' do %>
+      <i class="tag icon"></i> New Saga
+    <% end %>
+  </div>
 <% end %>
 
 <% if @sagas %>
@@ -14,14 +16,21 @@
           <div class="header">
             <h2><%= saga.sequence_number %>. <%= saga.name %></h2>
           </div>
-          <% if policy(saga).edit? and policy(saga).destroy? %>
-            <ul class="administration">
-              <li><%= link_to 'Edit Saga', edit_saga_path(saga) %></li>
-              <li>
-                <%= link_to 'Delete Saga', saga, data: {
-                  confirm: 'Are you sure?' }, method: :delete %>
-              </li>
-            </ul>
+          <% if policy(saga).edit? or policy(saga).destroy? %>
+            <div class="ui two item stackable menu">
+              <% if policy(saga).edit? %>
+                <%= link_to edit_saga_path(saga), class: 'item' do %>
+                  <i class="configure icon"></i> Edit Saga
+                <% end %>
+              <% end %>
+              <% if policy(saga).destroy? %>
+                <%= link_to saga, data: {
+                  confirm: 'Are you sure you want to delete this saga?' },
+                  method: :delete, class: 'item' do %>
+                  <i class="trash icon"></i> Delete Saga
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>

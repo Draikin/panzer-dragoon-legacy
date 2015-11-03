@@ -9,28 +9,26 @@
 
 <% if policy(@download).new? or policy(@download).edit? or 
   policy(@download).destroy? %>
-  <ul class="administration">
+  <div class="ui three item stackable menu">
     <% if policy(@download).new? %>
-      <li>
-        <%= link_to 'New Download',
-          new_download_path(category: @download.category)
-        %>
-      </li>
+      <%= link_to new_download_path(category: @download.category), 
+        class: 'item' do %>
+        <i class="upload icon"></i> New Download
+      <% end %>
     <% end %>
     <% if policy(@download).edit? %>
-      <li>
-        <%= link_to 'Edit Download', edit_download_path(@download) %>
-      </li>
+      <%= link_to edit_download_path(@download), class: 'item' do %>
+        <i class="configure icon"></i> Edit Download
+      <% end %>
     <% end %>
     <% if policy(@download).destroy? %>
-      <li>
-        <%= link_to 'Delete Download', @download,
-          data: { confirm: 'Are you sure you want to delete this download?' },
-          method: :delete
-        %>
-      </li>
+      <%= link_to @download,
+        data: { confirm: 'Are you sure you want to delete this download?' },
+        method: :delete, class: 'item' do %>
+        <i class="trash icon"></i> Delete Download
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <h2>Contributed By:</h2>

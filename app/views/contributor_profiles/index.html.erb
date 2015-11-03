@@ -1,11 +1,11 @@
 <% title "Contributors" %>
 
 <% if policy(ContributorProfile).new? %>
-  <ul class="administration">
-    <li>
-      <%= link_to 'New Contributor Profile', new_contributor_profile_path %>
-    </li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_contributor_profile_path, class: 'item' do %>
+      <i class="add user icon"></i> New Contributor Profile
+    <% end %>
+  </div>
 <% end %>
 
 <% if @contributor_profiles %>

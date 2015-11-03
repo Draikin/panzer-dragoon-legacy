@@ -5,11 +5,11 @@
 <% end %>
 
 <% if policy(EncyclopaediaEntry).new? %>
-  <ul class="administration">
-    <li>
-      <%= link_to 'New Encyclopaedia Entry', new_encyclopaedia_entry_path %>
-    </li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_encyclopaedia_entry_path, class: 'item' do %>
+      <i class="write icon"></i> New Encyclopaedia Entry
+    <% end %>
+  </div>
 <% end %>
 
 <% if @category_groups.present? %>

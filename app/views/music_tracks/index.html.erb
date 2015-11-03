@@ -7,9 +7,11 @@
 <% end %>
 
 <% if policy(MusicTrack).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New Music Track', new_music_track_path %></li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_music_track_path, class: "item" do %>
+      <i class="upload icon"></i> New Music Track
+    <% end %>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] or params[:filter] %>

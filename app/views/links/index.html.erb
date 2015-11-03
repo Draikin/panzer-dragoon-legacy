@@ -5,9 +5,11 @@
 <% end %>
 
 <% if policy(Link).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New Link', new_link_path %></li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_link_path, class: 'item' do %>
+      <i class="linkify icon"></i> New Link
+    <% end %>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] %>

@@ -5,9 +5,11 @@
 <% end %>
 
 <% if policy(Page).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New Page', new_page_path %></li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_page_path, class: 'item' do %>
+      <i class="write icon"></i> New Page
+    <% end %>
+  </div>
 <% end %>
 
 <%= render 'list' %>

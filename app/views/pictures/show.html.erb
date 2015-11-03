@@ -7,29 +7,27 @@
   <p class="unpublished">Published in Unpublished Category</p>
 <% end %>
 
-<% if policy(@picture).new? or policy(@picture).edit? or 
+<% if policy(@picture).new? or policy(@picture).edit? or
   policy(@picture).destroy? %>
-  <ul class="administration">
+  <div class="ui three item stackable menu">
     <% if policy(@picture).new? %>
-      <li>
-        <%= link_to 'New Picture',
-          new_picture_path(category: @picture.category) %>
-      </li>
+      <%= link_to new_picture_path, class: 'item' do %>
+        <i class="upload icon"></i> New Picture
+      <% end %>
     <% end %>
     <% if policy(@picture).edit? %>
-      <li>
-        <%= link_to 'Edit Picture',
-          edit_picture_path(@picture) %>
-      </li>
+      <%= link_to edit_picture_path(@picture), class: 'item' do %>
+        <i class="configure icon"></i> Edit Picture
+      <% end %>
     <% end %>
     <% if policy(@picture).destroy? %>
-      <li>
-        <%= link_to 'Delete Picture', @picture, data: {
-          confirm: 'Are you sure you want to delete this picture?' },
-          method: :delete %>
-      </li>
+      <%= link_to @picture, data: {
+        confirm: 'Are you sure you want to delete this picture?' },
+        method: :delete, class: 'item' do %>
+        <i class="trash icon"></i> Delete Picture
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <h2>Contributed By:</h2>

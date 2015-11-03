@@ -7,9 +7,11 @@
 <% end %>
 
 <% if policy(Download).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New Download', new_download_path %></li>
-  </ul>
+  <div class="ui one item stackable menu">
+    <%= link_to new_download_path, class: 'item' do %>
+      <i class="upload icon"></i> New Download
+    <% end %>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] or params[:filter] %>

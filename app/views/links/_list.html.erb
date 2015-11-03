@@ -6,15 +6,21 @@
           <div class="header">
             <h2><%= link_to link.name, link.url %></h2>
           </div>
-          <% if policy(link).edit? && policy(link).destroy? %>
-            <ul class="administration">
-              <li><%= link_to 'Edit Link', edit_link_path(link) %></li>
-              <li>
-                <%= link_to 'Delete Link', link, data: {
+          <% if policy(link).edit? or policy(link).destroy? %>
+            <div class="ui two item stackable menu">
+              <% if policy(link).edit? %>
+                <%= link_to edit_link_path(link), class: 'item' do %>
+                  <i class="configure icon"></i> Edit Link
+                <% end %>
+              <% end %>
+              <% if policy(link).destroy? %>
+                <%= link_to link, data: {
                   confirm: 'Are you sure you want to delete this link?' },
-                  method: :delete %>
-              </li>
-            </ul>
+                  method: :delete, class: 'item' do %>
+                  <i class="trash icon"></i> Delete Link
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
           <% if link.contributor_profiles.count > 0 %>
             <h3>Maintained By:</h3>
