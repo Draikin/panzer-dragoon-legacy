@@ -1,20 +1,22 @@
-<%= form_for @saga do |f| %>
-  <%= render "shared/error_messages", target: @saga %>
-  <div>
-    <%= f.label :encyclopaedia_entry_id, "Encyclopaedia Entry" %><br />
-    <%= f.collection_select :encyclopaedia_entry_id, @encyclopaedia_entries,
-      :id, :name, include_blank: false %>
+<%= form_for @saga, html: { class: 'ui form' } do |f| %>
+  <%= render 'shared/error_messages', target: @saga %>
+  <div class="field">
+    <%= f.label :encyclopaedia_entry_id, 'Encyclopaedia Entry' %>
+    <%= f.collection_select :encyclopaedia_entry_id, @encyclopaedia_entries, 
+      :id, :name, { include_blank: true }, 
+      { class: 'ui search selection dropdown' } %>
   </div>
-  <div>
-    <%= f.label :sequence_number, "Sequence Number" %><br />
-    <%= f.text_field :sequence_number %>
+  <div class="field">
+    <%= f.label :sequence_number, 'Sequence Number' %>
+    <%= f.number_field :sequence_number, { min: 1, max: 99 } %>
   </div>
-  <div>
-    <%= f.label :name, "Name" %><br />
+  <div class="field">
+    <%= f.label :name, 'Name' %>
     <%= f.text_field :name %>
   </div>
-  <div>
-    <%= f.submit "Save and View Index" %>
-    <%= f.submit "Save and Continue Editing", name: :continue_editing %>
+  <div class="inline fields">
+    <%= f.submit 'Save and View Index', class: 'ui primary button' %>
+    <%= f.submit 'Save and Continue Editing', name: :continue_editing,
+      class: 'ui button' %>
   </div>
 <% end %>

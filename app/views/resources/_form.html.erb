@@ -1,76 +1,80 @@
-<%= nested_form_for @resource, html: { multipart: true } do |f| %>
-  <%= render "shared/error_messages", target: @resource %>
-  <div>
-    <%= f.label :category_id, "Category" %><br />
+<%= nested_form_for @resource, html: { multipart: true, class: 'ui form' 
+  } do |f| %>
+  <%= render 'shared/error_messages', target: @resource %>
+  <div class="field">
+    <%= f.label :category_id, 'Category' %>
     <%= f.collection_select :category_id, @categories, :id, :name,
-      include_blank: false %>
+      { include_blank: true }, { class: 'ui search selection dropdown' } %>
   </div>
-  <div>
-    <%= f.label :name, "Name" %><br />
-    (You should refer to the <a href="/naming-convention" target="_blank">
-    naming convention</a> when naming resources)<br />
+  <div class="field">
+    <%= f.label :contributor_profile_ids, 'Contributors' %>
+    <%= f.collection_select :contributor_profile_ids, 
+      ContributorProfile.order(:name), :id, :name, 
+      { selected: @resource.contributor_profile_ids, include_blank: true }, 
+      { multiple: true, class: 'ui fluid search dropdown' } %>
+  </div>
+  <div class="field">
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div>
-    <%= f.label :content, "Content" %><br />
-    (You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-      subset of Markdown</a> to format the resource's content)<br />
-    <%= f.text_area :content, class: "data_entry" %>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content, rows: 15, class: 'data_entry' %>
+    <p>(You may use a <a href="/markdown-syntax-guide" target="_blank">limited
+      subset of Markdown</a> to format the resource's content)</p>
   </div>
-  <div>
+  <div class="field">
     <label>Illustrations</label>
-    <%= f.fields_for :illustrations do |illustration_form| %>
-      <div class="illustration">
-      <% if illustration_form.object.illustration_file_name.blank? %>
-        <%= illustration_form.file_field :illustration %>
-      <% else %>
-        <%= image_tag illustration_form.object.illustration.url(:embedded) %>
-        <br />
-        <button class="insert_tag">Insert Markdown Tag</button><br />
-        Filename: <%= illustration_form.object.illustration_file_name %><br />
-        <%= link_to "Popover Image",
-          illustration_form.object.illustration.url(:popover) %> |
-        <%= link_to "Original Image",
-          illustration_form.object.illustration.url %> |
+    <div class="ui segments">
+      <%= f.fields_for :illustrations do |illustration_form| %>
+        <div class="ui segment">
+          <% if illustration_form.object.illustration_file_name.blank? %>
+            <%= illustration_form.file_field :illustration %>
+            <%= f.submit 'Upload and Save Resource', name: :continue_editing,
+              class: 'ui button' %>
+          <% else %>
+            <%= image_tag(
+              illustration_form.object.illustration.url(:embedded)) %>
+            <p>
+              Filename: <%= illustration_form.object.illustration_file_name %>
+            </p>
+            <p>
+              <%= link_to 'Popover Image',
+                illustration_form.object.illustration.url(:popover) %>
+            </p>
+            <p>
+              <%= link_to 'Original Image', 
+                illustration_form.object.illustration.url %>
+            </p>
+            <button class="insert_tag ui button">Insert Markdown Tag</button>
+          <% end %>
+          <%= illustration_form.link_to_remove 'Remove illustration', 
+            class: 'ui negative button' %>
+        </div>
       <% end %>
-      <%= illustration_form.link_to_remove "Remove illustration" %><br />
+      <div class="ui segment">
+        <%= f.link_to_add 'Add illustration', :illustrations, 
+          class: 'ui button' %>
       </div>
-    <% end %>
-    <p><%= f.link_to_add "Add illustration", :illustrations %></p>
-  </div>
-  <label>Contributors</label>
-  <div class="scroll_checkboxes">
-    <% for contributor_profile in ContributorProfile.order(:name) %>
-      <label>
-        <%= check_box_tag "resource[contributor_profile_ids][]", 
-          contributor_profile.id,
-          @resource.contributor_profiles.include?(contributor_profile) %>
-        <%= contributor_profile.name %>
-      </label>
-      <br />
-    <% end %>
-  </div>
-  <div>
-    <label>Related Encyclopaedia Entries</label>
-    <div class="scroll_checkboxes">
-      <% for encyclopaedia_entry in EncyclopaediaEntry.order(:name) %>
-        <label>
-          <%= check_box_tag "resource[encyclopaedia_entry_ids][]",
-            encyclopaedia_entry.id,
-            @resource.encyclopaedia_entries.include?(encyclopaedia_entry) %>
-          <%= encyclopaedia_entry.name %>
-        </label>
-        <br />
-      <% end %>
     </div>
   </div>
-  <% if policy(@music_track).permitted_attributes.include? :publish %>
-    <div>
-      <%= f.check_box :publish %> <%= f.label :publish, "Publish?" %>
+  <div class="field">
+    <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
+    <%= f.collection_select :encyclopaedia_entry_ids, 
+      EncyclopaediaEntry.order(:name), :id, :name, 
+      { selected: @resource.encyclopaedia_entry_ids, include_blank: true }, 
+      { multiple: true, class: 'ui fluid search dropdown' } %>
+  </div>
+  <% if policy(@resource).permitted_attributes.include? :publish %>
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
+      </div>
     </div>
   <% end %>
-  <div>
-    <%= f.submit "Save and View" %>
-    <%= f.submit "Save and Continue Editing", name: :continue_editing %>
+  <div class="inline fields">
+    <%= f.submit 'Save and View', class: 'ui primary button' %>
+    <%= f.submit 'Save and Continue Editing', name: :continue_editing,
+      class: 'ui button' %>
   </div>
 <% end %>

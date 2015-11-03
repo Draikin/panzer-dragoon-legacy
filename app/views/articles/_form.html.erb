@@ -1,5 +1,5 @@
-<%= nested_form_for @article, html: { multipart: true, 
-  class: 'ui form' } do |f| %>
+<%= nested_form_for @article, html: { multipart: true, class: 'ui form' 
+  } do |f| %>
   <%= render 'shared/error_messages', target: @article %>
   <div class="field">
     <%= f.label :category_id, 'Category' %>
@@ -23,7 +23,7 @@
   </div>
   <div class="field">
     <%= f.label :content %>
-    <%= f.text_area :content, rows: 15, class: "data_entry" %>
+    <%= f.text_area :content, rows: 15, class: 'data_entry' %>
     <p>(You may use a <a href="/markdown-syntax-guide" target="_blank">limited
       subset of Markdown</a> to format the article's content)</p>
   </div>
@@ -37,7 +37,8 @@
             <%= f.submit 'Upload and Save Article', name: :continue_editing,
               class: 'ui button' %>
           <% else %>
-            <%= image_tag illustration_form.object.illustration.url(:embedded) %>
+            <%= image_tag(
+              illustration_form.object.illustration.url(:embedded)) %>
             <p>
               Filename: <%= illustration_form.object.illustration_file_name %>
             </p>

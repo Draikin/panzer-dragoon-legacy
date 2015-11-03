@@ -1,19 +1,22 @@
-<%= form_for @user do |f| %>
-  <%= render "shared/error_messages", target: @user %>
-  <div>
-    <%= f.label :email, "Email" %><br />
+<%= form_for @user, html: { class: 'ui form' } do |f| %>
+  <%= render 'shared/error_messages', target: @user %>
+  <div class="field">
+    <%= f.label :email, 'Email' %>
     <%= f.text_field :email %>
   </div>
-  <div>
-    <%= f.label :contributor_profile_id, "Contributor Profile" %><br />
+  <div class="field">
+    <%= f.label :contributor_profile_id, 'Contributor Profile' %>
     <%= f.collection_select :contributor_profile_id, @contributor_profiles, 
-      :id, :name, include_blank: true %>
+      :id, :name, { include_blank: true }, 
+      { class: 'ui search selection dropdown' } %>
   </div>
-  <div>
-    <%= f.check_box :administrator %> 
-    <%= f.label :administrator, "Administrator? (Be Careful!)" %>
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <%= f.check_box :administrator %> 
+      <%= f.label :administrator, 'Administrator? (Be Careful!)' %>
+    </div>
   </div>
-  <div>
-    <%= f.submit "Save" %>
+  <div class="field">
+    <%= f.submit 'Save', class: 'ui primary button' %>
   </div>
 <% end %>

@@ -1,52 +1,45 @@
-<%= form_for @poem do |f| %>
-  <%= render "shared/error_messages", target: @poem %>
-  <div>
-    <%= f.label :name, "Name" %><br />
+<%= form_for @poem, html: { class: 'ui form' } do |f| %>
+  <%= render 'shared/error_messages', target: @poem %>
+  <div class="field">
+    <%= f.label :contributor_profile_ids, 'Contributors' %>
+    <%= f.collection_select :contributor_profile_ids, 
+      ContributorProfile.order(:name), :id, :name, 
+      { selected: @poem.contributor_profile_ids, include_blank: true }, 
+      { multiple: true, class: 'ui fluid search dropdown' } %>
+  </div>
+  <div class="field">
+    <%= f.label :name, 'Name' %>
     <%= f.text_field :name %>
   </div>
-  <div>
-    <%= f.label :description, "Description" %><br />
+  <div class="field">
+    <%= f.label :description, 'Description' %>
     <%= f.text_area :description, rows: 3 %>
   </div>
-  <div>
-    <%= f.label :content, "Content" %><br />
-    (You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-      subset of Markdown</a> to format the poem's content)<br />
-    <%= f.text_area :content, class: "data_entry" %>
+  <div class="field">
+    <%= f.label :content, 'Content' %>
+    <%= f.text_area :content, rows: 15, class: 'data_entry' %>
+    <p>
+      (You may use a <a href="/markdown-syntax-guide" target="_blank">limited
+      subset of Markdown</a> to format the poem's content)
+    </p>
   </div>
-  <label>Contributors</label>
-  <div class="scroll_checkboxes">
-    <% for contributor_profile in ContributorProfile.order(:name) %>
-      <label>
-        <%= check_box_tag "poem[contributor_profile_ids][]", 
-          contributor_profile.id,
-          @poem.contributor_profiles.include?(contributor_profile) %>
-        <%= contributor_profile.name %>
-      </label>
-      <br />
-    <% end %>
-  </div>
-  <div>
-    <label>Related Encyclopaedia Entries</label>
-    <div class="scroll_checkboxes">
-      <% for encyclopaedia_entry in EncyclopaediaEntry.order(:name) %>
-        <label>
-          <%= check_box_tag "poem[encyclopaedia_entry_ids][]",
-            encyclopaedia_entry.id,
-            @poem.encyclopaedia_entries.include?(encyclopaedia_entry) %>
-          <%= encyclopaedia_entry.name %>
-        </label>
-        <br />
-      <% end %>
-    </div>
+  <div class="field">
+    <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
+    <%= f.collection_select :encyclopaedia_entry_ids, 
+      EncyclopaediaEntry.order(:name), :id, :name, 
+      { selected: @poem.encyclopaedia_entry_ids, include_blank: true }, 
+      { multiple: true, class: 'ui fluid search dropdown' } %>
   </div>
   <% if policy(@poem).permitted_attributes.include? :publish %>
-    <div>
-      <%= f.check_box :publish %> <%= f.label :publish, "Publish?" %>
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
+      </div>
     </div>
   <% end %>
-  <div>
-    <%= f.submit "Save and View" %>
-    <%= f.submit "Save and Continue Editing", name: :continue_editing %>
+  <div class="inline fields">
+    <%= f.submit 'Save and View', class: 'ui primary button' %>
+    <%= f.submit 'Save and Continue Editing', name: :continue_editing,
+      class: 'ui button' %>
   </div>
 <% end %>

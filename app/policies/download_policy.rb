@@ -62,6 +62,7 @@ class DownloadPolicy < ApplicationPolicy
       :category_id,
       :name,
       :description,
+      :information,
       :download,
       contributor_profile_ids: [],
       encyclopaedia_entry_ids: []

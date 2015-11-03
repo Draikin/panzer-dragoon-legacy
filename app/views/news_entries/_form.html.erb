@@ -1,34 +1,44 @@
-<%= form_for @news_entry do |f| %>
+<%= form_for @news_entry, html: { class: 'ui form' } do |f| %>
   <%= render "shared/error_messages", target: @news_entry %>
-  <div>
-    <%= f.label :contributor_profile_id, "Author" %><br />
+  <div class="field">
+    <%= f.label :contributor_profile_id, "Author" %>
     <%= f.collection_select :contributor_profile_id, 
-      ContributorProfile.order(:name), :id, :name, include_blank: false %>
+      ContributorProfile.order(:name), :id, :name, { include_blank: false },
+      { class: 'ui fluid search dropdown' } %>
   </div>
-  <div>
-    <%= f.label :name, "Name" %><br />
-    <%= f.text_field :name %><br />
-    (News entry names are limited to 55 characters and should describe the
+  <div class="field">
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name %>
+    <p>
+      (News entry names are limited to 55 characters and should describe the
       entry's content. The name should not end with a punctuation mark. All
       important words should start a capital letter, e.g. "Crimson Dragon:
       Side Story is Currently Unavailable".)
+    </p>
   </div>
-  <div>
-    <%= f.label :content, "Content" %><br />
-    (You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-      subset of Markdown</a> to format the news entry's content)<br />
-    <%= f.text_area :content, class: "data_entry" %>
+  <div class="field">
+    <%= f.label :content, 'Content' %>
+    <%= f.text_area :content, rows: 15, class: 'data_entry' %>
+    <p>
+      (You may use a <a href="/markdown-syntax-guide" target="_blank">limited
+      subset of Markdown</a> to format the news entry's content)
+    </p>
   </div>
   <% if policy(@news_entry).permitted_attributes.include? :publish %>
-    <div>
-      <%= f.check_box :publish %> <%= f.label :publish, "Publish?" %><br />
-      (This news entry will be automatically posted to Twitter the first time
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
+      </div>
+      <p>
+        (This news entry will be automatically posted to Twitter the first time
         that it is published. The tweet will then be posted to Facebook
         automatically by Twitter.)
+      </p>
     </div>
-  <% end %>    
-  <div>
-    <%= f.submit "Save and View" %>
-    <%= f.submit "Save and Continue Editing", name: :continue_editing %>
+  <% end %>
+  <div class="inline fields">
+    <%= f.submit 'Save and View', class: 'ui primary button' %>
+    <%= f.submit 'Save and Continue Editing', name: :continue_editing,
+      class: 'ui button' %>
   </div>
 <% end %>

@@ -1,41 +1,58 @@
-<%= nested_form_for @page, html: { multipart: true } do |f| %>
+<%= nested_form_for @page, html: { multipart: true, class: 'ui form' } do |f| %>
   <%= render "shared/error_messages", target: @page %>
-  <div>
-    <%= f.label :name, "Name" %><br />
+  <div class="field">
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div>
-    <%= f.label :content, "Content" %><br />
-    (You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-      subset of Markdown</a> to format the page's content)<br />
-    <%= f.text_area :content, class: "data_entry" %>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content, rows: 15, class: 'data_entry' %>
+    <p>(You may use a <a href="/markdown-syntax-guide" target="_blank">limited
+      subset of Markdown</a> to format the page's content)</p>
   </div>
-  <div>
+  <div class="field">
     <label>Illustrations</label>
-    <%= f.fields_for :illustrations do |illustration_form| %>
-      <div class="illustration">
-        <% if illustration_form.object.illustration_file_name.blank? %>
-          <%= illustration_form.file_field :illustration %>
-        <% else %>
-          <%= image_tag illustration_form.object.illustration.url(:embedded) %>
-          <br />
-          <button class="insert_tag">Insert Markdown Tag</button><br />
-          Filename: <%= illustration_form.object.illustration_file_name %><br />
-          <%= link_to "Popover Image",
-            illustration_form.object.illustration.url(:popover) %> |
-          <%= link_to "Original Image",
-            illustration_form.object.illustration.url %> |
-        <% end %>
-        <%= illustration_form.link_to_remove "Remove illustration" %><br />
+    <div class="ui segments">
+      <%= f.fields_for :illustrations do |illustration_form| %>
+        <div class="ui segment">
+          <% if illustration_form.object.illustration_file_name.blank? %>
+            <%= illustration_form.file_field :illustration %>
+            <%= f.submit 'Upload and Save Page', name: :continue_editing,
+              class: 'ui button' %>
+          <% else %>
+            <%= image_tag(
+              illustration_form.object.illustration.url(:embedded)) %>
+            <p>
+              Filename: <%= illustration_form.object.illustration_file_name %>
+            </p>
+            <p>
+              <%= link_to 'Popover Image',
+                illustration_form.object.illustration.url(:popover) %>
+            </p>
+            <p>
+              <%= link_to 'Original Image', 
+                illustration_form.object.illustration.url %>
+            </p>
+            <button class="insert_tag ui button">Insert Markdown Tag</button>
+          <% end %>
+          <%= illustration_form.link_to_remove 'Remove illustration', 
+            class: 'ui negative button' %>
+        </div>
+      <% end %>
+      <div class="ui segment">
+        <%= f.link_to_add 'Add illustration', :illustrations, 
+          class: 'ui button' %>
       </div>
-    <% end %>
-    <p><%= f.link_to_add "Add illustration", :illustrations %></p>
+    </div>
   </div>
-  <div>
-    <%= f.check_box :publish %> <%= f.label :publish, "Publish?" %>
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
+    </div>
   </div>
-  <div>
-    <%= f.submit "Save and View" %>
-    <%= f.submit "Save and Continue Editing", name: :continue_editing %>
+  <div class="inline fields">
+    <%= f.submit 'Save and View', class: 'ui primary button' %>
+    <%= f.submit 'Save and Continue Editing', name: :continue_editing,
+      class: 'ui button' %>
   </div>
 <% end %>

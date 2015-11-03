@@ -1,48 +1,46 @@
-<%= nested_form_for @quiz do |f| %>
-  <%= render "shared/error_messages", target: @quiz %>
-  <div>
-    <%= f.label :name, "Name" %><br />
+<%= nested_form_for @quiz, html: { class: 'ui form' } do |f| %>
+  <%= render 'shared/error_messages', target: @quiz %>
+  <div class="field">
+    <%= f.label :contributor_profile_ids, 'Contributors' %>
+    <%= f.collection_select :contributor_profile_ids, 
+      ContributorProfile.order(:name), :id, :name, 
+      { selected: @quiz.contributor_profile_ids, include_blank: true }, 
+      { multiple: true, class: 'ui fluid search dropdown' } %>
+  </div>
+  <div class="field">
+    <%= f.label :name, 'Name' %>
     <%= f.text_field :name %>
   </div>
-  <div>
-    <%= f.label :description, "Description" %><br />
-    <%= f.text_area :description, rows: 5 %>
+  <div class="field">
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, rows: 3 %>
   </div>
-  <%= f.fields_for :quiz_questions %>
-  <p><%= f.link_to_add "Add Question", :quiz_questions %></p>
-  <label>Contributors</label>
-  <div class="scroll_checkboxes">
-    <% for contributor_profile in ContributorProfile.order(:name) %>
-      <label>
-        <%= check_box_tag "quiz[contributor_profile_ids][]", 
-          contributor_profile.id,
-          @quiz.contributor_profiles.include?(contributor_profile) %>
-        <%= contributor_profile.name %>
-      </label>
-      <br />
-    <% end %>
-  </div>
-  <div>
-    <label>Related Encyclopaedia Entries</label>
-    <div class="scroll_checkboxes">
-      <% for encyclopaedia_entry in EncyclopaediaEntry.order(:name) %>
-        <label>
-          <%= check_box_tag "quiz[encyclopaedia_entry_ids][]",
-            encyclopaedia_entry.id,
-            @quiz.encyclopaedia_entries.include?(encyclopaedia_entry) %>
-          <%= encyclopaedia_entry.name %>
-        </label>
-        <br />
-      <% end %>
+  <div class="field">
+    <label>Questions</label>
+    <div class="ui segments">
+      <%= f.fields_for :quiz_questions %>
+      
+      <%= f.link_to_add "Add Question", :quiz_questions, class: 'ui button' %>
+      
     </div>
+  </div>
+  <div class="field">
+    <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
+    <%= f.collection_select :encyclopaedia_entry_ids, 
+      EncyclopaediaEntry.order(:name), :id, :name, 
+      { selected: @quiz.encyclopaedia_entry_ids, include_blank: true }, 
+      { multiple: true, class: 'ui fluid search dropdown' } %>
   </div>
   <% if policy(@quiz).permitted_attributes.include? :publish %>
-    <div>
-      <%= f.check_box :publish %> <%= f.label :publish, "Publish?" %>
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
+      </div>
     </div>
   <% end %>
-  <div>
-    <%= f.submit "Save and View" %>
-    <%= f.submit "Save and Continue Editing", name: :continue_editing %>
+  <div class="inline fields">
+    <%= f.submit 'Save and View', class: 'ui primary button' %>
+    <%= f.submit 'Save and Continue Editing', name: :continue_editing,
+      class: 'ui button' %>
   </div>
 <% end %>
