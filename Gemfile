@@ -24,7 +24,7 @@ end
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 3.5.2'
 gem 'jquery-rails', '~> 3.1.0'
-gem 'kaminari', '~> 0.15.1'
+gem 'kaminari', '~> 0.16.3'
 gem 'kramdown', '~> 1.3.3'
 gem 'local_time', '~> 0.3.0'
 gem 'mini_magick', '~> 4.3.3'
