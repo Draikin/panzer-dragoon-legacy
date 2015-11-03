@@ -42,7 +42,13 @@
 
 <%= render partial: 'shared/related_encyclopaedia_entries' %>
 
-<p class="links">
-  <%= link_to 'Resources', resources_path %> |
-  <%= link_to @resource.category.name, category_path(@resource.category) %>
-</p>
+<div class="ui breadcrumb">
+  <%= link_to "Home", root_url, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to 'Resources', resources_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to @resource.category.name, category_path(@resource.category), 
+    class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section"><%= @resource.name %></div>
+</div>

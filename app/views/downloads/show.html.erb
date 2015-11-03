@@ -44,7 +44,13 @@
 
 <%= render partial: 'shared/related_encyclopaedia_entries' %>
 
-<p class="links">
-  <%= link_to 'Downloads', downloads_path %> |
-  <%= link_to @download.category.name, category_path(@download.category) %>
-</p>
+<div class="ui breadcrumb">
+  <%= link_to "Home", root_url, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to 'Downloads', downloads_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to @download.category.name, category_path(@download.category), 
+    class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section"><%= @download.name %></div>
+</div>

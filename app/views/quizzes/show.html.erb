@@ -40,4 +40,10 @@
   <%= render 'show_quiz' %>
 <% end %>
 
-<p class="links"><%= link_to 'Quizzes', quizzes_path %></p>
+<div class="ui breadcrumb">
+  <%= link_to "Home", root_url, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to 'Quizzes', quizzes_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section"><%= @quiz.name %></div>
+</div>

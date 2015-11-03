@@ -135,4 +135,10 @@
     'website contribution') %>.</p>
 <% end%>
 
-<p class="links"><%= link_to 'Contributors', contributor_profiles_path %></p>
+<div class="ui breadcrumb">
+  <%= link_to "Home", root_url, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to 'Contributors', contributor_profiles_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section"><%= @contributor_profile.name %></div>
+</div>

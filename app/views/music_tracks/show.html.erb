@@ -64,8 +64,13 @@
 
 <%= render partial: 'shared/related_encyclopaedia_entries' %>
 
-<p class="links">
-  <%= link_to 'Music', music_tracks_path %> |
-  <%= link_to @music_track.category.name,
-    category_path(@music_track.category) %>
-</p>
+<div class="ui breadcrumb">
+  <%= link_to "Home", root_url, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to 'Music', music_tracks_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to @music_track.category.name, category_path(@music_track.category), 
+    class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section"><%= @music_track.name %></div>
+</div>

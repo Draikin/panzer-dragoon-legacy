@@ -179,8 +179,13 @@
   </ul>
 <% end %>
 
-<p class="links">
-  <%= link_to 'Encyclopaedia', encyclopaedia_entries_path %> |
-  <%= link_to @encyclopaedia_entry.category.name,
-    category_path(@encyclopaedia_entry.category) %>
-</p>
+<div class="ui breadcrumb">
+  <%= link_to "Home", root_url, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to 'Encyclopaedia', encyclopaedia_entries_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to @encyclopaedia_entry.category.name, 
+    category_path(@encyclopaedia_entry.category), class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section"><%= @encyclopaedia_entry.name %></div>
+</div>

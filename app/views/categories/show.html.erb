@@ -40,8 +40,6 @@
     </div>
   <% end %>
   <%= render 'articles/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Articles', articles_path %></p>
 <% end %>
 
 <% if @downloads %>
@@ -54,8 +52,6 @@
     </div>
   <% end %>
   <%= render 'downloads/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Downloads', downloads_path %></p>
 <% end %>
 
 <% if @encyclopaedia_entries %>
@@ -69,8 +65,6 @@
     </div>
   <% end %>
   <%= render 'encyclopaedia_entries/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Encyclopaedia', encyclopaedia_entries_path %></p>
 <% end %>
 
 <% if @links %>
@@ -83,8 +77,6 @@
     </div>
   <% end %>
   <%= render 'links/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Links', links_path %></p>
 <% end %>
 
 <% if @music_tracks %>
@@ -97,8 +89,6 @@
     </div>
   <% end %>
   <%= render 'music_tracks/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Music', music_tracks_path %></p>
 <% end %>
 
 <% if @pictures %>
@@ -111,8 +101,6 @@
     </div>
   <% end %>
   <%= render 'pictures/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Pictures', pictures_path %></p>
 <% end %>
 
 <% if @resources %>
@@ -125,8 +113,6 @@
     </div>
   <% end %>
   <%= render 'resources/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Resources', resources_path %></p>
 <% end %>
 
 <% if @stories %>
@@ -139,8 +125,6 @@
     </div>
   <% end %>
   <%= render 'stories/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Stories', stories_path %></p>
 <% end %>
 
 <% if @videos %>
@@ -153,6 +137,40 @@
     </div>
   <% end %>
   <%= render 'videos/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Videos', videos_path %></p>
 <% end %>
+
+<div class="ui breadcrumb">
+  <%= link_to "Home", root_url, class: 'section' %>
+  <div class="divider"> / </div>
+  <% if @articles %>
+    <%= link_to 'Articles', articles_path, class: 'section' %>
+  <% end %>
+  <% if @downloads %>
+    <%= link_to 'Downloads', downloads_path, class: 'section' %>
+  <% end %>
+  <% if @encyclopaedia_entries %>
+    <%= link_to 'Encyclopaedia', encyclopaedia_entries_path, class: 'section' %>
+  <% end %>
+  <% if @links %>
+    <%= link_to 'Links', links_path, class: 'section' %>
+  <% end %>
+  <% if @music_tracks %>
+    <%= link_to 'Music', music_tracks_path, class: 'section' %>
+  <% end %>
+  <% if @pictures %>
+    <%= link_to 'Pictures', pictures_path, class: 'section' %>
+  <% end %>
+  <% if @resources %>
+    <%= link_to 'Resources', resources_path, class: 'section' %>
+  <% end %>
+  <% if @stories %>
+    <%= link_to 'Stories', stories_path, class: 'section' %>
+  <% end %>
+  <% if @videos %>
+    <%= link_to 'Videos', videos_path, class: 'section' %>
+  <% end %>
+  <div class="divider"> / </div>
+  <div class="active section"><%= @category.name %></div>
+</div>
+
+

@@ -59,7 +59,13 @@
 
 <%= render partial: 'shared/related_encyclopaedia_entries' %>
 
-<p class="links">
-  <%= link_to 'Videos', videos_path %> |
-  <%= link_to @video.category.name, category_path(@video.category) %>
-</p>
+<div class="ui breadcrumb">
+  <%= link_to "Home", root_url, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to 'Videos', videos_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <%= link_to @video.category.name, category_path(@video.category), 
+    class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section"><%= @video.name %></div>
+</div>
