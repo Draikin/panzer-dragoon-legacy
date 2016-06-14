@@ -25,6 +25,10 @@ group :test do
   gem 'shoulda-matchers', '~> 2.8.0'
 end
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap', '4.0.0.alpha.2'
+end
+
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 3.5.2'
 gem 'font-awesome-rails', '~> 4.5.0.0'
@@ -40,7 +44,7 @@ gem 'pg', '~> 0.17.1'
 gem 'pundit', '~> 1.0.1'
 gem 'rails_autolink', '~> 1.1.5'
 gem 'sanitize', '~> 3.1.0'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.4'
 gem 'select2-rails', '~> 4.0.0'
 gem 'stringex', '~> 2.5.2'
 gem 'therubyracer', '~> 0.12.2'
