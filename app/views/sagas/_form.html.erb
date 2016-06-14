@@ -1,32 +1,28 @@
 <%= form_for @saga do |f| %>
   <%= render 'shared/error_messages', target: @saga %>
-  <div>
-    <div>
-      <%= f.label :encyclopaedia_entry_id, 'Encyclopaedia Entry' %>
-    </div>
-    <div>
-      <%= f.collection_select :encyclopaedia_entry_id, @encyclopaedia_entries, 
-        :id, :name, { include_blank: true } %>
-    </div>
-  </div>
-  <div>
-    <div>
-      <%= f.label :sequence_number, 'Sequence Number' %>
-    </div>
-    <div>
-      <%= f.number_field :sequence_number, { min: 1, max: 99 } %>
-    </div>
-  </div>
-  <div>
-    <div>
-      <%= f.label :name, 'Name' %>
-    </div>
-    <div>
-      <%= f.text_field :name %>
-    </div>
-  </div>
-  <div>
-    <%= f.submit 'Save and View Index' %>
-    <%= f.submit 'Save and Continue Editing', name: :continue_editing %>
-  </div>
+  <fieldset>
+    <%= f.label :encyclopaedia_entry_id, 'Encyclopaedia Entry' %>
+    <%= f.collection_select :encyclopaedia_entry_id,
+      @encyclopaedia_entries,
+      :id,
+      :name,
+      { include_blank: true },
+      class: 'form-control'
+    %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :sequence_number, 'Sequence Number' %>
+    <%= f.number_field :sequence_number,
+      { min: 1, max: 99, class: 'form-control' }
+    %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </fieldset>
+  <%= f.submit 'Save and View Index', class: 'btn btn-primary' %>
+  <%= f.submit 'Save and Continue Editing',
+    name: :continue_editing,
+    class: 'btn btn-secondary'
+  %>
 <% end %>

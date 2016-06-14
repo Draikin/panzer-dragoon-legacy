@@ -1,51 +1,28 @@
 <%= nested_form_for @page, html: { multipart: true } do |f| %>
   <%= render "shared/error_messages", target: @page %>
-  <div>
-    <div>
-      <%= f.label :name %>
-    </div>
-    <div>
-      <%= f.text_field :name %>
-    </div>
+  <fieldset>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :content %>
+    <%= f.text_area :content, rows: 15, class: 'data_entry form-control' %>
+    <small class="text-muted">
+      You may use a <a href="/markdown-syntax-guide" target="_blank">limited
+      subset of Markdown</a> to format the page's content.
+    </small>
+  </fieldset>
+  <%= render partial: 'illustrations/fields',
+    locals: { illustrations: @illustrations, f: f }
+  %>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :publish %> Publish?
+    </label>
   </div>
-  <div>
-    <div>
-      <%= f.label :content %>
-    </div>
-    <div>
-      <%= f.text_area :content, rows: 15, class: 'data_entry' %>
-      <p>
-        (You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-        subset of Markdown</a> to format the page's content
-      </p>
-    </div>
-  </div>
-  <div>
-    <label>Illustrations</label>
-    <%= f.fields_for :illustrations do |illustration_form| %>
-      <div class="illustration">
-        <% if illustration_form.object.illustration_file_name.blank? %>
-          <%= illustration_form.file_field :illustration %>
-        <% else %>
-          <%= image_tag illustration_form.object.illustration.url(:embedded) %>
-          <br />
-          <button class="insert_tag">Insert Markdown Tag</button><br />
-          Filename: <%= illustration_form.object.illustration_file_name %><br />
-          <%= link_to "Popover Image",
-            illustration_form.object.illustration.url(:popover) %> |
-          <%= link_to "Original Image",
-            illustration_form.object.illustration.url %> |
-        <% end %>
-        <%= illustration_form.link_to_remove "Remove illustration" %><br />
-      </div>
-    <% end %>
-    <p><%= f.link_to_add "Add illustration", :illustrations %></p>
-  </div>
-  <div>
-    <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
-  </div>
-  <div>
-    <%= f.submit 'Save and View' %>
-    <%= f.submit 'Save and Continue Editing' %>
-  </div>
+  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
+  <%= f.submit 'Save and Continue Editing',
+    name: :continue_editing,
+    class: 'btn btn-secondary'
+  %>
 <% end %>

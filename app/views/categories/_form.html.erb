@@ -1,44 +1,41 @@
 <%= form_for @category do |f| %>
   <%= render 'shared/error_messages', target: @category %>
-  <div>
-    <div>
-      <%= f.label :category_type, 'Category Type' %>
-    </div>
-    <div>
-      <%= f.collection_select :category_type, Category::CATEGORY_TYPES,
-        :to_s, :titleize %>
-    </div>
+  <fieldset class="form-group">
+    <%= f.label :category_type, 'Category Type' %>
+    <%= f.collection_select :category_type,
+      Category::CATEGORY_TYPES,
+      :to_s,
+      :titleize,
+      {},
+      class: 'form-control'
+    %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :category_group_id, 'Category Group' %>
+    <%= f.collection_select :category_group_id,
+      @category_groups,
+      :id,
+      :name,
+      { include_blank: true },
+      class: 'form-control'
+    %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, rows: 3, class: 'form-control' %>
+  </fieldset>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :publish %> Publish?
+    </label>
   </div>
-  <div>
-    <div>
-      <%= f.label :category_group_id, 'Category Group' %>
-    </div>
-    <div>
-      <%= f.collection_select :category_group_id, @category_groups, :id, :name,
-        { include_blank: true } %>
-    </div>
-  </div>
-  <div>
-    <div>
-      <%= f.label :name, 'Name' %>
-    </div>
-    <div>
-      <%= f.text_field :name %>
-    </div>
-  </div>
-  <div>
-    <div>
-      <%= f.label :description, 'Description' %>
-    </div>
-    <div>
-      <%= f.text_area :description, rows: 3 %>
-    </div>
-  </div>
-  <div>
-    <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
-  </div>
-  <div>
-    <%= f.submit 'Save and View' %>
-    <%= f.submit 'Save and Continue Editing', name: :continue_editing %>
-  </div>
+  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
+  <%= f.submit 'Save and Continue Editing',
+    name: :continue_editing,
+    class: 'btn btn-secondary'
+  %>
 <% end %>

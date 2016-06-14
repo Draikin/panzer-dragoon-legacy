@@ -1,62 +1,54 @@
 <%= form_for @poem do |f| %>
   <%= render 'shared/error_messages', target: @poem %>
+  <fieldset>
+    <%= f.label :contributor_profile_ids, 'Contributors' %>
+    <%= f.collection_select :contributor_profile_ids,
+      ContributorProfile.order(:name),
+      :id,
+      :name,
+      { selected: @poem.contributor_profile_ids, include_blank: true },
+      { multiple: true, class: 'form-control' }
+    %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, rows: 3, class: 'form-control' %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :content, 'Content' %>
+    <%= f.text_area :content, rows: 15, class: 'data_entry form-control' %>
+    <small class="text-muted">
+      You may use a <a href="/markdown-syntax-guide" target="_blank">limited
+      subset of Markdown</a> to format the poem's content.
+    </small>
+  </fieldset>
+  <fieldset>
   <div>
-    <div>
-      <%= f.label :contributor_profile_ids, 'Contributors' %>
-    </div>
-    <div>
-      <%= f.collection_select :contributor_profile_ids, 
-        ContributorProfile.order(:name), :id, :name, 
-        { selected: @poem.contributor_profile_ids, include_blank: true }, 
-        { multiple: true } %>
-    </div>
+    <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
   </div>
   <div>
-    <div>
-      <%= f.label :name, 'Name' %>
-    </div>
-    <div>
-      <%= f.text_field :name %>
-    </div>
-  </div>
-  <div>
-    <div>
-      <%= f.label :description, 'Description' %>
-    </div>
-    <div>
-      <%= f.text_area :description, rows: 3 %>
-    </div>
-  </div>
-  <div>
-    <div>
-      <%= f.label :content, 'Content' %>
-    </div>
-    <div>
-      <%= f.text_area :content, rows: 15, class: 'data_entry' %>
-      <p>
-        (You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-        subset of Markdown</a> to format the poem's content)
-      </p>
-    </div>
-  </div>
-  <div>
-    <div>
-      <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
-    </div>
-    <div>
-      <%= f.collection_select :encyclopaedia_entry_ids, 
-        EncyclopaediaEntry.order(:name), :id, :name, 
-        { selected: @poem.encyclopaedia_entry_ids, include_blank: true }, 
-        { multiple: true } %>
+    <%= f.collection_select :encyclopaedia_entry_ids,
+      EncyclopaediaEntry.order(:name),
+      :id,
+      :name,
+      { selected: @poem.encyclopaedia_entry_ids, include_blank: true },
+      { multiple: true, class: 'form-control' } %>
     </div>
   </div>
   <% if policy(@poem).permitted_attributes.include? :publish %>
-    <div>
-      <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :publish %> Publish?
+      </label>
     </div>
   <% end %>
-  <div>
-    <%= f.submit 'Save and View' %>
-    <%= f.submit 'Save and Continue Editing', name: :continue_editing %>
-  </div>
+  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
+  <%= f.submit 'Save and Continue Editing',
+    name: :continue_editing,
+    class: 'btn btn-secondary'
+  %>
 <% end %>
