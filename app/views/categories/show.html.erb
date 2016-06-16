@@ -41,8 +41,13 @@
     </ul>
   <% end %>
   <%= render 'articles/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Articles', articles_path %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Articles', articles_path %></li>
+    <li class="active">
+      <%= link_to @category.name, category_path(@category) %>
+    </li>
+  </ol>
 <% end %>
 
 <% if @downloads %>
@@ -56,8 +61,13 @@
     </ul>
   <% end %>
   <%= render 'downloads/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Downloads', downloads_path %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Downloads', downloads_path %></li>
+    <li class="active">
+      <%= link_to @category.name, category_path(@category) %>
+    </li>
+  </ol>
 <% end %>
 
 <% if @encyclopaedia_entries %>
@@ -71,8 +81,13 @@
     </ul>
   <% end %>
   <%= render 'encyclopaedia_entries/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Encyclopaedia', encyclopaedia_entries_path %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Encyclopaedia', encyclopaedia_entries_path %></li>
+    <li class="active">
+      <%= link_to @category.name, category_path(@category) %>
+    </li>
+  </ol>
 <% end %>
 
 <% if @links %>
@@ -86,8 +101,13 @@
     </ul>
   <% end %>
   <%= render 'links/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Links', links_path %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Links', links_path %></li>
+    <li class="active">
+      <%= link_to @category.name, category_path(@category) %>
+    </li>
+  </ol>
 <% end %>
 
 <% if @music_tracks %>
@@ -101,8 +121,13 @@
     </ul>
   <% end %>
   <%= render 'music_tracks/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Music', music_tracks_path %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Music', music_tracks_path %></li>
+    <li class="active">
+      <%= link_to @category.name, category_path(@category) %>
+    </li>
+  </ol>
 <% end %>
 
 <% if @pictures %>
@@ -116,8 +141,13 @@
     </ul>
   <% end %>
   <%= render 'pictures/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Pictures', pictures_path %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Pictures', pictures_path %></li>
+    <li class="active">
+      <%= link_to @category.name, category_path(@category) %>
+    </li>
+  </ol>
 <% end %>
 
 <% if @resources %>
@@ -131,8 +161,13 @@
     </ul>
   <% end %>
   <%= render 'resources/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Resources', resources_path %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Resources', resources_path %></li>
+    <li class="active">
+      <%= link_to @category.name, category_path(@category) %>
+    </li>
+  </ol>
 <% end %>
 
 <% if @stories %>
@@ -146,8 +181,13 @@
     </ul>
   <% end %>
   <%= render 'stories/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Stories', stories_path %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Stories', stories_path %></li>
+    <li class="active">
+      <%= link_to @category.name, category_path(@category) %>
+    </li>
+  </ol>
 <% end %>
 
 <% if @videos %>
@@ -161,6 +201,11 @@
     </ul>
   <% end %>
   <%= render 'videos/list' %>
-  <p><%= link_to 'Site Map', site_map_path %> |
-    <%= link_to 'Videos', videos_path %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Videos', videos_path %></li>
+    <li class="active">
+      <%= link_to @category.name, category_path(@category) %>
+    </li>
+  </ol>
 <% end %>

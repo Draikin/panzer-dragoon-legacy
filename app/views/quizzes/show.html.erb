@@ -36,4 +36,8 @@
   <%= render 'show_quiz' %>
 <% end %>
 
-<p class="links"><%= link_to 'Quizzes', quizzes_path %></p>
+<ol class="breadcrumb">
+  <li><%= link_to 'Home', root_url %></li>
+  <li><%= link_to 'Quizzes', quizzes_path %></li>
+  <li class="active"><%= @quizzes.name %></li>
+</ol>

@@ -7,7 +7,7 @@
   <p class="unpublished">Published in Unpublished Category</p>
 <% end %>
 
-<% if policy(@download).new? or policy(@download).edit? or 
+<% if policy(@download).new? or policy(@download).edit? or
   policy(@download).destroy? %>
   <ul class="administration">
     <% if policy(@download).new? %>
@@ -46,7 +46,11 @@
 
 <%= render partial: 'shared/related_encyclopaedia_entries' %>
 
-<p class="links">
-  <%= link_to 'Downloads', downloads_path %> |
-  <%= link_to @download.category.name, category_path(@download.category) %>
-</p>
+<ol class="breadcrumb">
+  <li><%= link_to 'Home', root_url %></li>
+  <li><%= link_to 'Downloads', downloads_path %></li>
+  <li>
+    <%= link_to @download.category.name, category_path(@download.category) %>
+  </li>
+  <li class="active"><%= @download.name %></li>
+</ol>

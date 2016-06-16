@@ -7,7 +7,7 @@
   <p class="unpublished">Published in Unpublished Category</p>
 <% end %>
 
-<% if policy(@article).new? or policy(@article).edit? or 
+<% if policy(@article).new? or policy(@article).edit? or
   policy(@article).destroy? %>
   <ul class="administration">
     <% if policy(@article).new? %>
@@ -45,7 +45,11 @@
 
 <%= render partial: 'shared/related_encyclopaedia_entries' %>
 
-<p class="links">
-  <%= link_to 'Articles', articles_path %> |
-  <%= link_to @article.category.name, category_path(@article.category) %>
-</p>
+<ol class="breadcrumb">
+  <li><%= link_to 'Home', root_url %></li>
+  <li><%= link_to 'Articles', articles_path %></li>
+  <li>
+    <%= link_to @article.category.name, category_path(@article.category) %>
+  </li>
+  <li class="active"><%= @article.name %></li>
+</ol>

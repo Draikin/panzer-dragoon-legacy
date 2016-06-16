@@ -44,7 +44,13 @@
 
 <%= render partial: 'shared/related_encyclopaedia_entries' %>
 
-<p class="links">
-  <%= link_to 'Resources', resources_path %> |
-  <%= link_to @resource.category.name, category_path(@resource.category) %>
-</p>
+<ol class="breadcrumb">
+  <li><%= link_to 'Home', root_url %></li>
+  <li><%= link_to 'Resources', resources_path %></li>
+  <li>
+    <%= link_to @resource.category.name,
+      category_path(@resource.category)
+    %>
+  </li>
+  <li class="active"><%= @resource.name %></li>
+</ol>
