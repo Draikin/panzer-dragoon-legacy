@@ -7,30 +7,33 @@
   <p class="unpublished">Published in Unpublished Category</p>
 <% end %>
 
-<% if policy(@music_track).new? or
-  policy(@music_track).edit? or
-  policy(@music_track).destroy? %>
-  <ul class="administration">
-    <% if policy(@music_track).new? %>
-      <li>
-        <%= link_to 'New Music Track',
-          new_music_track_path(category: @music_track.category) %>
-      </li>
+<% if policy(MusicTrack).new? ||
+  policy(@music_track).edit? ||
+  policy(@music_track).destroy?
+%>
+  <div class="btn-group" role="group">
+    <% if policy(MusicTrack).new? %>
+      <%= link_to 'New Music Track',
+        new_music_track_path(category: @music_track.category),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@music_track).edit? %>
-      <li>
-        <%= link_to 'Edit Music Track',
-          edit_music_track_path(@music_track) %>
-      </li>
+      <%= link_to 'Edit Music Track',
+        edit_music_track_path(@music_track),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@music_track).destroy? %>
-      <li>
-        <%= link_to 'Delete Music Track', @music_track, data: {
-          confirm: 'Are you sure you want to delete this music track?' },
-          method: :delete %>
-      </li>
+      <%= link_to 'Delete Music Track',
+        @music_track,
+        data: { confirm: 'Are you sure you want to delete this music track?' },
+        method: :delete,
+        class: 'btn btn-danger',
+        role: 'button'
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <h2>Contributed By:</h2>

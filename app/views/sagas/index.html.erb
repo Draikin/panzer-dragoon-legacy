@@ -1,9 +1,10 @@
 <% title "Sagas" %>
 
 <% if policy(Saga).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New Saga', new_saga_path %></li>
-  </ul>
+  <%= link_to 'New Saga',
+    new_saga_path,
+    { class: 'btn btn-secondary', role: 'button' }
+  %>
 <% end %>
 
 <% if @sagas %>
@@ -12,14 +13,24 @@
       <li class="media">
         <div class="media-body">
           <h2><%= saga.sequence_number %>. <%= saga.name %></h2>
-          <% if policy(saga).edit? and policy(saga).destroy? %>
-            <ul class="administration">
-              <li><%= link_to 'Edit Saga', edit_saga_path(saga) %></li>
-              <li>
-                <%= link_to 'Delete Saga', saga, data: {
-                  confirm: 'Are you sure?' }, method: :delete %>
-              </li>
-            </ul>
+          <% if policy(saga).edit? || policy(saga).destroy? %>
+            <div class="btn-group" role="group">
+              <% if policy(saga).edit? %>
+                <%= link_to 'Edit Saga',
+                  edit_saga_path(saga),
+                  { class: 'btn btn-secondary', role: 'button' }
+                %>
+              <% end %>
+              <% if policy(saga).destroy? %>
+                <%= link_to 'Delete Saga',
+                  saga,
+                  data: { confirm: 'Are you sure?' },
+                  method: :delete,
+                  class: 'btn btn-danger',
+                  role: 'button'
+                %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </li>

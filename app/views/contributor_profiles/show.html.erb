@@ -5,12 +5,10 @@
 <% end %>
 
 <% if policy(@contributor_profile).edit? %>
-  <ul id="administration">
-    <li>
-      <%= link_to 'Edit Contributor Profile',
-        edit_contributor_profile_path(@contributor_profile) %>
-    </li>
-  </ul>
+  <%= link_to 'Edit Contributor Profile',
+    edit_contributor_profile_path(@contributor_profile),
+    { class: 'btn btn-secondary', role: 'button' }
+  %>
 <% end %>
 
 <div id="information">

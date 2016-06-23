@@ -7,9 +7,10 @@
 <% end %>
 
 <% if policy(Quiz).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New Quiz', new_quiz_path %></li>
-  </ul>
+  <%= link_to 'New Quiz',
+    new_quiz_path,
+    { class: 'btn btn-secondary', role: 'button' }
+  %>
 <% end %>
 
 <%= render 'list' %>

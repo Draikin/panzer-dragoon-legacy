@@ -5,16 +5,33 @@
   <p class="unpublished">Unpublished</p>
 <% end %>
 
-<% if policy(@page).edit? && policy(@page).destroy? %>
-  <ul class="administration">
-    <li><%= link_to 'New Page', new_page_path %></li>
-    <li><%= link_to 'Edit Page', edit_page_path(@page) %></li>
-    <li>
-      <%= link_to 'Delete Page', @page, data: {
-        confirm: 'Are you sure you want to delete this page?' },
-        method: :delete %>
-    </li>
-  </ul>
+<% if policy(Page).new? ||
+  policy(@page).edit? ||
+  policy(@page).destroy?
+%>
+  <div class="btn-group" role="group">
+    <% if policy(Page).new? %>
+      <%= link_to 'New Page',
+        new_page_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
+    <% end %>
+    <% if policy(@page).edit? %>
+      <%= link_to 'Edit Page',
+        edit_page_path(@page),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
+    <% end %>
+    <% if policy(@page).destroy? %>
+      <%= link_to 'Delete Page',
+        @page,
+        data: { confirm: 'Are you sure you want to delete this page?' },
+        method: :delete,
+        class: 'btn btn-danger',
+        role: 'button'
+      %>
+    <% end %>
+  </div>
 <% end %>
 
 <%= raw illustrated_markdown_to_html @page.id, "Page", @page.content %>

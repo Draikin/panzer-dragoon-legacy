@@ -6,27 +6,30 @@
   <% title "Resources" %>
 <% end %>
 
-<% if policy(CategoryGroup).new? or policy(Category).new? or
-  policy(Resource).new? %>
-  <ul class="administration">
+<% if policy(CategoryGroup).new? ||
+  policy(Category).new? ||
+  policy(Resource).new?
+%>
+  <div class="btn-group" role="group">
     <% if policy(CategoryGroup).new? %>
-      <li>
-        <%= link_to 'New Category Group', new_category_group_path(
-          category_group_type: :resource) %>
-      </li>
+      <%= link_to 'New Category Group',
+        new_category_group_path(category_group_type: :resource),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Category).new? %>
-      <li>
-        <%= link_to 'New Category', new_category_path(
-          category_type: :resource) %>
-      </li>
+      <%= link_to 'New Category',
+        new_category_path(category_type: :resource),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Resource).new? %>
-      <li>
-        <%= link_to 'New Resource', new_resource_path %>
-      </li>
+      <%= link_to 'New Resource',
+        new_resource_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] or params[:filter] %>

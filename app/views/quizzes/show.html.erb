@@ -5,22 +5,30 @@
   <p class="unpublished">Unpublished</p>
 <% end %>
 
-<% if policy(@quiz).new? or policy(@quiz).edit? or policy(@quiz).destroy? %>
-  <ul class="administration">
-    <% if policy(@quiz).new? %>
-      <li><%= link_to 'New Poem', new_poem_path %></li>
+<% if policy(Quiz).new? || policy(@quiz).edit? || policy(@quiz).destroy? %>
+  <div class="btn-group" role="group">
+    <% if policy(Quiz).new? %>
+      <%= link_to 'New Poem',
+        new_poem_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@quiz).edit? %>
-      <li><%= link_to 'Edit Quiz', edit_quiz_path(@quiz) %></li>
+      <%= link_to 'Edit Quiz',
+        edit_quiz_path(@quiz),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@quiz).destroy? %>
-      <li>
-        <%= link_to 'Delete Quiz', @quiz, data: {
-          confirm: 'Are you sure you want to delete this quiz?' },
-          method: :delete %>
-      </li>
+      <%= link_to 'Delete Quiz',
+        @quiz,
+        data: { confirm: 'Are you sure you want to delete this quiz?' },
+        method: :delete,
+        class: 'btn btn-danger',
+        role: 'button'
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <h2>Created By:</h2>

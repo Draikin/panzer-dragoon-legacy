@@ -6,27 +6,30 @@
   <% title "Pictures" %>
 <% end %>
 
-<% if policy(CategoryGroup).new? or policy(Category).new? or
-  policy(Picture).new? %>
-  <ul class="administration">
+<% if policy(CategoryGroup).new? ||
+  policy(Category).new? ||
+  policy(Picture).new?
+%>
+  <div class="btn-group" role="group">
     <% if policy(CategoryGroup).new? %>
-      <li>
-        <%= link_to 'New Category Group', new_category_group_path(
-          category_group_type: :picture) %>
-      </li>
+      <%= link_to 'New Category Group',
+        new_category_group_path(category_group_type: :picture),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Category).new? %>
-      <li>
-        <%= link_to 'New Category', new_category_path(
-          category_type: :picture) %>
-      </li>
+      <%= link_to 'New Category',
+        new_category_path(category_type: :picture),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Picture).new? %>
-      <li>
-        <%= link_to 'New Picture', new_picture_path %>
-      </li>
+      <%= link_to 'New Picture',
+        new_picture_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] or params[:filter] %>

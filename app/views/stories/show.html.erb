@@ -7,28 +7,37 @@
   <p class="unpublished">Published in Unpublished Category</p>
 <% end %>
 
-<% if policy(@story).new? or policy(@story).edit? or policy(@story).destroy? %>
-  <ul class="administration">
-    <% if policy(@story).new? %>
-      <li>
-        <%= link_to 'New Story', new_story_path(category: @story.category) %>
-      </li>
+<% if policy(Story).new? || policy(@story).edit? || policy(@story).destroy? %>
+  <div class="btn-group" role="group">
+    <% if policy(Story).new? %>
+      <%= link_to 'New Story',
+        new_story_path(category: @story.category),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@story).edit? %>
-      <li><%= link_to 'New Chapter', new_chapter_path(story: @story) %></li>
+      <%= link_to 'New Chapter',
+        new_chapter_path(story: @story),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@story).edit? %>
-      <li><%= link_to 'Edit Story', edit_story_path(@story) %></li>
+      <%= link_to 'Edit Story',
+        edit_story_path(@story),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@story).destroy? %>
-      <li>
-        <%= link_to 'Delete Story', @story, data: {
-          confirm: 'Are you sure you want to delete this story? ALL chapters " +
-            "belonging to this story will be deleted.' },
-          method: :delete %>
-      </li>
+      <%= link_to 'Delete Story',
+        @story,
+        data: { confirm: 'Are you sure you want to delete this story? " +
+          "ALL chapters belonging to this story will be deleted.' },
+        method: :delete,
+        class: 'btn btn-danger',
+        role: 'button'
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <h2>Written By:</h2>

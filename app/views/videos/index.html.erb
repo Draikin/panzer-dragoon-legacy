@@ -6,24 +6,29 @@
   <% title "Videos" %>
 <% end %>
 
-<% if policy(CategoryGroup).new? or policy(Category).new? or
+<% if policy(CategoryGroup).new? ||
+  policy(Category).new? ||
   policy(Video).new? %>
-  <ul class="administration">
+  <div class="btn-group" role="group">
     <% if policy(CategoryGroup).new? %>
-      <li>
-        <%= link_to 'New Category Group', new_category_group_path(
-          category_group_type: :video) %>
-      </li>
+      <%= link_to 'New Category Group',
+        new_category_group_path(category_group_type: :video),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Category).new? %>
-      <li>
-        <%= link_to 'New Category', new_category_path(category_type: :video) %>
-      </li>
+      <%= link_to 'New Category',
+        new_category_path(category_type: :video),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Video).new? %>
-      <li><%= link_to 'New Video', new_video_path %></li>
+      <%= link_to 'New Video',
+        new_video_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] %>

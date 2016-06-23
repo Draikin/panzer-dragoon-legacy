@@ -12,9 +12,10 @@
 </p>
 
 <% if policy(NewsEntry).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New News Entry', new_news_entry_path %></li>
-  </ul>
+  <%= link_to 'New News Entry',
+    new_news_entry_path,
+    { class: 'btn btn-secondary', role: 'button' }
+  %>
 <% end %>
 
 <% if @news_entries %>

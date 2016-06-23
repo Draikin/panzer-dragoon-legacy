@@ -1,9 +1,10 @@
 <% title "Users" %>
 
 <% if policy(User).new? %>
-  <ul class="administration">
-    <li><%= link_to 'New User', new_user_path %></li>
-  </ul>
+  <%= link_to 'New User',
+    new_user_path,
+    { class: 'btn btn-secondary', role: 'button' }
+  %>
 <% end %>
 
 <% if @users %>
@@ -40,14 +41,20 @@
         </td>
         <td>
           <% if policy(user).edit? %>
-          <%= link_to 'Edit', edit_user_path(user) %>
+            <%= link_to 'Edit',
+              edit_user_path(user),
+              { class: 'btn btn-secondary', role: 'button' }
+            %>
           <% end %>
         </td>
         <td>
           <% if policy(user).destroy? %>
             <%= link_to 'Delete', user,
               data: { confirm: 'Are you sure you want to delete this user?' },
-              method: :delete %>
+              method: :delete,
+              class: 'btn btn-danger',
+              role: 'button'
+            %>
           <% end %>
         </td>
       </tr>

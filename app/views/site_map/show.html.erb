@@ -1,14 +1,20 @@
 <% title "Site Map" %>
 
-<% if policy(CategoryGroup).new? or policy(Category).new? %>
-  <ul class="administration">
+<% if policy(CategoryGroup).new? || policy(Category).new? %>
+  <div class="btn-group" role="group">
     <% if policy(CategoryGroup).new? %>
-      <li><%= link_to 'New Category Group', new_category_group_path %></li>
+      <%= link_to 'New Category Group',
+        new_category_group_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Category).new? %>
-      <li><%= link_to 'New Category', new_category_path %></li>
+      <%= link_to 'New Category',
+        new_category_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <ul>

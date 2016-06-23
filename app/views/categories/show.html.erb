@@ -5,27 +5,40 @@
   <p class="unpublished">Unpublished</p>
 <% end %>
 
-<% if policy(CategoryGroup).new? or policy(Category).new? or
-  policy(@category).edit? or policy(@category).destroy? %>
-  <ul class="administration">
+<% if policy(CategoryGroup).new? ||
+  policy(Category).new? ||
+  policy(@category).edit? ||
+  policy(@category).destroy?
+%>
+  <div class="btn-group" role="group">
     <% if policy(CategoryGroup).new? %>
-      <li><%= link_to 'New Category Group', new_category_group_path %></li>
+      <%= link_to 'New Category Group',
+        new_category_group_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Category).new? %>
-      <li><%= link_to 'New Category', new_category_path %></li>
+      <%= link_to 'New Category',
+        new_category_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@category).edit? %>
-      <li><%= link_to 'Edit Category', edit_category_path(@category) %></li>
+      <%= link_to 'Edit Category',
+        edit_category_path(@category),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@category).destroy? %>
-      <li>
-        <%= link_to 'Delete Category', @category,
-          data: { confirm: 'Are you sure you want to delete this category?' },
-          method: :delete
-        %>
-      </li>
+      <%= link_to 'Delete Category',
+        @category,
+        data: { confirm: 'Are you sure you want to delete this category?' },
+        method: :delete,
+        class: 'btn btn-danger',
+        role: 'button'
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <%= @category.description %>
@@ -33,12 +46,10 @@
 <% if @articles %>
   <h2>Articles in this Category</h2>
   <% if policy(Article).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Article',
-          new_article_path(category: @category) %>
-      </li>
-    </ul>
+    <%= link_to 'New Article',
+      new_article_path(category: @category),
+      { class: 'btn btn-secondary', role: 'button' }
+    %>
   <% end %>
   <%= render 'articles/list' %>
   <ol class="breadcrumb">
@@ -51,12 +62,10 @@
 <% if @downloads %>
   <h2>Downloads in this Category</h2>
   <% if policy(Download).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Download',
-          new_download_path(category: @category) %>
-      </li>
-    </ul>
+    <%= link_to 'New Download',
+      new_download_path(category: @category),
+      { class: 'btn btn-secondary', role: 'button' }
+    %>
   <% end %>
   <%= render 'downloads/list' %>
   <ol class="breadcrumb">
@@ -69,12 +78,10 @@
 <% if @encyclopaedia_entries %>
   <h2>Encyclopaedia Entries in this Category</h2>
   <% if policy(EncyclopaediaEntry).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Encyclopaedia Entry',
-          new_encyclopaedia_entry_path(category: @category) %>
-      </li>
-    </ul>
+    <%= link_to 'New Encyclopaedia Entry',
+      new_encyclopaedia_entry_path(category: @category),
+      { class: 'btn btn-secondary', role: 'button' }
+    %>
   <% end %>
   <%= render 'encyclopaedia_entries/list' %>
   <ol class="breadcrumb">
@@ -87,12 +94,10 @@
 <% if @links %>
   <h2>Links in this Category</h2>
   <% if policy(Link).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Link',
-          new_link_path(category: @category) %>
-      </li>
-    </ul>
+    <%= link_to 'New Link',
+      new_link_path(category: @category),
+      { class: 'btn btn-secondary', role: 'button' }
+    %>
   <% end %>
   <%= render 'links/list' %>
   <ol class="breadcrumb">
@@ -105,12 +110,10 @@
 <% if @music_tracks %>
   <h2>Music Tracks in this Category</h2>
   <% if policy(MusicTrack).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Music Track',
-          new_music_track_path(category: @category) %>
-      </li>
-    </ul>
+    <%= link_to 'New Music Track',
+      new_music_track_path(category: @category),
+      { class: 'btn btn-secondary', role: 'button' }
+    %>
   <% end %>
   <%= render 'music_tracks/list' %>
   <ol class="breadcrumb">
@@ -123,12 +126,10 @@
 <% if @pictures %>
   <h2>Pictures in this Category</h2>
   <% if policy(Picture).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Picture',
-          new_picture_path(category: @category) %>
-      </li>
-    </ul>
+    <%= link_to 'New Picture',
+      new_picture_path(category: @category),
+      { class: 'btn btn-secondary', role: 'button' }
+    %>
   <% end %>
   <%= render 'pictures/list' %>
   <ol class="breadcrumb">
@@ -141,12 +142,10 @@
 <% if @resources %>
   <h2>Resources in this Category</h2>
   <% if policy(Resource).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Resource',
-          new_resource_path(category: @category) %>
-      </li>
-    </ul>
+    <%= link_to 'New Resource',
+      new_resource_path(category: @category),
+      { class: 'btn btn-secondary', role: 'button' }
+    %>
   <% end %>
   <%= render 'resources/list' %>
   <ol class="breadcrumb">
@@ -159,12 +158,10 @@
 <% if @stories %>
   <h2>Stories in this Category</h2>
   <% if policy(Story).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Story',
-          new_story_path(category: @category) %>
-      </li>
-    </ul>
+    <%= link_to 'New Story',
+      new_story_path(category: @category),
+      { class: 'btn btn-secondary', role: 'button' }
+    %>
   <% end %>
   <%= render 'stories/list' %>
   <ol class="breadcrumb">
@@ -177,12 +174,10 @@
 <% if @videos %>
   <h2>Videos in this Category</h2>
   <% if policy(Video).new? %>
-    <ul class="administration">
-      <li>
-        <%= link_to 'New Video',
-          new_video_path(category: @category) %>
-      </li>
-    </ul>
+    <%= link_to 'New Video',
+      new_video_path(category: @category),
+      { class: 'btn btn-secondary', role: 'button' }
+    %>
   <% end %>
   <%= render 'videos/list' %>
   <ol class="breadcrumb">

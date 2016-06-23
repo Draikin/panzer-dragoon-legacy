@@ -6,17 +6,21 @@
   <% title "Stories" %>
 <% end %>
 
-<% if policy(Category).new? or policy(Story).new? %>
-  <ul class="administration">
+<% if policy(Category).new? || policy(Story).new? %>
+  <div class="btn-group" role="group">
     <% if policy(Category).new? %>
-      <li>
-        <%= link_to 'New Category', new_category_path(category_type: :story) %>
-      </li>
+      <%= link_to 'New Category',
+        new_category_path(category_type: :story),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Story).new? %>
-      <li><%= link_to 'New Story', new_story_path %></li>
+      <%= link_to 'New Story',
+        new_story_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] or params[:filter] %>

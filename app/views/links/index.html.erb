@@ -4,17 +4,21 @@
   <% title "Links" %>
 <% end %>
 
-<% if policy(Category).new? or policy(Link).new? %>
-  <ul class="administration">
+<% if policy(Category).new? || policy(Link).new? %>
+  <div class="btn-group" role="group">
     <% if policy(Category).new? %>
-      <li>
-        <%= link_to 'New Category', new_category_path(category_type: :link) %>
-      </li>
+      <%= link_to 'New Category',
+        new_category_path(category_type: :link),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(Link).new? %>
-      <li><%= link_to 'New Link', new_link_path %></li>
+      <%= link_to 'New Link',
+        new_link_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <% unless params[:contributor_profile_id] %>

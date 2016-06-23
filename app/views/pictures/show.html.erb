@@ -7,29 +7,32 @@
   <p class="unpublished">Published in Unpublished Category</p>
 <% end %>
 
-<% if policy(@picture).new? or policy(@picture).edit? or
-  policy(@picture).destroy? %>
-  <ul class="administration">
-    <% if policy(@picture).new? %>
-      <li>
-        <%= link_to 'New Picture',
-          new_picture_path(category: @picture.category) %>
-      </li>
+<% if policy(Picture).new? ||
+  policy(@picture).edit? ||
+  policy(@picture).destroy?
+%>
+  <div class="btn-group" role="group">
+    <% if policy(Picture).new? %>
+      <%= link_to 'New Picture',
+        new_picture_path(category: @picture.category),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@picture).edit? %>
-      <li>
-        <%= link_to 'Edit Picture',
-          edit_picture_path(@picture) %>
-      </li>
+      <%= link_to 'Edit Picture',
+        edit_picture_path(@picture),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@picture).destroy? %>
-      <li>
-        <%= link_to 'Delete Picture', @picture, data: {
-          confirm: 'Are you sure you want to delete this picture?' },
-          method: :delete %>
-      </li>
+      <%= link_to 'Delete Picture',
+        @picture,
+        data: { confirm: 'Are you sure you want to delete this picture?' },
+        method: :delete,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <h2>Contributed By:</h2>

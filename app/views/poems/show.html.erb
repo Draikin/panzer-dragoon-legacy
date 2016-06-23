@@ -5,22 +5,30 @@
   <p class="unpublished">Unpublished</p>
 <% end %>
 
-<% if policy(@poem).new? or policy(@poem).edit? or policy(@poem).destroy? %>
-  <ul class="administration">
-    <% if policy(@poem).new? %>
-      <li><%= link_to 'New Poem', new_poem_path %></li>
+<% if policy(Poem).new? || policy(@poem).edit? || policy(@poem).destroy? %>
+  <div class="btn-group" role="group">
+    <% if policy(Poem).new? %>
+      <%= link_to 'New Poem',
+        new_poem_path,
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@poem).edit? %>
-      <li><%= link_to 'Edit Poem', edit_poem_path(@poem) %></li>
+      <%= link_to 'Edit Poem',
+        edit_poem_path(@poem),
+        { class: 'btn btn-secondary', role: 'button' }
+      %>
     <% end %>
     <% if policy(@poem).destroy? %>
-      <li>
-        <%= link_to 'Delete Poem', @poem, data: {
-          confirm: 'Are you sure you want to delete this poem?' },
-          method: :delete %>
-      </li>
+      <%= link_to 'Delete Poem',
+        @poem,
+        data: { confirm: 'Are you sure you want to delete this poem?' },
+        method: :delete,
+        class: 'btn btn-danger',
+        role: 'button'
+      %>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <h2>Written By:</h2>
