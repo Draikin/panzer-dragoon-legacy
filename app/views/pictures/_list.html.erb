@@ -1,19 +1,19 @@
 <% if @pictures %>
-  <div id="resources">
+  <ul class="media-list">
     <% @pictures.each do |picture| %>
-      <div class="resource">
-        <div class="thumbnail">
+      <li class="media">
+        <div class="media-left">
           <%= link_to picture_tag(picture, :thumbnail), picture %>
         </div>
-        <div class="details">
+        <div class="media-body">
           <h2><%= link_to picture.name, picture %></h2>
           <% unless picture.publish %>
-            <p class="unpublished">Unpublished</p>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
           <p><%= picture.description %></p>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
   <%= paginate @pictures %>
 <% end %>

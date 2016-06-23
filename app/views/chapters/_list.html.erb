@@ -1,20 +1,23 @@
 <% if @chapter_count > 0 %>
-  <div id="resources">
+  <ul class="media-list">
     <% @prologues.each do |prologue| %>
-      <div class="resource">
-        <div class="details">
-          <h2><%= link_to prologue.story.name + ": " + prologue.name,
-            chapter_path(prologue) %></h2>
+      <li class="media">
+        <div class="media-body">
+          <h2>
+            <%= link_to prologue.story.name + ": " + prologue.name,
+              chapter_path(prologue)
+            %>
+          </h2>
           <% unless prologue.publish %>
-            <p class="unpublished">Unpublished</p>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
           <p><%= truncated_text prologue.content %></p>
         </div>
-      </div>
+      </li>
     <% end %>
     <% @regular_chapters.each do |regular_chapter| %>
-      <div class="resource">
-        <div class="details">
+      <li class="media">
+        <div class="media-body">
           <% if regular_chapter.name.present? %>
             <h2>
               <%= link_to regular_chapter.story.name + ": " + "Chapter " +
@@ -25,31 +28,32 @@
           <% else %>
             <h2>
               <%= link_to regular_chapter.story.name + ": " + "Chapter " +
-                regular_chapter.number.to_s, chapter_path(regular_chapter)
+                regular_chapter.number.to_s,
+                chapter_path(regular_chapter)
               %>
             </h2>
           <% end %>
           <% unless regular_chapter.publish %>
-            <p class="unpublished">Unpublished</p>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
           <p><%= truncated_text regular_chapter.content %></p>
         </div>
-      </div>
+      </li>
     <% end %>
     <% @epilogues.each do |epilogue| %>
-      <div class="resource">
-        <div class="details">
+      <li class="media">
+        <div class="media-body">
           <h2>
             <%= link_to epilogue.story.name + ": " + epilogue.name,
               chapter_path(epilogue)
             %>
           </h2>
           <% unless epilogue.publish %>
-            <p class="unpublished">Unpublished</p>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
           <p><%= truncated_text epilogue.content %></p>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
 <% end %>

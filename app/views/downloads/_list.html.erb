@@ -1,16 +1,16 @@
 <% if @downloads %>
-  <div id="resources">
+  <ul class="media-list">
     <% @downloads.each do |download| %>
-      <div class="resource">
-        <div class="details">
+      <li class="media">
+        <div class="media-body">
           <h2><%= link_to download.name, download %></h2>
           <% unless download.publish %>
-            <p class="unpublished">Unpublished</p>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
           <p><%= download.description %></p>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
   <%= paginate @downloads %>
 <% end %>

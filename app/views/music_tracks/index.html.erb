@@ -39,19 +39,19 @@
 <% end %>
 
 <% if @music_tracks %>
-  <div id="resources">
+  <ul class="media-list">
     <% @music_tracks.each do |music_track| %>
-      <div class="resource">
-        <div class="details">
+      <li class="media">
+        <div class="media-body">
           <h2><%= link_to music_track.name, music_track %></h2>
           <% unless music_track.publish %>
-            <p class="unpublished">Unpublished</p>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
           <p><%= music_track.description %></p>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
   <%= paginate @music_tracks %>
 <% end %>
 

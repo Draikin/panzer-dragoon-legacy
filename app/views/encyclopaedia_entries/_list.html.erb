@@ -1,26 +1,34 @@
 <% if @encyclopaedia_entries %>
-  <div id="resources">
+  <ul class="media-list">
     <% @encyclopaedia_entries.each do |encyclopaedia_entry| %>
-      <div class="resource">
-        <div class="thumbnail">
+      <li class="media">
+        <div class="media-left">
           <% if encyclopaedia_entry.encyclopaedia_entry_picture_file_name.
-            blank? %>
-            <%= image_tag("sorry-no-image-thumbnail.jpg", alt: "Sorry No Image",
-              width: "150", height: "150") %>
+            blank?
+          %>
+            <%= image_tag "sorry-no-image-thumbnail.jpg",
+              alt: "Sorry No Image",
+              width: "150",
+              height: "150"
+             %>
           <% else %>
-            <%= link_to encyclopaedia_entry_picture_tag(encyclopaedia_entry,
-              :thumbnail), encyclopaedia_entry %>
+            <%= link_to encyclopaedia_entry_picture_tag(
+                encyclopaedia_entry,
+                :thumbnail
+              ),
+              encyclopaedia_entry
+            %>
           <% end %>
         </div>
-        <div class="details">
+        <div class="media-body">
           <h2><%= link_to encyclopaedia_entry.name, encyclopaedia_entry %></h2>
           <% unless encyclopaedia_entry.publish %>
-            <p class="unpublished">Unpublished</p>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
           <p><%= truncated_text encyclopaedia_entry.content %></p>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
   <%= paginate @encyclopaedia_entries %>
 <% end %>

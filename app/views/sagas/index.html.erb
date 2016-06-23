@@ -7,10 +7,10 @@
 <% end %>
 
 <% if @sagas %>
-  <div id="resources">
+  <ul class="media-list">
     <% @sagas.each do |saga| %>
-      <div class="resource">
-        <div class="details">
+      <li class="media">
+        <div class="media-body">
           <h2><%= saga.sequence_number %>. <%= saga.name %></h2>
           <% if policy(saga).edit? and policy(saga).destroy? %>
             <ul class="administration">
@@ -22,9 +22,9 @@
             </ul>
           <% end %>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
   <%= paginate @sagas %>
 <% end %>
 

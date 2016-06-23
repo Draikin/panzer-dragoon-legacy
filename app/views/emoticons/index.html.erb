@@ -7,10 +7,10 @@
 <% end %>
 
 <% if @emoticons %>
-  <div id="resources">
+  <ul class="media-list">
     <% @emoticons.each do |emoticon| %>
-      <div class="resource">
-        <div class="details">
+      <li class="media">
+        <div class="media-body">
           <h2><%= emoticon.name %></h2>
           <% if policy(emoticon).destroy? %>
             <ul class="administration">
@@ -22,9 +22,9 @@
           <% end %>
           <p><%= image_tag emoticon.emoticon.url %> <%= emoticon.code %></p>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
   <%= paginate @emoticons %>
 <% end %>
 

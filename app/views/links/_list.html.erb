@@ -1,8 +1,8 @@
 <% if @links %>
-  <div id="resources">
+  <ul class="media-list">
     <% @links.each do |link| %>
-      <div class="resource">
-        <div class="details">
+      <li class="media">
+        <div class="media-body">
           <h2><%= link_to link.name, link.url %></h2>
           <% if policy(link).edit? && policy(link).destroy? %>
             <ul class="administration">
@@ -26,8 +26,8 @@
           <% end %>
           <p><%= link.description %></p>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
   <%= paginate @links %>
 <% end %>

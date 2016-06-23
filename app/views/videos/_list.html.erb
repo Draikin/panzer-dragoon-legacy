@@ -1,16 +1,16 @@
 <% if @videos %>
-  <div id="resources">
+  <ul class="media-list">
     <% @videos.each do |video| %>
-      <div class="resource">
-        <div class="details">
+      <li class="media">
+        <div class="media-body">
           <h2><%= link_to video.name, video %></h2>
           <% unless video.publish %>
-            <p class="unpublished">Unpublished</p>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
           <p><%= video.description %></p>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
   <%= paginate @videos %>
 <% end %>

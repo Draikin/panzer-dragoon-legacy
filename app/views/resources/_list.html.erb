@@ -1,16 +1,16 @@
 <% if @resources %>
-  <div id="resources">
+  <ul class="media-list">
     <% @resources.each do |resource| %>
-      <div class="resource">
-        <div class="details">
+      <li class="media">
+        <div class="media-body">
           <h2><%= link_to resource.name, resource %></h2>
           <% unless resource.publish %>
-            <p class="unpublished">Unpublished</p>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
           <p><%= truncated_text resource.content %></p>
         </div>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
   <%= paginate @resources %>
 <% end %>
