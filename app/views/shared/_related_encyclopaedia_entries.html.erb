@@ -5,9 +5,11 @@
       <li>
         <%= link_to encyclopaedia_entry.name, encyclopaedia_entry %>
         <% if !encyclopaedia_entry.publish %>
-           - <span class="unpublished">Unpublished</span>
+          <span class="label label-warning">Unpublished</span>
         <% elsif !encyclopaedia_entry.category.publish %>
-           - <span class="unpublished">Published in Unpublished Category</span>
+          <span class="label label-warning">
+            Published in Unpublished Category
+          </span>
         <% end %>
       </li>
     <% end %>

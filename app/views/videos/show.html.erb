@@ -2,9 +2,9 @@
 <% description @video.description %>
 
 <% if !@video.publish %>
-  <p class="unpublished">Unpublished</p>
+  <span class="label label-warning">Unpublished</span>
 <% elsif !@video.category.publish %>
-  <p class="unpublished">Published in Unpublished Category</p>
+  <span class="label label-warning">Published in Unpublished Category</span>
 <% end %>
 
 <% if policy(Video).new? || policy(@video).edit? || policy(@video).destroy? %>

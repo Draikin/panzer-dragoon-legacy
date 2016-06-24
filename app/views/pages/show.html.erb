@@ -2,7 +2,7 @@
 <% description truncated_text(@page.content) %>
 
 <% unless @page.publish %>
-  <p class="unpublished">Unpublished</p>
+  <span class="label label-warning">Unpublished</span>
 <% end %>
 
 <% if policy(Page).new? ||

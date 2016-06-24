@@ -2,9 +2,9 @@
 <% description @download.description %>
 
 <% if !@download.publish %>
-  <p class="unpublished">Unpublished</p>
+  <span class="label label-warning">Unpublished</span>
 <% elsif !@download.category.publish %>
-  <p class="unpublished">Published in Unpublished Category</p>
+  <span class="label label-warning">Published in Unpublished Category</span>
 <% end %>
 
 <% if policy(Download).new? ||

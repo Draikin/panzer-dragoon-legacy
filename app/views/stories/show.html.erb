@@ -2,9 +2,9 @@
 <% description @story.description %>
 
 <% if !@story.publish %>
-  <p class="unpublished">Unpublished</p>
+  <span class="label label-warning">Unpublished</span>
 <% elsif !@story.category.publish %>
-  <p class="unpublished">Published in Unpublished Category</p>
+  <span class="label label-warning">Published in Unpublished Category</span>
 <% end %>
 
 <% if policy(Story).new? || policy(@story).edit? || policy(@story).destroy? %>

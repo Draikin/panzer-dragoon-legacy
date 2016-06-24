@@ -30,7 +30,7 @@
       <% @categories.each do |category| %>
         <li><%= link_to category.name, category %>
           <% unless category.publish %>
-            - <span class="unpublished">Unpublished</span>
+            <span class="label label-warning">Unpublished</span>
           <% end %>
         </li>
       <% end %>

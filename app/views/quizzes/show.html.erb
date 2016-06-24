@@ -2,7 +2,7 @@
 <% description @quiz.description %>
 
 <% unless @quiz.publish %>
-  <p class="unpublished">Unpublished</p>
+  <span class="label label-warning">Unpublished</span>
 <% end %>
 
 <% if policy(Quiz).new? || policy(@quiz).edit? || policy(@quiz).destroy? %>

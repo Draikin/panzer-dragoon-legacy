@@ -2,9 +2,9 @@
 <% description truncated_text(@encyclopaedia_entry.content) %>
 
 <% if !@encyclopaedia_entry.publish %>
-  <p class="unpublished">Unpublished</p>
+  <span class="label label-warning">Unpublished</span>
 <% elsif !@encyclopaedia_entry.category.publish %>
-  <p class="unpublished">Published in Unpublished Category</p>
+  <span class="label label-warning">Published in Unpublished Category</span>
 <% end %>
 
 <% if policy(EncyclopaediaEntry).new? ||
@@ -57,9 +57,11 @@
       <li>
         <%= link_to article.name, article %>
         <% if !article.publish %>
-           - <span class="unpublished">Unpublished</span>
+          <span class="label label-warning">Unpublished</span>
         <% elsif !article.category.publish %>
-           - <span class="unpublished">Published in Unpublished Category</span>
+          <span class="label label-warning">
+            Published in Unpublished Category
+          </span>
         <% end %>
       </li>
     <% end %>
@@ -72,9 +74,11 @@
       <li>
         <%= link_to download.name, download %>
         <% if !download.publish %>
-           - <span class="unpublished">Unpublished</span>
+          <span class="label label-warning">Unpublished</span>
         <% elsif !download.category.publish %>
-           - <span class="unpublished">Published in Unpublished Category</span>
+          <span class="label label-warning">
+            Published in Unpublished Category
+          </span>
         <% end %>
       </li>
     <% end %>
@@ -95,9 +99,11 @@
       <li>
         <%= link_to music_track.name, music_track %>
         <% if !music_track.publish %>
-           - <span class="unpublished">Unpublished</span>
+          <span class="label label-warning">Unpublished</span>
         <% elsif !music_track.category.publish %>
-           - <span class="unpublished">Published in Unpublished Category</span>
+          <span class="label label-warning">
+            Published in Unpublished Category
+          </span>
         <% end %>
       </li>
     <% end %>
@@ -119,7 +125,7 @@
       <li>
         <%= link_to poem.name, poem %>
         <% unless poem.publish %>
-           - <span class="unpublished">Unpublished</span>
+          <span class="label label-warning">Unpublished</span>
         <% end %>
       </li>
     <% end %>
@@ -132,7 +138,7 @@
       <li>
         <%= link_to quiz.name, quiz %>
         <% unless quiz.publish %>
-           - <span class="unpublished">Unpublished</span>
+          <span class="label label-warning">Unpublished</span>
         <% end %>
       </li>
     <% end %>
@@ -145,9 +151,11 @@
       <li>
         <%= link_to resource.name, resource %>
         <% if !resource.publish %>
-           - <span class="unpublished">Unpublished</span>
+          <span class="label label-warning">Unpublished</span>
         <% elsif !resource.category.publish %>
-           - <span class="unpublished">Published in Unpublished Category</span>
+          <span class="label label-warning">
+            Published in Unpublished Category
+          </span>
         <% end %>
       </li>
     <% end %>
@@ -160,9 +168,11 @@
       <li>
         <%= link_to story.name, story %>
         <% if !story.publish %>
-           - <span class="unpublished">Unpublished</span>
+          <span class="label label-warning">Unpublished</span>
         <% elsif !story.category.publish %>
-           - <span class="unpublished">Published in Unpublished Category</span>
+          <span class="label label-warning">
+            Published in Unpublished Category
+          </span>
         <% end %>
       </li>
     <% end %>
@@ -175,9 +185,11 @@
       <li>
         <%= link_to video.name, video %>
         <% if !video.publish %>
-           - <span class="unpublished">Unpublished</span>
+          <span class="label label-warning">Unpublished</span>
         <% elsif !video.category.publish %>
-           - <span class="unpublished">Published in Unpublished Category</span>
+          <span class="label label-warning">
+            Published in Unpublished Category
+          </span>
         <% end %>
       </li>
     <% end %>

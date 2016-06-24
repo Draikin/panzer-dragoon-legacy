@@ -2,7 +2,7 @@
 <% description @category.description %>
 
 <% unless @category.publish %>
-  <p class="unpublished">Unpublished</p>
+  <span class="label label-warning">Unpublished</span>
 <% end %>
 
 <% if policy(CategoryGroup).new? ||
