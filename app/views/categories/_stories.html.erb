@@ -1,0 +1,13 @@
+<h2>Stories in this Category</h2>
+<% if policy(Story).new? %>
+  <%= link_to 'New Story',
+    new_story_path(category: @category),
+    { class: 'btn btn-secondary', role: 'button' }
+  %>
+<% end %>
+<%= render 'stories/list' %>
+<ol class="breadcrumb">
+  <li><%= link_to 'Home', root_url %></li>
+  <li><%= link_to 'Stories', stories_path %></li>
+  <li class="active"><%= @category.name %></li>
+</ol>

@@ -1,0 +1,13 @@
+<h2>Downloads in this Category</h2>
+<% if policy(Download).new? %>
+  <%= link_to 'New Download',
+    new_download_path(category: @category),
+    { class: 'btn btn-secondary', role: 'button' }
+  %>
+<% end %>
+<%= render 'downloads/list' %>
+<ol class="breadcrumb">
+  <li><%= link_to 'Home', root_url %></li>
+  <li><%= link_to 'Downloads', downloads_path %></li>
+  <li class="active"><%= @category.name %></li>>
+</ol>

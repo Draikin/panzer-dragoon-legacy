@@ -1,0 +1,13 @@
+<h2>Pictures in this Category</h2>
+<% if policy(Picture).new? %>
+  <%= link_to 'New Picture',
+    new_picture_path(category: @category),
+    { class: 'btn btn-secondary', role: 'button' }
+  %>
+<% end %>
+<%= render 'pictures/list' %>
+<ol class="breadcrumb">
+  <li><%= link_to 'Home', root_url %></li>
+  <li><%= link_to 'Pictures', pictures_path %></li>
+  <li class="active"><%= @category.name %></li>
+</ol>

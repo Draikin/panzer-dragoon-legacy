@@ -1,0 +1,13 @@
+<h2>Encyclopaedia Entries in this Category</h2>
+<% if policy(EncyclopaediaEntry).new? %>
+  <%= link_to 'New Encyclopaedia Entry',
+    new_encyclopaedia_entry_path(category: @category),
+    { class: 'btn btn-secondary', role: 'button' }
+  %>
+<% end %>
+<%= render 'encyclopaedia_entries/list' %>
+<ol class="breadcrumb">
+  <li><%= link_to 'Home', root_url %></li>
+  <li><%= link_to 'Encyclopaedia', encyclopaedia_entries_path %></li>
+  <li class="active"><%= @category.name %></li>
+</ol>
