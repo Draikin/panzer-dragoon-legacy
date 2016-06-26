@@ -1,5 +1,5 @@
 <%= form_for @saga do |f| %>
-  <%= render 'shared/error_messages', target: @saga %>
+  <%= render 'shared/form/error_messages', model: @saga %>
   <fieldset>
     <%= f.label :encyclopaedia_entry_id, 'Encyclopaedia Entry' %>
     <%= f.collection_select :encyclopaedia_entry_id,

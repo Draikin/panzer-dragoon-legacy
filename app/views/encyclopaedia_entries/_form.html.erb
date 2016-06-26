@@ -1,5 +1,5 @@
 <%= nested_form_for @encyclopaedia_entry, html: { multipart: true } do |f| %>
-  <%= render 'shared/error_messages', target: @encyclopaedia_entry %>
+  <%= render 'shared/form/error_messages', model: @encyclopaedia_entry %>
   <%= render 'shared/form/category', categories: @categories, f: f %>
   <fieldset>
     <%= f.label :contributor_profile_ids, 'Contributors' %>

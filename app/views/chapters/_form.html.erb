@@ -1,5 +1,5 @@
 <%= nested_form_for @chapter, html: { multipart: true } do |f| %>
-  <%= render 'shared/error_messages', target: @chapter %>
+  <%= render 'shared/form/error_messages', model: @chapter %>
   <fieldset>
     <%= f.label :story_id, 'Story' %>
     <%= f.collection_select :story_id,

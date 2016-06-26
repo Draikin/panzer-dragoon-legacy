@@ -1,5 +1,5 @@
 <%= form_for @news_entry do |f| %>
-  <%= render "shared/error_messages", target: @news_entry %>
+  <%= render "shared/form/error_messages", model: @news_entry %>
   <fieldset>
     <%= f.label :contributor_profile_id, "Author" %>
     <%= f.collection_select :contributor_profile_id,

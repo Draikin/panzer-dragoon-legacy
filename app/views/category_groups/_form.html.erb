@@ -1,5 +1,5 @@
 <%= form_for @category_group do |f| %>
-  <%= render "shared/error_messages", target: @category_group %>
+  <%= render "shared/form/error_messages", model: @category_group %>
   <fieldset>
     <%= f.label :category_group_type, "Category Group Type" %>
     <%= f.collection_select :category_group_type,

@@ -1,5 +1,5 @@
 <%= nested_form_for @quiz do |f| %>
-  <%= render 'shared/error_messages', target: @quiz %>
+  <%= render 'shared/form/error_messages', model: @quiz %>
   <%= render 'shared/form/contributors', model: @quiz, f: f %>
   <%= render 'shared/form/name', f: f %>
   <%= render 'shared/form/description', f: f %>

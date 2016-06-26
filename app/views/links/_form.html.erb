@@ -1,5 +1,5 @@
 <%= form_for @link do |f| %>
-  <%= render 'shared/error_messages', target: @link %>
+  <%= render 'shared/form/error_messages', model: @link %>
   <%= render 'shared/form/category', categories: @categories, f: f %>
   <%= render 'shared/form/contributors', model: @link, f: f %>
   <div class="checkbox">

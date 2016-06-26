@@ -1,5 +1,5 @@
 <%= nested_form_for @story, html: { multipart: true } do |f| %>
-  <%= render 'shared/error_messages', target: @story %>
+  <%= render 'shared/form/error_messages', model: @story %>
   <%= render 'shared/form/category', categories: @categories, f: f %>
   <%= render 'shared/form/contributors', model: @story, f: f %>
   <%= render 'shared/form/name', f: f %>

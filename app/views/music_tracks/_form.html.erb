@@ -1,5 +1,5 @@
 <%= form_for @music_track, html: { multipart: true } do |f| %>
-  <%= render 'shared/error_messages', target: @music_track %>
+  <%= render 'shared/form/error_messages', model: @music_track %>
   <%= render 'shared/form/category', categories: @categories, f: f %>
   <%= render 'shared/form/contributors', model: @music_track, f: f %>
   <fieldset>
