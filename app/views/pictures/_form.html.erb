@@ -1,11 +1,7 @@
 <%= form_for @picture, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @picture %>
-  <%= render partial: 'shared/form/category',
-    locals: { categories: @categories, f: f }
-  %>
-  <%= render partial: 'shared/form/contributors',
-    locals: { model: @picture, f: f }
-  %>
+  <%= render 'shared/form/category', categories: @categories, f: f %>
+  <%= render 'shared/form/contributors', model: @picture, f: f %>
   <fieldset>
     <%= f.label :picture, 'Picture' %>
     <% if @picture.picture? %>
@@ -14,14 +10,13 @@
     <% end %>
     <%= f.file_field :picture, class: 'form-control' %>
   </fieldset>
-  <%= render partial: 'shared/form/name', locals: { f: f } %>
-  <%= render partial: 'shared/form/description', locals: { f: f } %>
-  <%= render partial: 'shared/form/extra_information', locals: { f: f } %>
-  <%= render partial: 'shared/form/related_encyclopaedia_entries',
-    locals: { model: @picture, f: f }
+  <%= render 'shared/form/name', f: f %>
+  <%= render 'shared/form/description', f: f %>
+  <%= render 'shared/form/extra_information', f: f %>
+  <%= render 'shared/form/related_encyclopaedia_entries',
+    model: @picture,
+    f: f
   %>
-  <%= render partial: 'shared/form/publish',
-    locals: { model: @picture, f: f }
-  %>
-  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
+  <%= render 'shared/form/publish', model: @picture, f: f %>
+  <%= render 'shared/form/save_buttons', f: f %>
 <% end %>

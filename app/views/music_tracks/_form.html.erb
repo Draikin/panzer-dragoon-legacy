@@ -1,11 +1,7 @@
 <%= form_for @music_track, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @music_track %>
-  <%= render partial: 'shared/form/category',
-    locals: { categories: @categories, f: f }
-  %>
-  <%= render partial: 'shared/form/contributors',
-    locals: { model: @music_track, f: f }
-  %>
+  <%= render 'shared/form/category', categories: @categories, f: f %>
+  <%= render 'shared/form/contributors', model: @music_track, f: f %>
   <fieldset>
     <%= f.label :mp3_music_track, 'MP3 Music Track' %>
     <% if @music_track.mp3_music_track? %>
@@ -33,14 +29,13 @@
       { min: 0, max: 50, class: 'form-control' }
     %>
   </fieldset>
-  <%= render partial: 'shared/form/name', locals: { f: f } %>
-  <%= render partial: 'shared/form/description', locals: { f: f } %>
-  <%= render partial: 'shared/form/extra_information', locals: { f: f } %>
-  <%= render partial: 'shared/form/related_encyclopaedia_entries',
-    locals: { model: @music_track, f: f }
+  <%= render 'shared/form/name', f: f %>
+  <%= render 'shared/form/description', f: f %>
+  <%= render 'shared/form/extra_information', f: f %>
+  <%= render 'shared/form/related_encyclopaedia_entries',
+    model: @music_track,
+    f: f
   %>
-  <%= render partial: 'shared/form/publish',
-    locals: { model: @music_track, f: f }
-  %>
-  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
+  <%= render 'shared/form/publish', model: @music_track, f: f %>
+  <%= render 'shared/form/save_buttons', f: f %>
 <% end %>

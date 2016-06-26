@@ -40,8 +40,7 @@
 
 <%= raw markdown_to_html @poem.content %>
 
-<%= render partial: 'shared/related_encyclopaedia_entries' %>
-
+<%= render 'shared/related_encyclopaedia_entries' %>
 
 <ol class="breadcrumb">
   <li><%= link_to 'Home', root_url %></li>

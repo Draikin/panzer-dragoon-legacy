@@ -1,18 +1,14 @@
 <%= nested_form_for @quiz do |f| %>
   <%= render 'shared/error_messages', target: @quiz %>
-  <%= render partial: 'shared/form/contributors',
-    locals: { model: @quiz, f: f }
-  %>
-  <%= render partial: 'shared/form/name', locals: { f: f } %>
-  <%= render partial: 'shared/form/description', locals: { f: f } %>
+  <%= render 'shared/form/contributors', model: @quiz, f: f %>
+  <%= render 'shared/form/name', f: f %>
+  <%= render 'shared/form/description', f: f %>
   <div>
     <label>Questions</label>
     <%= f.fields_for :quiz_questions %>
     <%= f.link_to_add "Add Question", :quiz_questions %>
   </div>
-  <%= render partial: 'shared/form/related_encyclopaedia_entries',
-    locals: { model: @quiz, f: f }
-  %>
-  <%= render partial: 'shared/form/publish', locals: { model: @quiz, f: f } %>
-  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
+  <%= render 'shared/form/related_encyclopaedia_entries', model: @quiz, f: f %>
+  <%= render 'shared/form/publish', model: @quiz, f: f %>
+  <%= render 'shared/form/save_buttons', f: f %>
 <% end %>

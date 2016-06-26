@@ -10,6 +10,6 @@
       class: 'form-control'
     %>
   </fieldset>
-  <%= render partial: 'shared/form/name', locals: { f: f } %>
-  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
+  <%= render 'shared/form/name', f: f %>
+  <%= render 'shared/form/save_buttons', f: f %>
 <% end %>

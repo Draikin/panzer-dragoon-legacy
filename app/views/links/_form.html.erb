@@ -1,25 +1,19 @@
 <%= form_for @link do |f| %>
   <%= render 'shared/error_messages', target: @link %>
-  <%= render partial: 'shared/form/category',
-    locals: { categories: @categories, f: f }
-  %>
-  <%= render partial: 'shared/form/contributors',
-    locals: { model: @link, f: f }
-  %>
+  <%= render 'shared/form/category', categories: @categories, f: f %>
+  <%= render 'shared/form/contributors', model: @link, f: f %>
   <div class="checkbox">
     <label>
       <%= f.check_box :partner_site %> Partner Site?
     </label>
   </div>
-  <%= render partial: 'shared/form/name', locals: { f: f } %>
+  <%= render 'shared/form/name', f: f %>
   <fieldset>
     <%= f.label :url, 'URL' %>
     <%= f.text_field :url, class: 'form-control' %>
   </fieldset>
-  <%= render partial: 'shared/form/description', locals: { f: f } %>
-  <%= render partial: 'shared/form/related_encyclopaedia_entries',
-    locals: { model: @link, f: f }
-  %>
+  <%= render 'shared/form/description', f: f %>
+  <%= render 'shared/form/related_encyclopaedia_entries', model: @link, f: f %>
   <%= f.submit 'Save and View Index', class: 'btn btn-primary' %>
   <%= f.submit 'Save and Continue Editing',
     name: :continue_editing,

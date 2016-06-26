@@ -43,42 +43,16 @@
 
 <%= @category.description %>
 
-<% if @articles %>
-  <%= render partial: 'articles', locals: { articles: @articles } %>
-<% end %>
-
-<% if @downloads %>
-  <%= render partial: 'downloads', locals: { downloads: @downloads } %>
-<% end %>
-
+<%= render 'articles', articles: @articles if @articles %>
+<%= render 'downloads', downloads: @downloads if @downloads %>
 <% if @encyclopaedia_entries %>
-  <%= render partial: 'encyclopaedia_entries',
-    locals: { encyclopaedia_entries: @encyclopaedia_entries }
+  <%= render 'encyclopaedia_entries',
+    encyclopaedia_entries: @encyclopaedia_entries
   %>
 <% end %>
-
-<% if @links %>
-  <%= render partial: 'links', locals: { links: @links } %>
-<% end %>
-
-<% if @music_tracks %>
-  <%= render partial: 'music_tracks',
-    locals: { music_tracks: @music_tracks }
-  %>
-<% end %>
-
-<% if @pictures %>
-  <%= render partial: 'pictures', locals: { pictures: @pictures } %>
-<% end %>
-
-<% if @resources %>
-  <%= render partial: 'resources', locals: { resources: @resources } %>
-<% end %>
-
-<% if @stories %>
-  <%= render partial: 'stories', locals: { stories: @stories } %>
-<% end %>
-
-<% if @videos %>
-  <%= render partial: 'videos', locals: { videos: @videos } %>
-<% end %>
+<%= render 'links', links: @links if @links %>
+<%= render 'music_tracks', music_tracks: @music_tracks if @music_tracks %>
+<%= render 'pictures', pictures: @pictures if @pictures %>
+<%= render 'resources', resources: @resources if @resources %>
+<%= render 'stories', stories: @stories if @stories %>
+<%= render 'videos', videos: @videos if @videos %>

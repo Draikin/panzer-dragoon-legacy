@@ -21,12 +21,13 @@
       </div>
       <div id="banner"></div>
       <div id="navigation">
-        <%= render partial: 'layouts/top_navigation', locals: {} %>
+        <%= render 'layouts/top_navigation' %>
       </div>
       <div id="main">
         <div id="aside">
-          <%= render partial: 'layouts/left_navigation',
-            locals: { sagas: @sagas, partner_sites: @partner_sites }
+          <%= render 'layouts/left_navigation',
+            sagas: @sagas,
+            partner_sites: @partner_sites
           %>
         </div>
         <div id="content">
@@ -38,7 +39,7 @@
         </div>
       </div>
       <div id="footer">
-        <%= render partial: 'layouts/bottom_navigation', locals: {} %>
+        <%= render 'layouts/bottom_navigation' %>
       </div>
     </div>
   </body>

@@ -1,11 +1,7 @@
 <%= form_for @download, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @download %>
-  <%= render partial: 'shared/form/category',
-    locals: { categories: @categories, f: f }
-  %>
-  <%= render partial: 'shared/form/contributors',
-    locals: { model: @download, f: f }
-  %>
+  <%= render 'shared/form/category', categories: @categories, f: f %>
+  <%= render 'shared/form/contributors', model: @download, f: f %>
   <fieldset>
     <%= f.label :download, 'Download' %>
     <% if @download.download? %>
@@ -13,14 +9,13 @@
     <% end %>
     <%= f.file_field :download, class: 'form-control' %>
   </fieldset>
-  <%= render partial: 'shared/form/name', locals: { f: f } %>
-  <%= render partial: 'shared/form/description', locals: { f: f } %>
-  <%= render partial: 'shared/form/extra_information', locals: { f: f } %>
-  <%= render partial: 'shared/form/related_encyclopaedia_entries',
-    locals: { model: @download, f: f }
+  <%= render 'shared/form/name', f: f %>
+  <%= render 'shared/form/description', f: f %>
+  <%= render 'shared/form/extra_information', f: f %>
+  <%= render 'shared/form/related_encyclopaedia_entries',
+    model: @download,
+    f: f
   %>
-  <%= render partial: 'shared/form/publish',
-    locals: { model: @download, f: f }
-  %>
-  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
+  <%= render 'shared/form/publish', model: @download, f: f %>
+  <%= render 'shared/form/save_buttons', f: f %>
 <% end %>

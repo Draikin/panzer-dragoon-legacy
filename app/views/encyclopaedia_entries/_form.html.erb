@@ -1,8 +1,6 @@
 <%= nested_form_for @encyclopaedia_entry, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @encyclopaedia_entry %>
-  <%= render partial: 'shared/form/category',
-    locals: { categories: @categories, f: f }
-  %>
+  <%= render 'shared/form/category', categories: @categories, f: f %>
   <fieldset>
     <%= f.label :contributor_profile_ids, 'Contributors' %>
     <%= f.collection_select :contributor_profile_ids,
@@ -29,7 +27,7 @@
     <% end %>
     <%= f.file_field :encyclopaedia_entry_picture, class: 'form-control' %>
   </fieldset>
-  <%= render partial: 'shared/form/name', locals: { f: f } %>
+  <%= render 'shared/form/name', f: f %>
   <fieldset>
     <%= f.label :information, 'Information Box' %>
     <%= f.text_area :information, rows: 10, class: 'form-control' %>
@@ -38,42 +36,48 @@
       description list</a> to format the encyclopaedia entry's information box.
     </small>
   </fieldset>
-  <%= render partial: 'shared/form/content', locals: { f: f } %>
-  <%= render partial: 'shared/form/illustrations',
-    locals: { illustrations: @illustrations, f: f }
+  <%= render 'shared/form/content', f: f %>
+  <%= render 'shared/form/illustrations', illustrations: @illustrations, f: f %>
+  <%= render 'encyclopaedia_entries/form/related_articles',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_articles',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  <%= render 'encyclopaedia_entries/form/related_downloads',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_downloads',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  <%= render 'encyclopaedia_entries/form/related_links',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_links',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  <%= render 'encyclopaedia_entries/form/related_music_tracks',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_music_tracks',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  <%= render 'encyclopaedia_entries/form/related_pictures',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_pictures',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  <%= render 'encyclopaedia_entries/form/related_poems',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_poems',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  <%= render 'encyclopaedia_entries/form/related_quizzes',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_quizzes',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  <%= render 'encyclopaedia_entries/form/related_resources',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_resources',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  <%= render 'encyclopaedia_entries/form/related_stories',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_stories',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  <%= render 'encyclopaedia_entries/form/related_videos',
+    encyclopaedia_entry: @encyclopaedia_entry,
+    f: f
   %>
-  <%= render partial: 'encyclopaedia_entries/form/related_videos',
-    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
-  %>
-  <%= render partial: 'shared/form/publish',
-    locals: { model: @encyclopaedia_entry, f: f }
-  %>
-  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
+  <%= render 'shared/form/publish', model: @encyclopaedia_entry, f: f %>
+  <%= render 'shared/form/save_buttons', f: f %>
 <% end %>

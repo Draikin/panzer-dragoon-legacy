@@ -1,22 +1,12 @@
 <%= nested_form_for @story, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @story %>
-  <%= render partial: 'shared/form/category',
-    locals: { categories: @categories, f: f }
-  %>
-  <%= render partial: 'shared/form/contributors',
-    locals: { model: @story, f: f }
-  %>
-  <%= render partial: 'shared/form/name', locals: { f: f } %>
-  <%= render partial: 'shared/form/description', locals: { f: f } %>
-  <%= render partial: 'shared/form/content', locals: { f: f } %>
-  <%= render partial: 'shared/form/illustrations',
-    locals: { illustrations: @illustrations, f: f }
-  %>
-  <%= render partial: 'shared/form/related_encyclopaedia_entries',
-    locals: { model: @story, f: f }
-  %>
-  <%= render partial: 'shared/form/publish',
-    locals: { model: @story, f: f }
-  %>
-  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
+  <%= render 'shared/form/category', categories: @categories, f: f %>
+  <%= render 'shared/form/contributors', model: @story, f: f %>
+  <%= render 'shared/form/name', f: f %>
+  <%= render 'shared/form/description', f: f %>
+  <%= render 'shared/form/content', f: f %>
+  <%= render 'shared/form/illustrations', illustrations: @illustrations, f: f %>
+  <%= render 'shared/form/related_encyclopaedia_entries', model: @story, f: f %>
+  <%= render 'shared/form/publish', model: @story, f: f %>
+  <%= render 'shared/form/save_buttons', f: f %>
 <% end %>

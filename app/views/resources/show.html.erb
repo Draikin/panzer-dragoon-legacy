@@ -46,7 +46,7 @@
 <%= raw illustrated_markdown_to_html @resource.id, "Resource",
   @resource.content %>
 
-<%= render partial: 'shared/related_encyclopaedia_entries' %>
+<%= render 'shared/related_encyclopaedia_entries' %>
 
 <ol class="breadcrumb">
   <li><%= link_to 'Home', root_url %></li>

@@ -20,7 +20,7 @@
       Side Story is Currently Unavailable".
     </small>
   </fieldset>
-  <%= render partial: 'shared/form/content', locals: { f: f } %>
+  <%= render 'shared/form/content', f: f %>
   <% if policy(@news_entry).permitted_attributes.include? :publish %>
     <div class="checkbox">
       <label>
@@ -33,5 +33,5 @@
       </small>
     </div>
   <% end %>
-  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
+  <%= render 'shared/form/save_buttons', f: f %>
 <% end %>

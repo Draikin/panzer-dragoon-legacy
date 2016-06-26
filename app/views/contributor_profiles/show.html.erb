@@ -11,13 +11,9 @@
   %>
 <% end %>
 
-<%= render partial: 'information',
-  locals: { contributor_profile: @contributor_profile }
-%>
+<%= render 'information', contributor_profile: @contributor_profile %>
 
-<%= render partial: 'contributions',
-  locals: { contributor_profile: @contributor_profile }
-%>
+<%= render 'contributions', contributor_profile: @contributor_profile %>
 
 <ol class="breadcrumb">
   <li><%= link_to 'Home', root_url %></li>

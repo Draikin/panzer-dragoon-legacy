@@ -1,6 +1,6 @@
 <%= form_for @contributor_profile, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @contributor_profile %>
-  <%= render partial: 'shared/form/name', locals: { f: f } %>
+  <%= render 'shared/form/name', f: f %>
   <fieldset>
     <%= f.label :email_address, 'Email Address' %>
     <%= f.email_field :email_address, class: 'form-control' %>
@@ -33,8 +33,6 @@
     <%= f.label :twitter_username, 'Twitter Username' %>
     <%= f.text_field :twitter_username, class: 'form-control' %>
   </fieldset>
-  <%= render partial: 'shared/form/publish',
-    locals: { model: @contributor_profile, f: f }
-  %>
-  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
+  <%= render 'shared/form/publish', model: @contributor_profile, f: f %>
+  <%= render 'shared/form/save_buttons', f: f %>
 <% end %>
