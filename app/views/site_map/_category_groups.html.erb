@@ -1,8 +1,8 @@
 <% if category_groups.present? %>
-  <ul>
+  <ul class="list-group">
     <% category_groups.each do |category_group| %>
       <% if policy(category_group).show? %>
-        <li>
+        <li class="list-group-item">
           <h3><%= category_group.name %></h3>
           <% if policy(category_group).edit? ||
             policy(category_group).destroy? %>

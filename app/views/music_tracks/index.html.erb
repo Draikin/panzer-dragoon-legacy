@@ -32,11 +32,12 @@
   </div>
 <% end %>
 
-<% unless params[:contributor_profile_id] or params[:filter] %>
+<% unless params[:contributor_profile_id] || params[:filter] %>
   <% if @category_groups.present? %>
     <h2>Music Categories</h2>
-    <%= render partial: 'site_map/category_groups', locals: {
-      category_groups: @category_groups } %>
+    <%= render partial: 'site_map/category_groups',
+      locals: { category_groups: @category_groups }
+    %>
   <% end %>
   <% if @music_tracks.present? %>
     <h2>All Music Tracks</h2>

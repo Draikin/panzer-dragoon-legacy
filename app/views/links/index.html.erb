@@ -24,9 +24,9 @@
 <% unless params[:contributor_profile_id] %>
   <% if @categories.present? %>
     <h2>Link Categories</h2>
-    <ul>
+    <ul class="list-group">
       <% @categories.each do |category| %>
-        <li>
+        <li class="list-group-item">
           <%= link_to category.name, category %>
           <% unless category.publish %>
             <span class="label label-warning">Unpublished</span>

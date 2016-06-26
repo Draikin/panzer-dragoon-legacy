@@ -23,12 +23,13 @@
   </div>
 <% end %>
 
-<% unless params[:contributor_profile_id] or params[:filter] %>
+<% unless params[:contributor_profile_id] || params[:filter] %>
   <% if @categories.present? %>
     <h2>Article Categories</h2>
-    <ul class="categories">
+    <ul class="list-group">
       <% @categories.each do |category| %>
-        <li><%= link_to category.name, category %>
+        <li class="list-group-item">
+          <%= link_to category.name, category %>
           <% unless category.publish %>
             <span class="label label-warning">Unpublished</span>
           <% end %>
