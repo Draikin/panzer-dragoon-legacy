@@ -43,16 +43,18 @@
 
 <%= @category.description %>
 
-<%= render 'articles', articles: @articles if @articles %>
-<%= render 'downloads', downloads: @downloads if @downloads %>
+<%= render 'categories/show/articles', articles: @articles if @articles %>
+<%= render 'categories/show/downloads', downloads: @downloads if @downloads %>
 <% if @encyclopaedia_entries %>
-  <%= render 'encyclopaedia_entries',
+  <%= render 'categories/show/encyclopaedia_entries',
     encyclopaedia_entries: @encyclopaedia_entries
   %>
 <% end %>
-<%= render 'links', links: @links if @links %>
-<%= render 'music_tracks', music_tracks: @music_tracks if @music_tracks %>
-<%= render 'pictures', pictures: @pictures if @pictures %>
-<%= render 'resources', resources: @resources if @resources %>
-<%= render 'stories', stories: @stories if @stories %>
-<%= render 'videos', videos: @videos if @videos %>
+<%= render 'categories/show/links', links: @links if @links %>
+<% if @music_tracks %>
+  <%= render 'categories/show/music_tracks', music_tracks: @music_tracks %>
+<% end %>
+<%= render 'categories/show/pictures', pictures: @pictures if @pictures %>
+<%= render 'categories/show/resources', resources: @resources if @resources %>
+<%= render 'categories/show/stories', stories: @stories if @stories %>
+<%= render 'categories/show/videos', videos: @videos if @videos %>
