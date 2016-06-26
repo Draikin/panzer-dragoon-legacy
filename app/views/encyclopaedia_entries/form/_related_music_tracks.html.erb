@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :music_track_ids, 'Related Music Tracks' %>
+  <%= f.collection_select :music_track_ids,
+    MusicTrack.order(:name),
+    :id,
+    :name,
+    { selected: @encyclopaedia_entry.music_track_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+  %>
+</fieldset>

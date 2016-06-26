@@ -59,101 +59,36 @@
   <%= render partial: 'illustrations/fields',
     locals: { illustrations: @illustrations, f: f }
   %>
-  <fieldset>
-    <%= f.label :article_ids, 'Related Articles' %>
-    <%= f.collection_select :article_ids,
-      Article.order(:name),
-      :id,
-      :name,
-      { selected: @encyclopaedia_entry.article_ids, include_blank: true },
-      { multiple: true, class: 'form-control' } %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :download_ids, 'Related Downloads' %>
-    <%= f.collection_select :download_ids,
-      Download.order(:name),
-      :id,
-      :name,
-      { selected: @encyclopaedia_entry.download_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :link_ids, 'Related Links' %>
-    <%= f.collection_select :link_ids,
-      Link.order(:name),
-      :id,
-      :name,
-      { selected: @encyclopaedia_entry.link_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-     %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :music_track_ids, 'Related Music Tracks' %>
-    <%= f.collection_select :music_track_ids,
-      MusicTrack.order(:name),
-      :id,
-      :name,
-      { selected: @encyclopaedia_entry.music_track_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :picture_ids, 'Related Pictures' %>
-    <%= f.collection_select :picture_ids,
-      Picture.order(:name),
-      :id,
-      :name,
-      { selected: @encyclopaedia_entry.picture_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-     %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :poem_ids, 'Related Poems' %>
-    <%= f.collection_select :poem_ids,
-      Poem.order(:name), :id, :name,
-      { selected: @encyclopaedia_entry.poem_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :quiz_ids, 'Related Quizzes' %>
-    <%= f.collection_select :quiz_ids,
-      Quiz.order(:name), :id, :name,
-      { selected: @encyclopaedia_entry.quiz_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :resource_ids, 'Related Resources' %>
-    <%= f.collection_select :resource_ids,
-      Resource.order(:name),
-      :id,
-      :name,
-      { selected: @encyclopaedia_entry.resource_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :story_ids, 'Related Stories' %>
-    <%= f.collection_select :story_ids,
-      Story.order(:name),
-      :id,
-      :name,
-      { selected: @encyclopaedia_entry.story_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :video_ids, 'Related Videos' %>
-    <%= f.collection_select :video_ids,
-      Video.order(:name),
-      :id,
-      :name,
-      { selected: @encyclopaedia_entry.video_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
+  <%= render partial: 'encyclopaedia_entries/form/related_articles',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
+  <%= render partial: 'encyclopaedia_entries/form/related_downloads',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
+  <%= render partial: 'encyclopaedia_entries/form/related_links',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
+  <%= render partial: 'encyclopaedia_entries/form/related_music_tracks',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
+  <%= render partial: 'encyclopaedia_entries/form/related_pictures',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
+  <%= render partial: 'encyclopaedia_entries/form/related_poems',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
+  <%= render partial: 'encyclopaedia_entries/form/related_quizzes',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
+  <%= render partial: 'encyclopaedia_entries/form/related_resources',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
+  <%= render partial: 'encyclopaedia_entries/form/related_stories',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
+  <%= render partial: 'encyclopaedia_entries/form/related_videos',
+    locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
+  %>
   <% if policy(@encyclopaedia_entry).permitted_attributes.include? :publish %>
     <div class="checkbox">
       <label>

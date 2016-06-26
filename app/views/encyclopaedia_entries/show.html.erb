@@ -37,7 +37,7 @@
   </div>
 <% end %>
 
-<%= render partial: 'information',
+<%= render partial: 'encyclopaedia_entries/show/information',
   locals: { encyclopaedia_entry: @encyclopaedia_entry }
 %>
 
@@ -45,36 +45,54 @@
   "EncyclopaediaEntry", @encyclopaedia_entry.content %>
 
 <% unless @articles.count == 0 %>
-  <%= render partial: 'related_articles', locals: { articles: @articles } %>
+  <%= render partial: 'encyclopaedia_entries/show/related_articles',
+    locals: { articles: @articles }
+  %>
 <% end %>
 <% unless @downloads.count == 0 %>
-  <%= render partial: 'related_downloads', locals: { downloads: @downloads } %>
+  <%= render partial: 'encyclopaedia_entries/show/related_downloads',
+    locals: { downloads: @downloads }
+  %>
 <% end %>
 <% unless @links.count == 0 %>
-  <%= render partial: 'related_links', locals: { links: @links } %>
+  <%= render partial: 'encyclopaedia_entries/show/related_links',
+    locals: { links: @links }
+  %>
 <% end %>
 <% unless @music_tracks.count == 0 %>
-  <%= render partial: 'related_music_tracks',
+  <%= render partial: 'encyclopaedia_entries/show/related_music_tracks',
     locals: { music_tracks: @music_tracks }
   %>
 <% end %>
 <% unless @pictures.count == 0 %>
-  <%= render partial: 'related_pictures', locals: { pictures: @pictures } %>
+  <%= render partial: 'encyclopaedia_entries/show/related_pictures',
+    locals: { pictures: @pictures }
+  %>
 <% end %>
 <% unless @poems.count == 0 %>
-  <%= render partial: 'related_poems', locals: { poems: @poems } %>
+  <%= render partial: 'encyclopaedia_entries/show/related_poems',
+    locals: { poems: @poems }
+  %>
 <% end %>
 <% unless @quizzes.count == 0 %>
-  <%= render partial: 'related_quizzes', locals: { quizzes: @quizzes } %>
+  <%= render partial: 'encyclopaedia_entries/show/related_quizzes',
+    locals: { quizzes: @quizzes }
+  %>
 <% end %>
 <% unless @resources.count == 0 %>
-  <%= render partial: 'related_resources', locals: { resources: @resources } %>
+  <%= render partial: 'encyclopaedia_entries/show/related_resources',
+    locals: { resources: @resources }
+  %>
 <% end %>
 <% unless @stories.count == 0 %>
-  <%= render partial: 'related_stories', locals: { stories: @stories } %>
+  <%= render partial: 'encyclopaedia_entries/show/related_stories',
+    locals: { stories: @stories }
+  %>
 <% end %>
 <% unless @videos.count == 0 %>
-  <%= render partial: 'related_videos', locals: { videos: @videos } %>
+  <%= render partial: 'encyclopaedia_entries/show/related_videos',
+    locals: { videos: @videos }
+  %>
 <% end %>
 
 <ol class="breadcrumb">

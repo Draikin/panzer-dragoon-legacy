@@ -1,0 +1,8 @@
+<fieldset>
+  <%= f.label :quiz_ids, 'Related Quizzes' %>
+  <%= f.collection_select :quiz_ids,
+    Quiz.order(:name), :id, :name,
+    { selected: @encyclopaedia_entry.quiz_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+  %>
+</fieldset>

@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :resource_ids, 'Related Resources' %>
+  <%= f.collection_select :resource_ids,
+    Resource.order(:name),
+    :id,
+    :name,
+    { selected: @encyclopaedia_entry.resource_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+  %>
+</fieldset>

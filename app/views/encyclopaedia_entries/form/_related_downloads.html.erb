@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :download_ids, 'Related Downloads' %>
+  <%= f.collection_select :download_ids,
+    Download.order(:name),
+    :id,
+    :name,
+    { selected: @encyclopaedia_entry.download_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+  %>
+</fieldset>

@@ -1,0 +1,9 @@
+<fieldset>
+  <%= f.label :article_ids, 'Related Articles' %>
+  <%= f.collection_select :article_ids,
+    Article.order(:name),
+    :id,
+    :name,
+    { selected: @encyclopaedia_entry.article_ids, include_blank: true },
+    { multiple: true, class: 'form-control' } %>
+</fieldset>

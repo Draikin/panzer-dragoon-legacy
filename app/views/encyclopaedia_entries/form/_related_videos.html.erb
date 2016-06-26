@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :video_ids, 'Related Videos' %>
+  <%= f.collection_select :video_ids,
+    Video.order(:name),
+    :id,
+    :name,
+    { selected: @encyclopaedia_entry.video_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+  %>
+</fieldset>

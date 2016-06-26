@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :link_ids, 'Related Links' %>
+  <%= f.collection_select :link_ids,
+    Link.order(:name),
+    :id,
+    :name,
+    { selected: @encyclopaedia_entry.link_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+   %>
+</fieldset>

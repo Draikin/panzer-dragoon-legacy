@@ -1,0 +1,8 @@
+<fieldset>
+  <%= f.label :poem_ids, 'Related Poems' %>
+  <%= f.collection_select :poem_ids,
+    Poem.order(:name), :id, :name,
+    { selected: @encyclopaedia_entry.poem_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+  %>
+</fieldset>

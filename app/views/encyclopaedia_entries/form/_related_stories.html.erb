@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :story_ids, 'Related Stories' %>
+  <%= f.collection_select :story_ids,
+    Story.order(:name),
+    :id,
+    :name,
+    { selected: @encyclopaedia_entry.story_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+  %>
+</fieldset>

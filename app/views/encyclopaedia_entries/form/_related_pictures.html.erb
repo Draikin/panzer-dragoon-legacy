@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :picture_ids, 'Related Pictures' %>
+  <%= f.collection_select :picture_ids,
+    Picture.order(:name),
+    :id,
+    :name,
+    { selected: @encyclopaedia_entry.picture_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+   %>
+</fieldset>
