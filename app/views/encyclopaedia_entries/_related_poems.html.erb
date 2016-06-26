@@ -1,0 +1,11 @@
+<h2>Related Poems</h2>
+<ul>
+  <% @poems.each do |poem| %>
+    <li>
+      <%= link_to poem.name, poem %>
+      <% unless poem.publish %>
+        <span class="label label-warning">Unpublished</span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
