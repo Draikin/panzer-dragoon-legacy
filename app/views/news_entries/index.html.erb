@@ -12,10 +12,10 @@
 </p>
 
 <% if policy(NewsEntry).new? %>
-  <%= link_to 'New News Entry',
-    new_news_entry_path,
-    { class: 'btn btn-secondary', role: 'button' }
-  %>
+  <%= link_to new_news_entry_path,
+    { class: 'btn btn-secondary', role: 'button' } do %>
+    <%= fa_icon 'pencil' %> New News Entry
+  <% end %>
 <% end %>
 
 <% if @news_entries %>

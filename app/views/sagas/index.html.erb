@@ -1,10 +1,10 @@
 <% title "Sagas" %>
 
 <% if policy(Saga).new? %>
-  <%= link_to 'New Saga',
-    new_saga_path,
-    { class: 'btn btn-secondary', role: 'button' }
-  %>
+  <%= link_to new_saga_path,
+    { class: 'btn btn-secondary', role: 'button' } do %>
+    <%= fa_icon 'tag' %> New Saga
+  <% end %>
 <% end %>
 
 <% if @sagas %>
@@ -16,19 +16,19 @@
           <% if policy(saga).edit? || policy(saga).destroy? %>
             <div class="btn-group" role="group">
               <% if policy(saga).edit? %>
-                <%= link_to 'Edit Saga',
-                  edit_saga_path(saga),
-                  { class: 'btn btn-secondary', role: 'button' }
-                %>
+                <%= link_to edit_saga_path(saga),
+                  { class: 'btn btn-secondary', role: 'button' } do %>
+                  <%= fa_icon 'edit' %> Edit Saga
+                <% end %>
               <% end %>
               <% if policy(saga).destroy? %>
-                <%= link_to 'Delete Saga',
-                  saga,
+                <%= link_to saga,
                   data: { confirm: 'Are you sure?' },
                   method: :delete,
                   class: 'btn btn-danger',
-                  role: 'button'
-                %>
+                  role: 'button' do %>
+                  <%= fa_icon 'trash' %> Delete Saga
+                <% end %>
               <% end %>
             </div>
           <% end %>

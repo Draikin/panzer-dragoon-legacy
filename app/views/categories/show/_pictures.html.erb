@@ -1,9 +1,9 @@
 <h2>Pictures in this Category</h2>
 <% if policy(Picture).new? %>
-  <%= link_to 'New Picture',
-    new_picture_path(category: @category),
-    { class: 'btn btn-secondary', role: 'button' }
-  %>
+  <%= link_to new_picture_path(category: @category),
+    { class: 'btn btn-secondary', role: 'button' } do %>
+    <%= fa_icon('upload') %> New Picture
+  <% end %>
 <% end %>
 <%= render 'pictures/list' %>
 <ol class="breadcrumb">

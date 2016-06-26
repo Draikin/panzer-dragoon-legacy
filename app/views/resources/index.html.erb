@@ -12,22 +12,22 @@
 %>
   <div class="btn-group" role="group">
     <% if policy(CategoryGroup).new? %>
-      <%= link_to 'New Category Group',
-        new_category_group_path(category_group_type: :resource),
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+      <%= link_to new_category_group_path(category_group_type: :resource),
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'tag' %> New Category Group
+      <% end %>
     <% end %>
     <% if policy(Category).new? %>
-      <%= link_to 'New Category',
-        new_category_path(category_type: :resource),
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+      <%= link_to new_category_path(category_type: :resource),
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'tag' %> New Category
+      <% end %>
     <% end %>
     <% if policy(Resource).new? %>
-      <%= link_to 'New Resource',
-        new_resource_path,
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+      <%= link_to new_resource_path,
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'pencil' %> New Resource
+      <% end %>
     <% end %>
   </div>
 <% end %>

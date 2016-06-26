@@ -1,9 +1,9 @@
 <h2>Articles in this Category</h2>
 <% if policy(Article).new? %>
-  <%= link_to 'New Article',
-    new_article_path(category: @category),
-    { class: 'btn btn-secondary', role: 'button' }
-  %>
+  <%= link_to new_article_path(category: @category),
+    { class: 'btn btn-secondary', role: 'button' } do %>
+    <%= fa_icon('pencil') %> New Article
+  <% end %>
 <% end %>
 <%= render 'articles/list' %>
 <ol class="breadcrumb">

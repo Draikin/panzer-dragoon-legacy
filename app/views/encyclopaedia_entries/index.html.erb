@@ -10,22 +10,23 @@
 %>
   <div class="btn-group" role="group">
     <% if policy(CategoryGroup).new? %>
-      <%= link_to 'New Category Group',
+      <%= link_to
         new_category_group_path(category_group_type: :encyclopaedia_entry),
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'tag' %> New Category Group
+      <% end %>
     <% end %>
     <% if policy(Category).new? %>
-      <%= link_to 'New Category',
-        new_category_path(category_type: :encyclopaedia_entry),
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+      <%= link_to new_category_path(category_type: :encyclopaedia_entry),
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'tag' %> New Category
+      <% end %>
     <% end %>
     <% if policy(EncyclopaediaEntry).new? %>
-      <%= link_to 'New Encyclopaedia Entry',
-        new_encyclopaedia_entry_path,
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+      <%= link_to new_encyclopaedia_entry_path,
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'pencil' %> New Encyclopaedia Entry
+      <% end %>
     <% end %>
   </div>
 <% end %>

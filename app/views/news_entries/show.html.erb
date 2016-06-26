@@ -7,25 +7,25 @@
 %>
   <div class="btn-group" role="group">
     <% if policy(NewsEntry).new? %>
-      <%= link_to 'New News Entry',
-        new_news_entry_path,
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+      <%= link_to new_news_entry_path,
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'pencil' %>New News Entry
+      <% end %>
     <% end %>
     <% if policy(@news_entry).edit? %>
-      <%= link_to 'Edit News Entry',
-        edit_news_entry_path(@news_entry),
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+      <%= link_to edit_news_entry_path(@news_entry),
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'edit' %> Edit News Entry
+      <% end %>
     <% end %>
     <% if policy(@news_entry).destroy? %>
-      <%= link_to 'Delete News Entry',
-        @news_entry,
+      <%= link_to @news_entry,
         data: { confirm: 'Are you sure you want to delete this news entry?' },
         method: :delete,
         class: 'btn btn-danger',
-        role: 'button'
-      %>
+        role: 'button' do %>
+        <%= fa_icon 'trash' %> Delete News Entry
+      <% end %>
     <% end %>
   </div>
 <% end %>

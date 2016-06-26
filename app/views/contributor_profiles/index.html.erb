@@ -1,10 +1,10 @@
 <% title "Contributors" %>
 
 <% if policy(ContributorProfile).new? %>
-  <%= link_to 'New Contributor Profile',
-    new_contributor_profile_path,
-    { class: 'btn btn-secondary', role: 'button' }
-   %>
+  <%= link_to new_contributor_profile_path,
+    { class: 'btn btn-secondary', role: 'button' } do %>
+    <%= fa_icon 'user' %> New Contributor Profile
+   <% end %>
 <% end %>
 
 <% if @contributor_profiles %>

@@ -9,16 +9,16 @@
 <% if policy(Category).new? || policy(Download).new? %>
   <div class="btn-group" role="group">
     <% if policy(Category).new? %>
-      <%= link_to 'New Category',
-        new_category_path(category_type: :download),
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+      <%= link_to new_category_path(category_type: :download),
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'tag' %> New Category
+      <% end %>
     <% end %>
     <% if policy(Download).new? %>
-      <%= link_to 'New Download',
-        new_download_path,
-        { class: 'btn btn-secondary', role: 'button' }
-      %>
+      <%= link_to new_download_path,
+        { class: 'btn btn-secondary', role: 'button' } do %>
+        <%= fa_icon 'upload' %> New Download
+      <% end %>
     <% end %>
   </div>
 <% end %>
