@@ -1,56 +1,28 @@
 <%= form_for @link do |f| %>
   <%= render 'shared/error_messages', target: @link %>
-  <fieldset>
-    <%= f.label :category_id, 'Category' %>
-    <%= f.collection_select :category_id,
-      @categories,
-      :id,
-      :name,
-      { include_blank: true },
-      class: 'form-control'
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :contributor_profile_ids, 'Contributors (optional)' %>
-    <%= f.collection_select :contributor_profile_ids,
-      ContributorProfile.order(:name),
-      :id,
-      :name,
-      { selected: @link.contributor_profile_ids,
-      include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
+  <%= render partial: 'shared/form/category',
+    locals: { categories: @categories, f: f }
+  %>
+  <%= render partial: 'shared/form/contributors',
+    locals: { model: @link, f: f }
+  %>
   <div class="checkbox">
     <label>
       <%= f.check_box :partner_site %> Partner Site?
     </label>
   </div>
-  <fieldset>
-    <%= f.label :name, 'Name' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </fieldset>
+  <%= render partial: 'shared/form/name', locals: { f: f } %>
   <fieldset>
     <%= f.label :url, 'URL' %>
     <%= f.text_field :url, class: 'form-control' %>
   </fieldset>
-  <fieldset>
-    <%= f.label :description, 'Description' %>
-    <%= f.text_area :description, rows: 3, class: 'form-control' %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
-    <%= f.collection_select :encyclopaedia_entry_ids,
-      EncyclopaediaEntry.order(:name),
-      :id,
-      :name,
-      { selected: @link.encyclopaedia_entry_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
+  <%= render partial: 'shared/form/description', locals: { f: f } %>
+  <%= render partial: 'shared/form/related_encyclopaedia_entries',
+    locals: { model: @link, f: f }
+  %>
+  <%= f.submit 'Save and View Index', class: 'btn btn-primary' %>
   <%= f.submit 'Save and Continue Editing',
     name: :continue_editing,
     class: 'btn btn-secondary'
-   %>
+  %>
 <% end %>

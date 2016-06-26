@@ -28,24 +28,10 @@
       Regular chapters are numbered as you would expect.
     </small>
   </fieldset>
-  <fieldset>
-    <%= f.label :name, 'Name' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :content, 'Content' %>
-    <%= f.text_area :content, rows: 15, class: 'data_entry form-control' %>
-    <small class="text-muted">
-      You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-      subset of Markdown</a> to format the chapter's content.
-    </small>
-  </fieldset>
-  <%= render partial: 'illustrations/fields',
+  <%= render partial: 'shared/form/name', locals: { f: f } %>
+  <%= render partial: 'shared/form/content', locals: { f: f } %>
+  <%= render partial: 'shared/form/illustrations',
     locals: { illustrations: @illustrations, f: f }
   %>
-  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
-  <%= f.submit 'Save and Continue Editing',
-    name: :continue_editing,
-    class: 'btn btn-secondary'
-   %>
+  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
 <% end %>

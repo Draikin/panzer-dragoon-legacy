@@ -1,9 +1,6 @@
 <%= form_for @contributor_profile, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @contributor_profile %>
-  <fieldset>
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </fieldset>
+  <%= render partial: 'shared/form/name', locals: { f: f } %>
   <fieldset>
     <%= f.label :email_address, 'Email Address' %>
     <%= f.email_field :email_address, class: 'form-control' %>
@@ -36,16 +33,8 @@
     <%= f.label :twitter_username, 'Twitter Username' %>
     <%= f.text_field :twitter_username, class: 'form-control' %>
   </fieldset>
-  <% if policy(@contributor_profile).permitted_attributes.include? :publish %>
-    <div class="checkbox">
-      <label>
-        <%= f.check_box :publish %> Publish?
-      </label>
-    </div>
-  <% end %>
-  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
-  <%= f.submit 'Save and Continue Editing',
-    name: :continue_editing,
-    class: 'btn btn-secondary'
+  <%= render partial: 'shared/form/publish',
+    locals: { model: @contributor_profile, f: f }
   %>
+  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
 <% end %>

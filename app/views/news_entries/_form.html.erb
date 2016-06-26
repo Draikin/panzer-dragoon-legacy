@@ -20,14 +20,7 @@
       Side Story is Currently Unavailable".
     </small>
   </fieldset>
-  <fieldset>
-    <%= f.label :content, 'Content' %>
-    <%= f.text_area :content, rows: 15, class: 'data_entry form-control' %>
-    <small class="text-muted">
-      You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-      subset of Markdown</a> to format the news entry's content.
-    </small>
-  </fieldset>
+  <%= render partial: 'shared/form/content', locals: { f: f } %>
   <% if policy(@news_entry).permitted_attributes.include? :publish %>
     <div class="checkbox">
       <label>
@@ -40,9 +33,5 @@
       </small>
     </div>
   <% end %>
-  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
-  <%= f.submit 'Save and Continue Editing',
-    name: :continue_editing,
-    class: 'btn btn-secondary'
-  %>
+  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
 <% end %>

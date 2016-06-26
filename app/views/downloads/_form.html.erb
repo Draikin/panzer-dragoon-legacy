@@ -1,25 +1,11 @@
 <%= form_for @download, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @download %>
-  <fieldset>
-    <%= f.label :category_id, 'Category' %>
-    <%= f.collection_select :category_id,
-      @categories,
-      :id,
-      :name,
-      { include_blank: true },
-      class: 'form-control'
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :contributor_profile_ids, 'Contributors' %>
-    <%= f.collection_select :contributor_profile_ids,
-      ContributorProfile.order(:name),
-      :id,
-      :name,
-      { selected: @download.contributor_profile_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
+  <%= render partial: 'shared/form/category',
+    locals: { categories: @categories, f: f }
+  %>
+  <%= render partial: 'shared/form/contributors',
+    locals: { model: @download, f: f }
+  %>
   <fieldset>
     <%= f.label :download, 'Download' %>
     <% if @download.download? %>
@@ -27,42 +13,14 @@
     <% end %>
     <%= f.file_field :download, class: 'form-control' %>
   </fieldset>
-  <fieldset>
-    <%= f.label :name, 'Name' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :description, 'Description' %>
-    <%= f.text_area :description, rows: 3, class: 'form-control' %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :information, 'Extra Information' %>
-    <%= f.text_area :information, rows: 10, class: 'form-control' %>
-    <small class="text-muted">
-      You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-      subset of Markdown</a> to format the download's extra information.
-    </small>
-  </fieldset>
-  <fieldset>
-    <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
-    <%= f.collection_select :encyclopaedia_entry_ids,
-      EncyclopaediaEntry.order(:name),
-      :id,
-      :name,
-      { selected: @download.encyclopaedia_entry_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <% if policy(@download).permitted_attributes.include? :publish %>
-    <div class="checkbox">
-      <label>
-        <%= f.check_box :publish %> Publish?
-      </label>
-    </div>
-  <% end %>
-  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
-  <%= f.submit 'Save and Continue Editing',
-    name: :continue_editing,
-    class: 'btn btn-secondary'
+  <%= render partial: 'shared/form/name', locals: { f: f } %>
+  <%= render partial: 'shared/form/description', locals: { f: f } %>
+  <%= render partial: 'shared/form/extra_information', locals: { f: f } %>
+  <%= render partial: 'shared/form/related_encyclopaedia_entries',
+    locals: { model: @download, f: f }
   %>
+  <%= render partial: 'shared/form/publish',
+    locals: { model: @download, f: f }
+  %>
+  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
 <% end %>

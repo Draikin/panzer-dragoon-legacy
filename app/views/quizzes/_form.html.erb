@@ -1,48 +1,18 @@
 <%= nested_form_for @quiz do |f| %>
   <%= render 'shared/error_messages', target: @quiz %>
-  <fieldset>
-    <%= f.label :contributor_profile_ids, 'Contributors' %>
-    <%= f.collection_select :contributor_profile_ids,
-      ContributorProfile.order(:name),
-      :id,
-      :name,
-      { selected: @quiz.contributor_profile_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :name, 'Name' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :description, 'Description' %>
-    <%= f.text_area :description, rows: 3, class: 'form-control' %>
-  </fieldset>
+  <%= render partial: 'shared/form/contributors',
+    locals: { model: @quiz, f: f }
+  %>
+  <%= render partial: 'shared/form/name', locals: { f: f } %>
+  <%= render partial: 'shared/form/description', locals: { f: f } %>
   <div>
     <label>Questions</label>
     <%= f.fields_for :quiz_questions %>
     <%= f.link_to_add "Add Question", :quiz_questions %>
   </div>
-  <fieldset>
-    <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
-    <%= f.collection_select :encyclopaedia_entry_ids,
-      EncyclopaediaEntry.order(:name),
-      :id,
-      :name,
-      { selected: @quiz.encyclopaedia_entry_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <% if policy(@quiz).permitted_attributes.include? :publish %>
-    <div class="checkbox">
-      <label>
-        <%= f.check_box :publish %> Publish?
-      </label>
-    </div>
-  <% end %>
-  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
-  <%= f.submit 'Save and Continue Editing',
-    name: :continue_editing,
-    class: 'btn btn-secondary'
+  <%= render partial: 'shared/form/related_encyclopaedia_entries',
+    locals: { model: @quiz, f: f }
   %>
+  <%= render partial: 'shared/form/publish', locals: { model: @quiz, f: f } %>
+  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
 <% end %>

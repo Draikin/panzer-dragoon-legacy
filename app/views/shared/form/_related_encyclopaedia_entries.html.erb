@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
+  <%= f.collection_select :encyclopaedia_entry_ids,
+    EncyclopaediaEntry.order(:name),
+    :id,
+    :name,
+    { selected: model.encyclopaedia_entry_ids, include_blank: true },
+    { multiple: true, class: 'form-control' }
+  %>
+</fieldset>

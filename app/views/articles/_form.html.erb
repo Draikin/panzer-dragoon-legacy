@@ -1,64 +1,22 @@
 <%= nested_form_for @article, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @article %>
-  <fieldset class="form-group">
-    <%= f.label :category_id, 'Category' %>
-    <%= f.collection_select :category_id,
-      @categories,
-      :id,
-      :name,
-      { include_blank: true },
-      class: 'form-control'
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :contributor_profile_ids, 'Contributors' %>
-    <%= f.collection_select :contributor_profile_ids,
-      ContributorProfile.order(:name),
-      :id,
-      :name,
-      { selected: @article.contributor_profile_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :description %>
-    <%= f.text_area :description, rows: 3, class: 'form-control' %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :content %>
-    <%= f.text_area :content, rows: 15, class: 'data_entry form-control' %>
-    <small class="text-muted">
-      You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-      subset of Markdown</a> to format the article's content.
-    </small>
-  </fieldset>
-  <%= render partial: 'illustrations/fields',
+  <%= render partial: 'shared/form/category',
+    locals: { categories: @categories, f: f }
+  %>
+  <%= render partial: 'shared/form/contributors',
+    locals: { model: @article, f: f }
+  %>
+  <%= render partial: 'shared/form/name', locals: { f: f } %>
+  <%= render partial: 'shared/form/description', locals: { f: f } %>
+  <%= render partial: 'shared/form/content', locals: { f: f } %>
+  <%= render partial: 'shared/form/illustrations',
     locals: { illustrations: @illustrations, f: f }
   %>
-  <fieldset>
-    <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
-    <%= f.collection_select :encyclopaedia_entry_ids,
-      EncyclopaediaEntry.order(:name),
-      :id,
-      :name,
-      { selected: @article.encyclopaedia_entry_ids, include_blank: true },
-      { multiple: true, class: 'form-control' }
-    %>
-  </fieldset>
-  <% if policy(@article).permitted_attributes.include? :publish %>
-    <div class="checkbox">
-      <label>
-        <%= f.check_box :publish %> Publish?
-      </label>
-    </div>
-  <% end %>
-  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
-  <%= f.submit 'Save and Continue Editing',
-    name: :continue_editing,
-    class: 'btn btn-secondary'
+  <%= render partial: 'shared/form/related_encyclopaedia_entries',
+    locals: { model: @article, f: f }
   %>
+  <%= render partial: 'shared/form/publish',
+    locals: { model: @article, f: f }
+  %>
+  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
 <% end %>

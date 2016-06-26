@@ -1,15 +1,8 @@
 <%= nested_form_for @encyclopaedia_entry, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @encyclopaedia_entry %>
-  <fieldset>
-    <%= f.label :category_id, 'Category' %>
-    <%= f.collection_select :category_id,
-      @categories,
-      :id,
-      :name,
-      { include_blank: true },
-      class: 'form-control'
-    %>
-  </fieldset>
+  <%= render partial: 'shared/form/category',
+    locals: { categories: @categories, f: f }
+  %>
   <fieldset>
     <%= f.label :contributor_profile_ids, 'Contributors' %>
     <%= f.collection_select :contributor_profile_ids,
@@ -36,10 +29,7 @@
     <% end %>
     <%= f.file_field :encyclopaedia_entry_picture, class: 'form-control' %>
   </fieldset>
-  <fieldset>
-    <%= f.label :name, 'Name' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </fieldset>
+  <%= render partial: 'shared/form/name', locals: { f: f } %>
   <fieldset>
     <%= f.label :information, 'Information Box' %>
     <%= f.text_area :information, rows: 10, class: 'form-control' %>
@@ -48,15 +38,8 @@
       description list</a> to format the encyclopaedia entry's information box.
     </small>
   </fieldset>
-  <fieldset>
-    <%= f.label :content, 'Content' %>
-    <%= f.text_area :content, rows: 15, class: 'data_entry form-control' %>
-    <small>
-      You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-      subset of Markdown</a> to format the encyclopaedia entry's content.
-    </small>
-  </fieldset>
-  <%= render partial: 'illustrations/fields',
+  <%= render partial: 'shared/form/content', locals: { f: f } %>
+  <%= render partial: 'shared/form/illustrations',
     locals: { illustrations: @illustrations, f: f }
   %>
   <%= render partial: 'encyclopaedia_entries/form/related_articles',
@@ -89,16 +72,8 @@
   <%= render partial: 'encyclopaedia_entries/form/related_videos',
     locals: { encyclopaedia_entry: @encyclopaedia_entry, f: f }
   %>
-  <% if policy(@encyclopaedia_entry).permitted_attributes.include? :publish %>
-    <div class="checkbox">
-      <label>
-        <%= f.check_box :publish %> Publish?
-      </label>
-    </div>
-  <% end %>
-  <%= f.submit 'Save and View', class: 'btn btn-primary' %>
-  <%= f.submit 'Save and Continue Editing',
-    name: :continue_editing,
-    class: 'btn btn-secondary'
+  <%= render partial: 'shared/form/publish',
+    locals: { model: @encyclopaedia_entry, f: f }
   %>
+  <%= render partial: 'shared/form/save_buttons', locals: { f: f } %>
 <% end %>

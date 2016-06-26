@@ -1,0 +1,7 @@
+<% if policy(model).permitted_attributes.include? :publish %>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :publish %> Publish?
+    </label>
+  </div>
+<% end %>
