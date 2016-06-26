@@ -11,9 +11,13 @@
   %>
 <% end %>
 
-<%= render 'information', contributor_profile: @contributor_profile %>
+<%= render 'contributor_profiles/show/information',
+  contributor_profile: @contributor_profile
+%>
 
-<%= render 'contributions', contributor_profile: @contributor_profile %>
+<%= render 'contributor_profiles/show/contributions',
+  contributor_profile: @contributor_profile
+%>
 
 <ol class="breadcrumb">
   <li><%= link_to 'Home', root_url %></li>
