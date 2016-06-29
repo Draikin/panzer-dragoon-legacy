@@ -1,7 +1,3 @@
-class EncyclopaediaEntryDecorator < Draper::Decorator
+class EncyclopaediaEntryDecorator < ApplicationDecorator
   delegate_all
-
-  def illustrated_content
-    h.illustrated_markdown_to_html model.id, 'EncyclopaediaEntry', model.content
-  end
 end
