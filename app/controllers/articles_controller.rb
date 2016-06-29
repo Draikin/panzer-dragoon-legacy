@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
   end
 
   def load_article
-    @article = Article.find_by url: params[:id]
+    @article = Article.find_by(url: params[:id]).decorate
     authorize @article
   end
 
