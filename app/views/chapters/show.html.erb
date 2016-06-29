@@ -28,7 +28,7 @@
   <%= @chapter.name %>
 </h2>
 
-<%= raw illustrated_markdown_to_html @chapter.id, "Chapter", @chapter.content %>
+<%= raw @chapter.illustrated_content %>
 
 <nav class="chapters">
   <% if @previous_chapter %>

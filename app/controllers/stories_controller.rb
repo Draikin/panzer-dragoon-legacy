@@ -70,7 +70,7 @@ class StoriesController < ApplicationController
   end
 
   def load_story
-    @story = Story.find_by url: params[:id]
+    @story = Story.find_by(url: params[:id]).decorate
     authorize @story
   end
 

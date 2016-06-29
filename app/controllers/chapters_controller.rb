@@ -52,7 +52,7 @@ class ChaptersController < ApplicationController
   end
 
   def load_chapter
-    @chapter = Chapter.find_by url: params[:id]
+    @chapter = Chapter.find_by(url: params[:id]).decorate
     authorize @chapter.story
   end
 

@@ -50,7 +50,7 @@ class PagesController < ApplicationController
   end
 
   def load_page
-    @page = Page.find_by url: params[:id]
+    @page = Page.find_by(url: params[:id]).decorate
     authorize @page
   end
 

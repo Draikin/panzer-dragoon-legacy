@@ -47,7 +47,7 @@
   <% end %>
 </ul>
 
-<%= raw illustrated_markdown_to_html @story.id, "Story", @story.content %>
+<%= raw @story.illustrated_content %>
 
 <% if @story.chapters.count > 0 %>
   <h2>Table of Contents:</h2>

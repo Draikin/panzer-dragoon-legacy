@@ -41,8 +41,7 @@
   encyclopaedia_entry: @encyclopaedia_entry
 %>
 
-<%= raw illustrated_markdown_to_html @encyclopaedia_entry.id,
-  "EncyclopaediaEntry", @encyclopaedia_entry.content %>
+<%= raw @encyclopaedia_entry.illustrated_content %>
 
 <% unless @articles.count == 0 %>
   <%= render 'encyclopaedia_entries/show/related_articles',

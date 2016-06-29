@@ -71,7 +71,7 @@ class ResourcesController < ApplicationController
   end
 
   def load_resource
-    @resource = Resource.find_by url: params[:id]
+    @resource = Resource.find_by(url: params[:id]).decorate
     authorize @resource
   end
 

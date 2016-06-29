@@ -43,8 +43,7 @@
   <% end %>
 </ul>
 
-<%= raw illustrated_markdown_to_html @resource.id, "Resource",
-  @resource.content %>
+<%= raw @resource.illustrated_content %>
 
 <%= render 'shared/show/related_encyclopaedia_entries' %>
 

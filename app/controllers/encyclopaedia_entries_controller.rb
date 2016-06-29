@@ -90,7 +90,7 @@ class EncyclopaediaEntriesController < ApplicationController
   end
 
   def load_encyclopaedia_entry
-    @encyclopaedia_entry = EncyclopaediaEntry.find_by url: params[:id]
+    @encyclopaedia_entry = EncyclopaediaEntry.find_by(url: params[:id]).decorate
     authorize @encyclopaedia_entry
   end
 
