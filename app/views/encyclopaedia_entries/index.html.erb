@@ -10,8 +10,9 @@
 %>
   <div class="btn-group" role="group">
     <% if policy(CategoryGroup).new? %>
-      <%= link_to
-        new_category_group_path(category_group_type: :encyclopaedia_entry),
+      <%= link_to new_category_group_path(
+          category_group_type: :encyclopaedia_entry
+        ),
         { class: 'btn btn-secondary', role: 'button' } do %>
         <%= fa_icon 'tag' %> New Category Group
       <% end %>
