@@ -50,10 +50,7 @@
 <ol class="breadcrumb">
   <li><%= link_to 'Home', root_url %></li>
   <li><%= link_to 'Resources', resources_path %></li>
-  <li>
-    <%= link_to @resource.category.name,
-      category_path(@resource.category)
-    %>
-  </li>
+  <li><%= link_to @resource.category.name,
+    category_path(@resource.category) %></li>
   <li class="active"><%= @resource.name %></li>
 </ol>

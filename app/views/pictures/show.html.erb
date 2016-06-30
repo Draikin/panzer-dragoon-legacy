@@ -58,10 +58,7 @@
 <ol class="breadcrumb">
   <li><%= link_to 'Home', root_url %></li>
   <li><%= link_to 'Pictures', pictures_path %></li>
-  <li>
-    <%= link_to @picture.category.name,
-      category_path(@picture.category)
-    %>
-  </li>
+  <li><%= link_to @picture.category.name,
+    category_path(@picture.category) %></li>
   <li class="active"><%= @picture.name %></li>
 </ol>

@@ -87,10 +87,7 @@
 <ol class="breadcrumb">
   <li><%= link_to 'Home', root_url %></li>
   <li><%= link_to 'Encyclopaedia', encyclopaedia_entries_path %></li>
-  <li>
-    <%= link_to @encyclopaedia_entry.category.name,
-      category_path(@encyclopaedia_entry.category)
-    %>
-  </li>
+  <li><%= link_to @encyclopaedia_entry.category.name,
+    category_path(@encyclopaedia_entry.category) %></li>
   <li class="active"><%= @encyclopaedia_entry.name %></li>
 </ol>

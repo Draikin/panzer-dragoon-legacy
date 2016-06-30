@@ -66,10 +66,6 @@
 <ol class="breadcrumb">
   <li><%= link_to 'Home', root_url %></li>
   <li><%= link_to 'Videos', videos_path %></li>
-  <li>
-    <%= link_to @video.category.name,
-      category_path(@video.category)
-    %>
-  </li>
+  <li><%= link_to @video.category.name, category_path(@video.category) %></li>
   <li class="active"><%= @video.name %></li>
 </ol>
