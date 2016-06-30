@@ -12,25 +12,27 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div id="overall">
-      <%= render 'illustrations/popover' %>
-      <div id="header">
-        <%= link_to image_tag("logo.png", id: "logo",
-          alt: "Panzer Dragoon Legacy"), root_url %>
-        <%= render 'layouts/social_media_links' %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to image_tag("logo.png", id: "logo",
+            alt: "Panzer Dragoon Legacy"), root_url %>
+          <%= render 'layouts/social_media_links' %>
+        </div>
       </div>
-      <div id="banner"></div>
-      <div id="navigation">
-        <%= render 'layouts/top_navigation' %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= render 'layouts/top_navigation' %>
+        </div>
       </div>
-      <div id="main">
-        <div id="aside">
+      <div class="row">
+        <div class="col-md-4">
           <%= render 'layouts/left_navigation',
             sagas: @sagas,
             partner_sites: @partner_sites
           %>
         </div>
-        <div id="content">
+        <div class="col-md-8">
           <% flash.each do |name, msg| %>
             <%= content_tag :div, msg, id: "flash_#{name}" %>
           <% end %>
@@ -38,8 +40,10 @@
           <%= yield %>
         </div>
       </div>
-      <div id="footer">
-        <%= render 'layouts/bottom_navigation' %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= render 'layouts/bottom_navigation' %>
+        </div>
       </div>
     </div>
   </body>
