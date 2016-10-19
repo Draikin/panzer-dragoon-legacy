@@ -20,7 +20,7 @@
 %>
 
 <ol class="breadcrumb">
-  <li><%= link_to 'Home', root_url %></li>
-  <li><%= link_to 'Contributors', contributor_profiles_path %></li>
-  <li class="active"><%= @contributor_profile.name %></li>
+  <li class="breadcrumb-item"><%= link_to 'Home', root_url %></li>
+  <li class="breadcrumb-item"><%= link_to 'Contributors', contributor_profiles_path %></li>
+  <li class="breadcrumb-item active"><%= @contributor_profile.name %></li>
 </ol>

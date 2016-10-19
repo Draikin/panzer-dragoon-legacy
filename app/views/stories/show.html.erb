@@ -82,8 +82,8 @@
 <%= render 'shared/show/related_encyclopaedia_entries' %>
 
 <ol class="breadcrumb">
-  <li><%= link_to 'Home', root_url %></li>
-  <li><%= link_to 'Stories', stories_path %></li>
-  <li><%= link_to @story.category.name, category_path(@story.category) %></li>
-  <li class="active"><%= @story.name %></li>
+  <li class="breadcrumb-item"><%= link_to 'Home', root_url %></li>
+  <li class="breadcrumb-item"><%= link_to 'Stories', stories_path %></li>
+  <li class="breadcrumb-item"><%= link_to @story.category.name, category_path(@story.category) %></li>
+  <li class="breadcrumb-item active"><%= @story.name %></li>
 </ol>

@@ -56,9 +56,9 @@
 <%= render 'shared/show/related_encyclopaedia_entries' %>
 
 <ol class="breadcrumb">
-  <li><%= link_to 'Home', root_url %></li>
-  <li><%= link_to 'Pictures', pictures_path %></li>
-  <li><%= link_to @picture.category.name,
+  <li class="breadcrumb-item"><%= link_to 'Home', root_url %></li>
+  <li class="breadcrumb-item"><%= link_to 'Pictures', pictures_path %></li>
+  <li class="breadcrumb-item"><%= link_to @picture.category.name,
     category_path(@picture.category) %></li>
-  <li class="active"><%= @picture.name %></li>
+  <li class="breadcrumb-item active"><%= @picture.name %></li>
 </ol>

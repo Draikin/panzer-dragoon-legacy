@@ -7,7 +7,7 @@
 <% end %>
 <%= render 'music_tracks/list' %>
 <ol class="breadcrumb">
-  <li><%= link_to 'Home', root_url %></li>
-  <li><%= link_to 'Music', music_tracks_path %></li>
-  <li class="active"><%= @category.name %></li>
+  <li class="breadcrumb-item"><%= link_to 'Home', root_url %></li>
+  <li class="breadcrumb-item"><%= link_to 'Music', music_tracks_path %></li>
+  <li class="breadcrumb-item active"><%= @category.name %></li>
 </ol>
