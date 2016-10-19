@@ -26,7 +26,7 @@ group :test do
 end
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-bootstrap', '4.0.0.alpha.2'
+  gem 'rails-assets-bootstrap', '4.0.0.alpha.4'
 end
 
 gem 'bcrypt', '~> 3.1.7'
