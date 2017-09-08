@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.2.6'
+gem 'rails', '5.1.4'
 gem 'rake', '11.1.1'
 
 group :development do
@@ -11,7 +11,7 @@ group :development do
   gem 'puma', '~> 3.1.0'
   gem 'rubocop', '~> 0.39.0', require: false
   gem 'spring', '~> 1.1.2'
-  gem 'web-console', '~> 2.0.0'
+  gem 'web-console', '~> 3.5.1'
 end
 
 group :development, :test do
@@ -20,31 +20,31 @@ group :development, :test do
 end
 
 group :test do
-  gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'factory_girl_rails', '~> 4.8.0'
   gem 'pundit-matchers', '~> 1.3.0'
-  gem 'shoulda-matchers', '~> 2.8.0'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'cocoon', '~> 1.2.9'
-gem 'devise', '~> 3.5.2'
-gem 'font-awesome-rails', '~> 4.5.0.0'
-gem 'jquery-rails', '~> 3.1.0'
-gem 'kaminari', '~> 0.15.1'
+gem 'devise', '~> 4.3.0'
+gem 'font-awesome-rails', '~> 4.7.0.2'
+gem 'jquery-rails', '~> 4.3.1'
+gem 'kaminari', '~> 1.0.1'
 gem 'kramdown', '~> 1.3.3'
 gem 'local_time', '~> 0.3.0'
 gem 'mini_magick', '~> 4.3.3'
 gem 'nokogiri', '1.6.6.2'
-gem 'paperclip', '~> 4.3.1'
-gem 'pg', '~> 0.17.1'
+gem 'paperclip', '~> 5.1.0'
+gem 'pg', '~> 0.21.0'
 gem 'pundit', '~> 1.1.0'
 gem 'rails_autolink', '~> 1.1.5'
 gem 'sanitize', '~> 3.1.0'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.6'
 gem 'select2-rails', '~> 4.0.0'
 gem 'stringex', '~> 2.5.2'
 gem 'therubyracer', '~> 0.12.2'
-gem 'turbolinks', '~> 2.5.3'
+gem 'turbolinks', '~> 5.0.1'
 gem 'twitter', '~> 5.14.0'
 gem 'uglifier', '>= 2.5.0'
 gem 'unicorn', '~> 5.0.1'
