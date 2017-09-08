@@ -1,4 +1,4 @@
-class CategoryGroup < ActiveRecord::Base
+class CategoryGroup < ApplicationRecord
   include Sluggable
 
   has_many :categories, dependent: :destroy

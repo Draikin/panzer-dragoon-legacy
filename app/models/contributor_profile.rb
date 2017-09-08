@@ -1,4 +1,4 @@
-class ContributorProfile < ActiveRecord::Base
+class ContributorProfile < ApplicationRecord
   include Sluggable
 
   has_one :user, dependent: :destroy

@@ -1,4 +1,4 @@
-class Picture < ActiveRecord::Base
+class Picture < ApplicationRecord
   acts_as_url :name, sync_url: true
 
   include Categorisable

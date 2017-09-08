@@ -1,4 +1,4 @@
-class Story < ActiveRecord::Base
+class Story < ApplicationRecord
   include Categorisable
   include Contributable
   include Illustratable

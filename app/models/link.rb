@@ -1,4 +1,4 @@
-class Link < ActiveRecord::Base
+class Link < ApplicationRecord
   include Categorisable
   include Relatable
 

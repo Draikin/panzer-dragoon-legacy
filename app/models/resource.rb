@@ -1,4 +1,4 @@
-class Resource < ActiveRecord::Base
+class Resource < ApplicationRecord
   acts_as_url :name, sync_url: true
 
   include Categorisable

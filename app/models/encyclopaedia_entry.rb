@@ -1,4 +1,4 @@
-class EncyclopaediaEntry < ActiveRecord::Base
+class EncyclopaediaEntry < ApplicationRecord
   include Categorisable
   include Illustratable
   include Sluggable

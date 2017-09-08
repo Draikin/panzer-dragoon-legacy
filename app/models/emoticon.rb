@@ -1,4 +1,4 @@
-class Emoticon < ActiveRecord::Base
+class Emoticon < ApplicationRecord
   include Syncable
 
   validates :name, presence: true, length: { in: 2..25 }, uniqueness: true
