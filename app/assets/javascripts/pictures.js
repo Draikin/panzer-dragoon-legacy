@@ -1,4 +1,4 @@
-$(document).on('ready page:load', function() {
+$(document).on('ready turbolinks:load', function() {
   $('#picture_id_of_picture_to_replace').select2();
   $('#picture_category_id').select2();
   $('#picture_album_id').select2();
