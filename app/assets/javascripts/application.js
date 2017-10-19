@@ -3,6 +3,6 @@
 //= require cocoon
 //= require local_time
 //= require turbolinks
-//= require select2
+//= require select2-full
 //= require_self
 //= require_tree .
