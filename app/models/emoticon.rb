@@ -20,10 +20,10 @@ class Emoticon < ApplicationRecord
   before_save :sync_file_name, :set_code
 
   def sync_file_name
-    sync_file_name_of :emoticon, file_name: "#{name.to_url}.gif"
+    sync_file_name_of :emoticon, file_name: "#{name.to_url}.gif" if valid?
   end
 
   def set_code
-    self.code = ":#{name.to_url}:"
+    self.code = ":#{name.to_url}:" if valid?
   end
 end

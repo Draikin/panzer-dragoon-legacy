@@ -94,9 +94,11 @@ class EncyclopaediaEntry < ApplicationRecord
   before_save :sync_file_name
 
   def sync_file_name
-    sync_file_name_of(
-      :encyclopaedia_entry_picture,
-      file_name: "#{name.to_url}.jpg"
-    )
+    if valid?
+      sync_file_name_of(
+        :encyclopaedia_entry_picture,
+        file_name: "#{name.to_url}.jpg"
+      )
+    end
   end
 end
