@@ -1,5 +1,5 @@
 class QuizQuestion < ApplicationRecord
-  belongs_to :quiz
+  belongs_to :quiz, optional: true
   has_many :quiz_answers, dependent: :destroy
   accepts_nested_attributes_for(
     :quiz_answers,
