@@ -13,5 +13,5 @@ class User < ApplicationRecord
     :timeoutable
   )
 
-  belongs_to :contributor_profile
+  belongs_to :contributor_profile, optional: true
 end
