@@ -342,7 +342,7 @@ DEPENDENCIES
   rubocop (~> 0.39.0)
   sanitize (~> 3.1.0)
   sass-rails (~> 5.0.6)
-  select2-rails (~> 4.0.0)
+  select2-rails (~> 4.0.3)
   shoulda-matchers!
   spring (~> 1.1.2)
   stringex (~> 2.5.2)
