@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise(
@@ -13,5 +13,5 @@ class User < ActiveRecord::Base
     :timeoutable
   )
 
-  belongs_to :contributor_profile
+  belongs_to :contributor_profile, optional: true
 end

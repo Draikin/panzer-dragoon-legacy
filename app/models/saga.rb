@@ -1,4 +1,4 @@
-class Saga < ActiveRecord::Base
+class Saga < ApplicationRecord
   include Sluggable
 
   belongs_to :encyclopaedia_entry

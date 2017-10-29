@@ -1,4 +1,4 @@
-class MusicTrack < ActiveRecord::Base
+class MusicTrack < ApplicationRecord
   acts_as_url :name, sync_url: true
 
   include Categorisable

@@ -1,4 +1,4 @@
-class Relation < ActiveRecord::Base
+class Relation < ApplicationRecord
   belongs_to :encyclopaedia_entry
-  belongs_to :relatable, polymorphic: true
+  belongs_to :relatable, polymorphic: true, optional: true
 end

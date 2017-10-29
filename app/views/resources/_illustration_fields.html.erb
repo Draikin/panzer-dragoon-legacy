@@ -4,7 +4,7 @@
   <% else %>
     <%= image_tag f.object.illustration.url(:embedded) %>
     <br />
-    <button class="insert_tag">Insert Markdown Tag</button><br />
+    <button type="button" class="insert_tag">Insert Markdown Tag</button><br />
     Filename: <%= f.object.illustration_file_name %><br />
     <%= link_to 'Popover Image', f.object.illustration.url(:popover) %> |
     <%= link_to 'Original Image', f.object.illustration.url %> |

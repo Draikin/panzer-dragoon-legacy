@@ -1,4 +1,4 @@
-$(document).on('ready page:load', function() {
+$(document).on('ready turbolinks:load', function() {
 
   jQuery.fn.extend({
     getSelectedTextInTextArea: function () {
@@ -45,7 +45,7 @@ $(document).on('ready page:load', function() {
             sel.moveStart("character", -content.length); // move start of selection from the end point back to the start of the content (excluding the start tag)
           }
 
-          if (closeTag == "" && openTag == "") { // needed to set the selected text positions when no tags were used... 
+          if (closeTag == "" && openTag == "") { // needed to set the selected text positions when no tags were used...
             sel.moveStart("character", -length);
           }
           sel.select();
@@ -101,14 +101,14 @@ $(document).on('ready page:load', function() {
     });
 
     $(".insert_tag").click(function (event) {
-      // Get parent element and then get its child elements of type "img" to retrieve their image text 
+      // Get parent element and then get its child elements of type "img" to retrieve their image text
       // this makes sure we get the image element that resides in the same parent div of the button we clicked.
       var imageText = $(this).parent().children("img").attr('src').split('/').pop();
 
-      // Removes question mark and numbers from after the .jpg. 
+      // Removes question mark and numbers from after the .jpg.
       imageText = imageText.substring(0, imageText.indexOf("jpg") + "jpg".length);
 
-      // Removes "jpg" from the end of the caption and captialise the first character. 
+      // Removes "jpg" from the end of the caption and captialise the first character.
       captionText = imageText.replace(/-/g, " ").replace("jpg", "");
       captionText = captionText.charAt(0).toUpperCase() + captionText.slice(1);
 

@@ -1,4 +1,4 @@
-$(document).on('ready page:load', function() {
+$(document).on('ready turbolinks:load', function() {
 	$('#encyclopaedia_entry_category_id').select2();
 	$('#encyclopaedia_entry_contributor_profile_ids').select2();
 	$('#encyclopaedia_entry_article_ids').select2();

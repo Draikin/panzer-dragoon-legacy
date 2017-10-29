@@ -1,3 +1,3 @@
-class QuizAnswer < ActiveRecord::Base
-  belongs_to :quiz_question
+class QuizAnswer < ApplicationRecord
+  belongs_to :quiz_question, optional: true
 end

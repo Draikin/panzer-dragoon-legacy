@@ -1,4 +1,4 @@
-class Poem < ActiveRecord::Base
+class Poem < ApplicationRecord
   include Contributable
   include Relatable
   include Sluggable

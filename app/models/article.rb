@@ -1,4 +1,4 @@
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
   include Categorisable
   include Contributable
   include Illustratable

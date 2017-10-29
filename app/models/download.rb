@@ -1,4 +1,4 @@
-class Download < ActiveRecord::Base
+class Download < ApplicationRecord
   acts_as_url :name, sync_url: true
 
   include Categorisable

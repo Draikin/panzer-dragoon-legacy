@@ -75,10 +75,10 @@ class QuizPolicy < ApplicationPolicy
   end
 
   def quiz_questions_attributes
-    [:content, quiz_answers_attributes: quiz_answers_attributes]
+    [:id, :content, quiz_answers_attributes: quiz_answers_attributes]
   end
 
   def quiz_answers_attributes
-    [:content, :correct_answer]
+    [:id, :content, :correct_answer]
   end
 end

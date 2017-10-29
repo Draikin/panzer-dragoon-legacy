@@ -11,7 +11,7 @@
 <% if policy(@quiz).new? || policy(@quiz).edit? || policy(@quiz).destroy? %>
   <ul class="administration">
     <% if policy(@quiz).new? %>
-      <li><%= link_to 'New Poem', new_poem_path %></li>
+      <li><%= link_to 'New Quiz', new_quiz_path %></li>
     <% end %>
     <% if policy(@quiz).edit? %>
       <li><%= link_to 'Edit Quiz', edit_quiz_path(@quiz) %></li>

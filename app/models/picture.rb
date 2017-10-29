@@ -1,4 +1,4 @@
-class Picture < ActiveRecord::Base
+class Picture < ApplicationRecord
   acts_as_url :name, sync_url: true
 
   include Categorisable
@@ -6,7 +6,7 @@ class Picture < ActiveRecord::Base
   include Relatable
   include Syncable
 
-  belongs_to :album
+  belongs_to :album, optional: true
 
   validates :name, presence: true, length: { in: 2..100 }
   validates :description, presence: true, length: { in: 2..250 }

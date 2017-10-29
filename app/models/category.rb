@@ -1,7 +1,7 @@
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   include Sluggable
 
-  belongs_to :category_group
+  belongs_to :category_group, optional: true
   has_many :articles, dependent: :destroy
   has_many :downloads, dependent: :destroy
   has_many :encyclopaedia_entries, dependent: :destroy

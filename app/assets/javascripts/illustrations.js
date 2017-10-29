@@ -1,4 +1,4 @@
-$(document).on('ready page:load', function() {
+$(document).on('ready turbolinks:load', function() {
 
   $("a.popover").click(function(event) {
     var popover_caption, popover_height, popover_src, popover_width;

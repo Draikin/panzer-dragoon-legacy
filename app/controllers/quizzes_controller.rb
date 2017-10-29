@@ -13,9 +13,11 @@ class QuizzesController < ApplicationController
 
   def show
     if params[:commit]
-      check_quiz_results if params[:results]
-    else
-      flash.now[:notice] = "You haven't filled out the quiz."
+      if params[:results]
+        check_quiz_results
+      else
+        flash.now[:notice] = "You haven't filled out the quiz."
+      end
     end
     @encyclopaedia_entries = EncyclopaediaEntryPolicy::Scope.new(
       current_user,
@@ -103,7 +105,7 @@ class QuizzesController < ApplicationController
   end
 
   def check_quiz_results
-    if params[:results].count < @quiz.quiz_questions.count
+    if params[:results].keys.count < @quiz.quiz_questions.count
       flash.now[:notice] = 'You must fill out all questions.'
     else
       @show_results = true

@@ -1,4 +1,4 @@
-class NewsEntry < ActiveRecord::Base
+class NewsEntry < ApplicationRecord
   include Sluggable
   include Syncable
 
@@ -63,9 +63,11 @@ class NewsEntry < ActiveRecord::Base
   end
 
   def sync_file_name
-    sync_file_name_of(
-      :news_entry_picture,
-      file_name: "#{name.to_url}.jpg"
-    )
+    if valid?
+      sync_file_name_of(
+        :news_entry_picture,
+        file_name: "#{name.to_url}.jpg"
+      )
+    end
   end
 end

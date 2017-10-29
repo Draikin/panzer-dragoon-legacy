@@ -1,4 +1,4 @@
-class Chapter < ActiveRecord::Base
+class Chapter < ApplicationRecord
   include Illustratable
 
   acts_as_url :story_chapter_name, sync_url: true
