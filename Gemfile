@@ -9,7 +9,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.6'
   gem 'capistrano-rbenv', '~> 2.0.4'
   gem 'puma', '~> 3.1.0'
-  gem 'rubocop', '~> 0.39.0', require: false
+  gem 'rubocop', '~> 0.51.0', require: false
   gem 'spring', '~> 1.1.2'
   gem 'web-console', '~> 3.5.1'
 end
