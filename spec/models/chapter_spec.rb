@@ -26,8 +26,8 @@ RSpec.describe Chapter, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:number) }
     it do
-      is_expected.to validate_numericality_of(:number).is_greater_than(0)
-        .is_less_than(100)
+      is_expected.to validate_numericality_of(:number)
+        .is_greater_than(0).is_less_than(100)
     end
     it { is_expected.to validate_presence_of(:content) }
   end

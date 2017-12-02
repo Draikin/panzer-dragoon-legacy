@@ -32,8 +32,8 @@ RSpec.describe Story, type: :model do
     end
     it { is_expected.to validate_presence_of(:description) }
     it do
-      is_expected.to validate_length_of(:description).is_at_least(2)
-        .is_at_most(250)
+      is_expected.to validate_length_of(:description)
+        .is_at_least(2).is_at_most(250)
     end
     it { is_expected.to validate_presence_of(:category) }
 
