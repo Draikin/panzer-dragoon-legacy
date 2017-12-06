@@ -49,5 +49,5 @@ Rails.application.routes.draw do
   resources :drafts
 
   get ':id', to: 'pages#show'
-  root to: "news_entries#index"
+  root to: 'news_entries#index'
 end
