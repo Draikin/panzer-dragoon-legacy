@@ -50,8 +50,14 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     ast (2.3.0)
+    autoprefixer-rails (7.2.1)
+      execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap (4.0.0.beta2.1)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.3, < 2)
+      sass (>= 3.5.2)
     buftok (0.2.0)
     builder (3.2.3)
     byebug (3.1.2)
@@ -183,6 +189,7 @@ GEM
     parser (2.4.0.2)
       ast (~> 2.3)
     pg (0.21.0)
+    popper_js (1.12.5)
     powerpack (0.1.1)
     public_suffix (3.0.0)
     puma (3.1.1)
@@ -330,6 +337,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  bootstrap (~> 4.0.0.beta2.1)
   byebug (~> 3.1.2)
   capistrano (= 3.4.0)
   capistrano-bundler (~> 1.1.4)

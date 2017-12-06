@@ -9,9 +9,9 @@
     <meta name="description" content="<%= yield(:description) %>" />
     <%= favicon_link_tag 'favicon.ico' %>
     <%= auto_discovery_link_tag(:atom, news_entries_path(:atom)) %>
-    <%= stylesheet_link_tag "application", media: "all",
+    <%= stylesheet_link_tag "v5", media: "all",
       "data-turbolinks-track" => "reload" %>
-    <%= javascript_include_tag "application",
+    <%= javascript_include_tag "v5",
       "data-turbolinks-track" => "reload" %>
     <%= csrf_meta_tags %>
   </head>

@@ -26,6 +26,7 @@ group :test do
 end
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'cocoon', '~> 1.2.9'
 gem 'devise', '~> 4.3.0'
 gem 'font-awesome-rails', '~> 4.7.0.2'
