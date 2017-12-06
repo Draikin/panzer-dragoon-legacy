@@ -1,4 +1,5 @@
 class V5::PicturesController < ApplicationController
+  layout 'v5'
   include LoadableForPicture
 
   before_action :load_replaceable_pictures, except: [:index, :show, :destroy]

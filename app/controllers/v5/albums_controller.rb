@@ -1,4 +1,5 @@
 class V5::AlbumsController < ApplicationController
+  layout 'v5'
   include LoadableForAlbum
 
   before_action :load_categories, except: [:index, :destroy]

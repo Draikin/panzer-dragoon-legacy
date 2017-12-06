@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Panzer Dragoon Legacy
+      <% if yield(:title).present? %> - <%= yield(:title) %><% end %>
+    </title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="<%= yield(:description) %>" />
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= auto_discovery_link_tag(:atom, news_entries_path(:atom)) %>
+    <%= stylesheet_link_tag "application", media: "all",
+      "data-turbolinks-track" => "reload" %>
+    <%= javascript_include_tag "application",
+      "data-turbolinks-track" => "reload" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="overall">
+      <%= render 'illustrations/popover' %>
+      <%= render 'v5/layouts/header' %>
+      <%= render 'v5/layouts/top_navigation' %>
+      <div id="main">
+        <%= render 'v5/layouts/left_navigation' %>
+        <div id="content">
+          <% flash.each do |name, msg| %>
+            <% unless name.to_s == 'timedout' %>
+              <%= content_tag :div, msg, id: "flash_#{name}" %>
+            <% end %>
+          <% end %>
+          <% if yield(:title).present? %>
+            <h1><%= yield(:title) %></h1>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+      <%= render 'v5/layouts/footer' %>
+    </div>
+  </body>
+</html>

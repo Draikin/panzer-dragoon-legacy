@@ -1,4 +1,5 @@
 class V5::ArticlesController < ApplicationController
+  layout 'v5'
   before_action :load_categories, except: [:show, :destroy]
   before_action :load_article, except: [:index, :new, :create]
 
