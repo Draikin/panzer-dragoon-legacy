@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :v5 do
+    resources :albums
+    resources :articles
+    resources :pictures
+  end
+
   devise_for :users, path: "", path_names: {
     sign_in: "log-in",
     sign_out: "log-out",

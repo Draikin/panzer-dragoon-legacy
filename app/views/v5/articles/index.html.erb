@@ -1,0 +1,44 @@
+<% if @contributor_profile %>
+  <% title "#{@contributor_profile.name}'s Articles" %>
+<% elsif params[:filter] == 'draft' %>
+  <% title 'Draft Articles' %>
+<% else %>
+  <% title 'Articles' %>
+<% end %>
+
+<% if policy(Category).new? || policy(Article).new? %>
+  <ul class="administration">
+    <% if policy(Category).new? %>
+      <li>
+        <%=
+          link_to(
+            'New Category', new_category_path(category_type: :article)
+          )
+        %>
+      </li>
+    <% end %>
+    <% if policy(Article).new? %>
+      <li><%= link_to 'New Article', new_v5_article_path %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% unless params[:contributor_profile_id] || params[:filter] %>
+  <% if @categories.present? %>
+    <h2>Article Categories</h2>
+    <ul class="categories">
+      <% @categories.each do |category| %>
+        <li><%= link_to category.name, category %>
+          <% unless category.publish %>
+            - <span class="unpublished">Unpublished</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if @articles.present? %>
+    <h2>All Articles</h2>
+  <% end %>
+<% end %>
+
+<%= render 'list' %>
