@@ -1,26 +1,29 @@
 <%= form_for [:v5, @article], html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', target: @article %>
-  <div>
-    <div>
-      <%= f.label :category_id, 'Category*' %>
-    </div>
-    <div>
+  <div class="form-group row">
+    <%= f.label :category_id, 'Category*', class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
       <%=
         f.collection_select(
           :category_id,
           @categories,
           :id,
           :name,
-          { include_blank: true }
+          { include_blank: true },
+          { class: 'form-control' }
         )
       %>
     </div>
   </div>
-  <div>
-    <div>
-      <%= f.label :contributor_profile_ids, 'Contributors*' %>
-    </div>
-    <div>
+  <div class="form-group row">
+    <%= 
+      f.label(
+        :contributor_profile_ids, 
+        'Contributors*', 
+        class: 'col-sm-2 col-form-label'
+      )
+    %>
+    <div class="col-sm-10">
       <%=
         f.collection_select(
           :contributor_profile_ids,
@@ -28,51 +31,55 @@
           :id,
           :name,
           { selected: @article.contributor_profile_ids, include_blank: true },
-          { multiple: true }
+          { multiple: true, class: 'form-control' }
         )
       %>
     </div>
   </div>
-  <div>
-    <div>
-      <%= f.label :name, 'Name*' %>
-    </div>
-    <div>
-      <%= f.text_field :name %>
+  <div class="form-group row">
+    <%= f.label :name, 'Name*', class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: 'form-control' %>
     </div>
   </div>
-  <div>
-    <div>
-      <%= f.label :description, 'Description*' %>
-    </div>
-    <div>
-      <%= f.text_area :description, rows: 3 %>
-    </div>
-  </div>
-  <div>
-    <div>
-      <%= f.label :content, 'Content*' %>
-    </div>
-    <div>
-      <%= f.text_area :content, rows: 15, class: 'data_entry' %>
-      <p>
-        (You may use a <a href="/markdown-syntax-guide" target="_blank">limited
-        subset of Markdown</a> to format the article's content)
-      </p>
+  <div class="form-group row">
+    <%= 
+      f.label(
+        :description,
+        'Description*',
+        class: 'col-sm-2 col-form-label'
+      )
+    %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, rows: 3, class: 'form-control' %>
     </div>
   </div>
-  <div>
-    <label>Illustrations</label>
+  <div class="form-group row">
+    <%= f.label :content, 'Content*', class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <%= f.text_area :content, rows: 15, class: 'form-control data_entry' %>
+      <small>
+        You may use a <a href="/markdown-syntax-guide" target="_blank">limited
+        subset of Markdown</a> to format the article's content.
+      </small>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Illustrations</label>
     <%= f.fields_for :illustrations do |illustration_fields| %>
       <%= render 'illustration_fields', f: illustration_fields %>
     <% end %>
     <p><%= link_to_add_association 'Add Illustration', f, :illustrations %></p>
   </div>
-  <div>
-    <div>
-      <%= f.label :encyclopaedia_entry_ids, 'Related Encyclopaedia Entries' %>
-    </div>
-    <div>
+  <div class="form-group row">
+    <%=
+      f.label(
+        :encyclopaedia_entry_ids,
+        'Related Encyclopaedia Entries',
+        class: 'col-sm-2 col-form-label'
+      )
+    %>
+    <div class="col-sm-10">
       <%=
         f.collection_select(
           :encyclopaedia_entry_ids,
@@ -80,14 +87,17 @@
           :id,
           :name,
           { selected: @article.encyclopaedia_entry_ids, include_blank: true },
-          { multiple: true }
+          { multiple: true, class: 'form-control' }
         )
       %>
     </div>
   </div>
   <% if policy(@article).permitted_attributes.include? :publish %>
-    <div>
-      <%= f.check_box :publish %> <%= f.label :publish, 'Publish?' %>
+    <div class="form-check">
+      <label class="form-check-label">
+        <%= f.check_box :publish, class: 'form-check-input' %>
+        Publish?
+      </label>
     </div>
   <% end %>
   <div>

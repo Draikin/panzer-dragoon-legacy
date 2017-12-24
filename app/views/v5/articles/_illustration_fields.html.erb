@@ -1,11 +1,12 @@
-<div class="illustration nested-fields">
+<div class="col-sm-10 illustration nested-fields">
   <% if f.object.illustration_file_name.blank? %>
     <%= f.file_field :illustration %>
   <% else %>
     <%= image_tag f.object.illustration.url(:embedded) %>
-    <br />
-    <button type="button" class="insert_tag">Insert Markdown Tag</button><br />
-    Filename: <%= f.object.illustration_file_name %><br />
+    <a class="btn btn-primary insert_tag" href="#" role="button">
+      Insert Markdown Tag
+    </a>
+    <p>Filename: <%= f.object.illustration_file_name %></p>
     <%= link_to 'Popover Image', f.object.illustration.url(:popover) %> |
     <%= link_to 'Original Image', f.object.illustration.url %> |
   <% end %>
