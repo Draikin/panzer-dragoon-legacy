@@ -16,25 +16,16 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div id="overall">
-      <%= render 'illustrations/popover' %>
-      <%= render 'v5/layouts/header' %>
-      <%= render 'v5/layouts/top_navigation' %>
-      <div id="main">
-        <%= render 'v5/layouts/left_navigation' %>
-        <div id="content">
-          <% flash.each do |name, msg| %>
-            <% unless name.to_s == 'timedout' %>
-              <%= content_tag :div, msg, id: "flash_#{name}" %>
-            <% end %>
-          <% end %>
-          <% if yield(:title).present? %>
-            <h1><%= yield(:title) %></h1>
-          <% end %>
-          <%= yield %>
-        </div>
-      </div>
-      <%= render 'v5/layouts/footer' %>
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <% unless name.to_s == 'timedout' %>
+          <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <% end %>
+      <% end %>
+      <% if yield(:title).present? %>
+        <h1><%= yield(:title) %></h1>
+      <% end %>
+      <%= yield %>
     </div>
   </body>
 </html>
