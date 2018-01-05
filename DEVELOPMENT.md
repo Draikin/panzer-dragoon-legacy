@@ -2,7 +2,25 @@
 
 Step-by-step instructions for setting up a development environment for the site.
 
-## Set Up the Virtual Machine
+## Docker Setup (Recommended)
+
+1. Install Docker and Compose from: https://docs.docker.com/engine/installation
+
+2. Clone the app into this directory and change into it:
+
+   `git clone https://github.com/chrisalley/panzer-dragoon-legacy.git`
+
+   `cd panzer-dragoon-legacy`
+
+3. Run `docker-compose run web` to build the image. `ctrl+c`
+
+4. Run `docker-compose up`
+
+5. In another tab run `docker-compose run web rake db:create && rake db:setup`
+
+## Manual Setup
+
+### Set Up the Virtual Machine
 
 These instructions are geared towards setting up the development environment in
 a Debian-based virtual machine (specifically Linux Mint). Alternatively,
@@ -42,7 +60,7 @@ Homebrew for package management instead of APT.
 
    `sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev`
 
-## Set Up the Ruby Environment
+### Set Up the Ruby Environment
 
 1. Clone the latest version of rbenv:
 
@@ -95,7 +113,7 @@ Homebrew for package management instead of APT.
 
     `rbenv rehash`
 
-## Install Other Rails Dependencies
+### Install Other Rails Dependencies
 
 1. Install nodejs (for the asset pipeline):
 
@@ -105,7 +123,7 @@ Homebrew for package management instead of APT.
 
    `sudo apt-get install imagemagick`
 
-## Set Up PostgreSQL
+### Set Up PostgreSQL
 
 1. Install PostgreSQL:
 
@@ -146,7 +164,7 @@ Homebrew for package management instead of APT.
 
    `\q`
 
-## Set Up the Rails App
+### Set Up the Rails App
 
 1. Create a Code directory and change into it:
 
