@@ -6,5 +6,3 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 COPY . /myapp
-COPY config/examples/database.yml /myapp/database.yml
-COPY config/examples/secrets.yml /myapp/secrets.yml

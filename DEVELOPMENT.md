@@ -18,11 +18,16 @@ Step-by-step instructions for setting up a development environment for the site.
 
    `docker rmi panzerdragoonlegacy_web --force`
 
-4. Run `docker-compose run web` to build the image. `ctrl+c`
+   You may need to delete images marked with `<none>` too, using the `IMAGE ID`
+   instead of the `REPOSITORY` in the above command to delete these.
 
-5. Run `docker-compose up`
+4. Run `docker-compose run web` to build the image. `ctrl+c` once finished.
 
-6. In another tab run `docker-compose run web rake db:create && rake db:setup`
+5. Run `docker-compose up`. If this causes an error, run `docker-compose down`.
+
+6. In another tab run `docker-compose run web bundle exec rake db:create && `
+   `bundle exec rake db:setup`
+   (in the `panzer-dragoon-legacy` directory).
 
 ## Manual Setup
 
