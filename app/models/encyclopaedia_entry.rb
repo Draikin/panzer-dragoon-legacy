@@ -16,6 +16,7 @@ class EncyclopaediaEntry < ActiveRecord::Base
     :encyclopaedia_entry_picture,
     styles: {
       mini_thumbnail: '25x25#',
+      square_thumbnail: '100x100#',
       thumbnail: '150x150',
       embedded: '280x280>'
     },

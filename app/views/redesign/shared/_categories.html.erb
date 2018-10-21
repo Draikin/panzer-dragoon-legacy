@@ -1,0 +1,14 @@
+<% if categories.present? %>
+  <ul class="list-group">
+    <% categories.each do |category| %>
+      <% if policy(category).show? %>
+        <li class="list-group-item">
+          <%= link_to category.name, category %>
+          <% unless category.publish %>
+             - <span class="unpublished">Unpublished</span>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

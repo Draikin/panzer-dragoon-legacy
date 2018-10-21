@@ -1,0 +1,19 @@
+<% if category_groups.present? %>
+  <div class="container">
+    <div class="row">
+      <% category_groups.each do |category_group| %>
+        <% if policy(category_group).show? %>
+          <div class="col-sm">
+            <h3><%= category_group.name %></h3>
+            <%=
+              render(
+                partial: 'redesign/shared/categories',
+                locals: { categories: category_group.categories.order(:name) }
+              )
+            %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

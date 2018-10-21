@@ -1,0 +1,26 @@
+<% if @encyclopaedia_entries %>
+  <% @encyclopaedia_entries.each do |encyclopaedia_entry| %>
+    <ul class="list-unstyled">
+      <li class="media">
+        <%=
+          link_to(
+            show_picture(
+              encyclopaedia_entry,
+              'encyclopaedia_entry_picture',
+              :square_thumbnail
+            ),
+            encyclopaedia_entry,
+            class: 'mr-3'
+          )
+        %>
+        <div class="media-body">
+          <h5 class="mt-0 mb-1">
+            <%= link_to encyclopaedia_entry.name, encyclopaedia_entry %>
+          </h5>
+          <p><%= truncated_text encyclopaedia_entry.content %></p>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+  <%= paginate @encyclopaedia_entries %>
+<% end %>

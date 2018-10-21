@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     get '/', to: 'home#index'
 
     resources :sagas
+    resources :encyclopaedia_entries, path: 'encyclopaedia'
   end
 
   resources :searches

@@ -1,0 +1,17 @@
+<% title 'Encyclopaedia' %>
+
+<% if @category_groups.present? %>
+  <%=
+    render(
+      partial: 'redesign/shared/category_groups',
+      locals: { category_groups: @category_groups }
+    )
+  %>
+<% end %>
+
+<% if @encyclopaedia_entries.present? %>
+  <% unless params[:filter] %>
+    <h2>All Encyclopaedia Entries</h2>
+  <% end %>
+  <%= render 'list' %>
+<% end %>
