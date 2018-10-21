@@ -30,10 +30,10 @@
     partial: 'categories', locals: { categories: @download_categories }
   ) %>
 <% end %>
-<% if @music_categories.present? %>
+<% if @music_track_categories.present? %>
   <h2>Music</h2>
   <%= render(
-    partial: 'categories', locals: { categories: @music_categories }
+    partial: 'categories', locals: { categories: @music_track_categories }
   ) %>
 <% end %>
 <% if @picture_categories.present? %>

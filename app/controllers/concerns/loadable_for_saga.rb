@@ -26,10 +26,10 @@ module LoadableForSaga
     ).resolve
   end
 
-  def load_music_categories
+  def load_music_track_categories
     @music_track_categories = CategoryPolicy::Scope.new(
       current_user,
-      Category.where(saga: @saga, category_type: :music).order(:name)
+      Category.where(saga: @saga, category_type: :music_track).order(:name)
     ).resolve
   end
 
