@@ -1,0 +1,6 @@
+<% categories.each do |category| %>
+  <%= link_to(
+    category.short_name.present? ? category.short_name : category.name,
+    category_path(category)
+  ) %>
+<% end %>

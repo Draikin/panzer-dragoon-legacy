@@ -11,3 +11,40 @@
   <%= truncated_text @saga.encyclopaedia_entry.content %>
   <%= link_to 'Read More', @saga.encyclopaedia_entry %>
 </p>
+
+<% if @article_categories.present? %>
+  <h2>Articles</h2>
+  <%= render(
+    partial: 'categories', locals: { categories: @article_categories }
+  ) %>
+<% end %>
+<% if @resource_categories.present? %>
+  <h2>Resources</h2>
+  <%= render(
+    partial: 'categories', locals: { categories: @resource_categories }
+  ) %>
+<% end %>
+<% if @download_categories.present? %>
+  <h2>Downloads</h2>
+  <%= render(
+    partial: 'categories', locals: { categories: @download_categories }
+  ) %>
+<% end %>
+<% if @music_categories.present? %>
+  <h2>Music</h2>
+  <%= render(
+    partial: 'categories', locals: { categories: @music_categories }
+  ) %>
+<% end %>
+<% if @picture_categories.present? %>
+  <h2>Pictures</h2>
+  <%= render(
+    partial: 'categories', locals: { categories: @picture_categories }
+  ) %>
+<% end %>
+<% if @video_categories.present? %>
+  <h2>Videos</h2>
+  <%= render(
+    partial: 'categories', locals: { categories: @video_categories }
+  ) %>
+<% end %>
