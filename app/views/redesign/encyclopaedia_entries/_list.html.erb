@@ -16,6 +16,9 @@
         <div class="media-body">
           <h5 class="mt-0 mb-1">
             <%= link_to encyclopaedia_entry.name, encyclopaedia_entry %>
+            <% unless encyclopaedia_entry.publish %>
+              <span class="badge badge-warning">Draft</span>
+            <% end %>
           </h5>
           <p><%= truncated_text encyclopaedia_entry.content %></p>
         </div>
