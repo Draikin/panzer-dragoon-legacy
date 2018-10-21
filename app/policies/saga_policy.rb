@@ -16,4 +16,8 @@ class SagaPolicy < ApplicationPolicy
       )
     end
   end
+
+  def show?
+    true
+  end
 end

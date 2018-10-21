@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
   namespace :redesign do
     get '/', to: 'home#index'
+
+    resources :sagas
   end
 
   resources :searches

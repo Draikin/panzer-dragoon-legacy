@@ -31,11 +31,11 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% @sagas.each do |saga| %>
-            <% if policy(saga.encyclopaedia_entry).show? %>
+            <% if policy(saga).show? %>
                 <%=
                   link_to(
                     saga.name,
-                    encyclopaedia_entry_path(saga.encyclopaedia_entry),
+                    redesign_saga_path(saga),
                     class: 'dropdown-item'
                   )
                 %>
