@@ -13,6 +13,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <%= render 'layouts/redesign/top_nav' %>
     <% if yield(:title).present? %>
       <h1><%= yield(:title) %></h1>
     <% end %>

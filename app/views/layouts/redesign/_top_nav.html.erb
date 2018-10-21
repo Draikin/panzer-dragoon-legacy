@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to 'Panzer Dragoon Legacy', redesign_path, class: 'navbar-brand' %>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Latest News', redesign_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Games
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% @sagas.each do |saga| %>
+            <% if policy(saga.encyclopaedia_entry).show? %>
+                <%=
+                  link_to(
+                    saga.name,
+                    encyclopaedia_entry_path(saga.encyclopaedia_entry),
+                    class: 'dropdown-item'
+                  )
+                %>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+      <li class="nav-item">
+        <%= link_to(
+          'Encyclopaedia', encyclopaedia_entries_path, class: 'nav-link'
+        ) %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://discuss.panzerdragoonlegacy.com">
+          Forum
+        </a>
+      </li>
+    </ul>
+    <%= form_tag(
+      searches_path,
+      method: :post,
+      id: 'search',
+      class: 'form-inline my-2 my-lg-0'
+    ) do %>
+      <%= text_field_tag(
+        :query,
+        nil,
+        placeholder: 'Search...',
+        class: 'form-control mr-sm-2'
+      )
+    %>
+      <%= submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0' %>
+    <% end %>
+  </div>
+</nav>
