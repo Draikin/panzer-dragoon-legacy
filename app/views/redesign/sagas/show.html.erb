@@ -1,1 +1,13 @@
 <% title @saga.name %>
+
+<%= show_picture(
+  @saga.encyclopaedia_entry,
+  'encyclopaedia_entry_picture',
+  :embedded
+) %>
+<%= raw markdown_to_html @saga.encyclopaedia_entry.information %>
+
+<p>
+  <%= truncated_text @saga.encyclopaedia_entry.content %>
+  <%= link_to 'Read More', @saga.encyclopaedia_entry %>
+</p>
