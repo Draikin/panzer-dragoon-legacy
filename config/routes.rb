@@ -36,8 +36,9 @@ Rails.application.routes.draw do
   end
 
   namespace :redesign do
-    get '/', to: 'home#index'
+    get '/', to: 'news_entries#index'
 
+    resources :news_entries, path: 'news'
     resources :sagas
     resources :encyclopaedia_entries, path: 'encyclopaedia'
     resources :pictures

@@ -1,0 +1,9 @@
+<% if news_entries.present? %>
+  <% news_entries.each do |news_entry| %>
+    <%= render(
+      partial: 'redesign/news_entries/index/news_entry',
+      locals: { news_entry: news_entry }
+    ) %>
+  <% end %>
+  <%= paginate news_entries, views_prefix: 'admin' %>
+<% end %>
