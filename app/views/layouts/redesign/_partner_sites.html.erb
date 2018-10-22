@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <% @partner_sites.each do |partner_site| %>
+    <li class="list-group-item">
+      <%= link_to partner_site.name, partner_site.url %>
+    </li>
+  <% end %>
+</ul>

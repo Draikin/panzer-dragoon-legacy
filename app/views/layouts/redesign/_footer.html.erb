@@ -1,0 +1,16 @@
+<div class="container-fluid p-3">
+  <div class="row">
+    <div class="col">
+      <h5>Further Information</h5>
+      <%= render 'layouts/redesign/further_information' %>
+      <% if @partner_sites.present? %>
+        <h5>Partner Sites</h5>
+        <%= render 'layouts/redesign/partner_sites' %>
+      <% end %>
+    </div>
+    <div class="col">
+      <h5>Browse by Media Type</h5>
+      <%= render 'layouts/redesign/media_types' %>
+    </div>
+  </div>
+</div>
