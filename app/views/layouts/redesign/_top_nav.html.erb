@@ -61,18 +61,6 @@
       </li>
       <%= render 'layouts/redesign/social_media_links' %>
     </ul>
-    <%= form_tag(
-      searches_path,
-      method: :post,
-      id: 'search',
-      class: 'form-inline my-2 my-lg-0'
-    ) do %>
-      <%= text_field_tag(
-        :query,
-        nil,
-        placeholder: 'Search...',
-        class: 'form-control mr-sm-2'
-      ) %>
-    <% end %>
+    <%= render 'layouts/redesign/search_form' %>
   </div>
 </nav>
