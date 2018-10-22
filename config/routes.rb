@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
     resources :sagas
     resources :encyclopaedia_entries, path: 'encyclopaedia'
+    resources :pictures
   end
 
   resources :searches

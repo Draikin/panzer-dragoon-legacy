@@ -1,0 +1,29 @@
+<% if @pictures %>
+  <% @pictures.each do |picture| %>
+    <ul class="list-unstyled">
+      <li class="media">
+        <%=
+          link_to(
+            show_picture(
+              picture,
+              'picture',
+              :news_entry_thumbnail
+            ),
+            picture,
+            class: 'mr-3'
+          )
+        %>
+        <div class="media-body">
+          <h5 class="mt-0 mb-1">
+            <%= link_to picture.name, picture %>
+            <% unless picture.publish %>
+              <span class="badge badge-warning">Draft</span>
+            <% end %>
+          </h5>
+          <p><%= picture.description %></p>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+  <%= paginate @pictures, views_prefix: 'admin' %>
+<% end %>
